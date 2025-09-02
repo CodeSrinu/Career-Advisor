@@ -153,14 +153,36 @@ const PsychologyQuiz: React.FC<PsychologyQuizProps> = ({ onComplete, onBack }) =
       let newAnswers: string[];
 
       if (currentAnswers.some(ans => ans.startsWith(option))) {
+        // Remove the option
         newAnswers = currentAnswers.filter(ans => !ans.startsWith(option));
       } else {
+        // Add the option
         if (currentAnswers.length < maxSelections) {
           newAnswers = [...currentAnswers, option];
         } else {
           newAnswers = [...currentAnswers.slice(1), option];
         }
       }
+      
+      // If we're dealing with the "Other" option, handle text input appropriately
+      if (option === "Other (write 3 words)") {
+        if (currentAnswers.includes("Other (write 3 words)")) {
+          // Removing "Other" option, clear text input if it's empty or only contains the "Other:" prefix
+          const otherAnswers = currentAnswers.filter(ans => ans.startsWith("Other: "));
+          if (otherAnswers.length === 0 || (otherAnswers.length === 1 && otherAnswers[0] === "Other: ")) {
+            setTextInput('');
+          }
+        } else {
+          // Adding "Other" option, preserve existing text input
+          const otherAnswers = currentAnswers.filter(ans => ans.startsWith("Other: "));
+          if (otherAnswers.length > 0) {
+            // Extract text from existing "Other" answer
+            const existingText = otherAnswers[0].replace("Other: ", "");
+            setTextInput(existingText);
+          }
+        }
+      }
+      
       setAnswers(prev => ({ ...prev, [currentQuestion]: newAnswers }));
     } else {
       setAnswers(prev => ({ ...prev, [currentQuestion]: option }));
@@ -185,12 +207,23 @@ const PsychologyQuiz: React.FC<PsychologyQuizProps> = ({ onComplete, onBack }) =
         if (isMultiSelectQuestion) {
             const otherOption = "Other (write 3 words)";
             const currentAnswers = (newAnswers[currentQuestion] as string[] | undefined) || [];
+            
+            // Check if "Other (write 3 words)" is selected
             const otherIndex = currentAnswers.indexOf(otherOption);
             
             if (otherIndex !== -1) {
+                // "Other (write 3 words)" is selected, so we need to manage the actual "Other: ..." answers
                 const updatedAnswers = [...currentAnswers];
-                updatedAnswers[otherIndex] = answerValue;
-                newAnswers[currentQuestion] = updatedAnswers;
+                
+                // Remove any existing "Other: ..." answers
+                const filteredAnswers = updatedAnswers.filter(ans => !ans.startsWith("Other: "));
+                
+                // Add the new "Other: ..." answer if there's text
+                if (value.trim() !== '') {
+                    filteredAnswers.push(answerValue);
+                }
+                
+                newAnswers[currentQuestion] = filteredAnswers;
             }
         } else {
             // For single select, if "Other" option is selected, update the answer
@@ -229,8 +262,13 @@ const PsychologyQuiz: React.FC<PsychologyQuizProps> = ({ onComplete, onBack }) =
     const answer = answers[currentQuestion];
     if (isMultiSelectQuestion) {
         const otherOption = "Other (write 3 words)";
+        // Check if "Other" option is selected but text input is empty
         if (multiSelectAnswers.includes(otherOption) && textInput.trim() === '') {
-            return false;
+            // Check if there's already a filled "Other" answer
+            const otherAnswers = multiSelectAnswers.filter(ans => ans.startsWith("Other: ") && ans.length > 7);
+            if (otherAnswers.length === 0) {
+                return false;
+            }
         }
         return multiSelectAnswers.length > 0;
     }
