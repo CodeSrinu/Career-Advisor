@@ -1,0 +1,249 @@
+// src/data/domains/digital-core-tech.json
+{
+  "id": "digital-core-tech",
+  "name": "Digital & Core Tech",
+  "description": "The foundation of the digital world, encompassing software development, infrastructure, and emerging technologies.",
+  "icon": "code",
+  "color": "#2563eb",
+  "subRoles": [
+    {
+      "id": "software-engineer",
+      "domainId": "digital-core-tech",
+      "name": "Software Engineer",
+      "shortDescription": "Designs, develops, and maintains software applications and systems.",
+      "longDescription": "Software engineers create the programs and applications that run on computers and other devices. They work with programming languages like Python, Java, JavaScript, and C++ to build everything from mobile apps to enterprise systems.",
+      "videoUrl": "/videos/telugu/software-engineer.mp4",
+      "dailyLife": {
+        "typicalDay": [
+          "Morning standup meeting with team",
+          "Code development and debugging",
+          "Code reviews and pair programming",
+          "Testing and quality assurance",
+          "Documentation and planning"
+        ],
+        "workEnvironment": "Office or remote, collaborative teams",
+        "hours": "9-6, flexible",
+        "stressLevel": "Moderate"
+      },
+      "salaryBands": {
+        "entry": {
+          "min": 300000,
+          "max": 600000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "mid": {
+          "min": 800000,
+          "max": 1500000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "senior": {
+          "min": 2000000,
+          "max": 4000000,
+          "currency": "₹",
+          "period": "year"
+        }
+      },
+      "careerTrajectory": {
+        "year1": "Junior Developer - Learning fundamentals",
+        "year2": "Software Engineer - Independent contributor",
+        "year3": "Senior Engineer - Technical lead",
+        "year5": "Tech Lead/Architect - System design"
+      },
+      "transformationPaths": [
+        {
+          "from": "BCA/MCA Graduate",
+          "to": "Software Engineer",
+          "timeframe": "6-12 months",
+          "requirements": ["Programming basics", "Data structures", "Projects"]
+        },
+        {
+          "from": "Career Switcher",
+          "to": "Software Engineer",
+          "timeframe": "12-18 months",
+          "requirements": ["Bootcamp completion", "Portfolio projects", "Internship"]
+        }
+      ],
+      "potential": "High growth field with opportunities in every industry. Remote work possibilities and strong earning potential.",
+      "skills": {
+        "technical": [
+          "Programming languages (Python, Java, JavaScript)",
+          "Database management",
+          "Version control (Git)",
+          "Testing and debugging",
+          "API development"
+        ],
+        "soft": [
+          "Problem-solving",
+          "Communication",
+          "Teamwork",
+          "Adaptability",
+          "Attention to detail"
+        ],
+        "certifications": [
+          "AWS Certified Developer",
+          "Google Professional Cloud Developer",
+          "Microsoft Azure Developer"
+        ]
+      },
+      "education": {
+        "minimum": "Bachelor's degree in Computer Science or related field",
+        "preferred": "Master's degree in Computer Science or Engineering",
+        "alternativePaths": [
+          "Coding bootcamp + portfolio",
+          "Self-taught + open-source contributions",
+          "Vocational training + certifications"
+        ]
+      },
+      "jobMarket": {
+        "demand": "Very high",
+        "competition": "Moderate",
+        "geographicHotspots": ["Bangalore", "Hyderabad", "Pune", "Chennai", "Delhi"]
+      }
+    },
+    {
+      "id": "mobile-game-dev",
+      "domainId": "digital-core-tech",
+      "name": "Mobile & Game Developer",
+      "shortDescription": "Creates applications and games for mobile devices and gaming platforms.",
+      "longDescription": "Mobile and game developers design and build interactive experiences for smartphones, tablets, and gaming consoles. They work with specialized frameworks and engines to create engaging user experiences.",
+      "videoUrl": "/videos/telugu/mobile-game-dev.mp4",
+      "dailyLife": {
+        "typicalDay": [
+          "Design gameplay mechanics",
+          "Code game features and mechanics",
+          "Test and debug applications",
+          "Optimize performance for devices",
+          "Collaborate with artists and designers"
+        ],
+        "workEnvironment": "Studio environment, creative teams",
+        "hours": "9-6, crunch periods",
+        "stressLevel": "High during launches"
+      },
+      "salaryBands": {
+        "entry": {
+          "min": 250000,
+          "max": 500000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "mid": {
+          "min": 700000,
+          "max": 1200000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "senior": {
+          "min": 1500000,
+          "max": 3000000,
+          "currency": "₹",
+          "period": "year"
+        }
+      },
+      "careerTrajectory": {
+        "year1": "Junior Developer - Learning platforms",
+        "year2": "Developer - Building features",
+        "year3": "Senior Developer - Leading projects",
+        "year5": "Lead Developer/Technical Director"
+      },
+      "transformationPaths": [
+        {
+          "from": "Software Engineer",
+          "to": "Game Developer",
+          "timeframe": "6-12 months",
+          "requirements": ["Game engine skills", "Mathematics", "Portfolio"]
+        },
+        {
+          "from": "Graphic Designer",
+          "to": "Game Developer",
+          "timeframe": "12-18 months",
+          "requirements": ["Programming skills", "Game design", "Projects"]
+        }
+      ],
+      "potential": "Creative field with opportunities in entertainment, education, and enterprise applications.",
+      "skills": {
+        "technical": [
+          "Game engines (Unity, Unreal)",
+          "Mobile development (iOS/Android)",
+          "3D mathematics and physics",
+          "Performance optimization",
+          "Cross-platform development"
+        ],
+        "soft": [
+          "Creativity",
+          "Attention to detail",
+          "Collaboration",
+          "Time management",
+          "User empathy"
+        ],
+        "certifications": [
+          "Unity Certified Developer",
+          "Unreal Engine Certification",
+          "Mobile Development Certifications"
+        ]
+      },
+      "education": {
+        "minimum": "Bachelor's degree in Computer Science, Game Design, or related",
+        "preferred": "Specialized game development programs",
+        "alternativePaths": [
+          "Online courses + game jams",
+          "Self-taught + portfolio",
+          "Bootcamp + projects"
+        ]
+      },
+      "jobMarket": {
+        "demand": "High",
+        "competition": "High",
+        "geographicHotspots": ["Bangalore", "Mumbai", "Hyderabad", "Pune"]
+      }
+    },
+    {
+      "id": "devops-sre",
+      "domainId": "digital-core-tech",
+      "name": "DevOps / SRE / Cloud Architect",
+      "shortDescription": "Ensures seamless software deployment and system reliability at scale.",
+      "longDescription": "DevOps engineers, Site Reliability Engineers (SREs), and Cloud Architects work to automate and streamline the software development lifecycle. They build infrastructure as code, monitor system performance, and ensure applications are scalable and resilient."
+    },
+    {
+      "id": "cyber-security",
+      "domainId": "digital-core-tech",
+      "name": "Cyber-Security Specialist",
+      "shortDescription": "Protects digital assets and defends against cyber threats.",
+      "longDescription": "Cybersecurity specialists safeguard computer networks and systems from cyber attacks. They implement security measures, monitor for intrusions, and respond to security breaches to protect sensitive data and maintain system integrity."
+    },
+    {
+      "id": "network-architect",
+      "domainId": "digital-core-tech",
+      "name": "Network Architect / Engineer",
+      "shortDescription": "Designs and maintains computer networks for optimal performance.",
+      "longDescription": "Network architects design and build data communication networks, including local area networks (LANs), wide area networks (WANs), and intranets. They evaluate network needs, recommend solutions, and ensure networks operate efficiently and securely."
+    },
+    {
+      "id": "tech-sales-support",
+      "domainId": "digital-core-tech",
+      "name": "Tech Sales Engineer / Support",
+      "shortDescription": "Bridges technical expertise with customer needs in sales and support.",
+      "longDescription": "Technical sales engineers and support specialists combine technical knowledge with sales or customer service skills. They help customers understand technical products, troubleshoot issues, and provide solutions that meet specific business requirements."
+    },
+    {
+      "id": "gig-remote-dev",
+      "domainId": "digital-core-tech",
+      "name": "Freelance / Gig Developer",
+      "shortDescription": "Works independently on diverse projects with flexible arrangements.",
+      "longDescription": "Freelance and gig developers work on a project basis for various clients. They enjoy the flexibility of choosing projects, setting rates, and working remotely while building a diverse portfolio of technical skills and industry experience."
+    },
+    {
+      "id": "govt-it",
+      "domainId": "digital-core-tech",
+      "name": "Government IT Roles",
+      "shortDescription": "Supports public sector digital transformation and e-governance initiatives.",
+      "longDescription": "Government IT professionals work on digital initiatives for public services, including e-governance platforms, citizen portals, and digital infrastructure. They contribute to national digital transformation while enjoying job stability and benefits."
+    }
+  ],
+  "overview": {
+    "marketSize": "₹2.5 trillion by 2025",
+    "growthRate": "15% annually",
+    "jobSatisfaction": "4.2/5"
+  }
+}
