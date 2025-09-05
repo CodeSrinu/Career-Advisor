@@ -1,0 +1,75 @@
+   GET http://localhost:3000/ 500 (Internal Server Error)
+Router @ webpack-internal:///…s/app-router.js:384
+renderWithHooks @ webpack-internal:///…evelopment.js:11121
+updateFunctionComponent @ webpack-internal:///…evelopment.js:16290
+beginWork$1 @ webpack-internal:///…evelopment.js:18472
+beginWork @ webpack-internal:///…evelopment.js:26927
+performUnitOfWork @ webpack-internal:///…evelopment.js:25748
+workLoopConcurrent @ webpack-internal:///…evelopment.js:25734
+renderRootConcurrent @ webpack-internal:///…evelopment.js:25690
+performConcurrentWorkOnRoot @ webpack-internal:///…evelopment.js:24504
+workLoop @ webpack-internal:///….development.js:256
+flushWork @ webpack-internal:///….development.js:225
+performWorkUntilDeadline @ webpack-internal:///….development.js:534
+index.tsx:935  Uncaught ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error: 
+  × Expected unicode escape
+     ╭─[C:\Hackathon\Google and Nxtwave Hackathon\career-advisor\src\components\mobile\ResultsPage.tsx:193:1]
+ 193 │             reason: 'This field is ideal for individuals with your combination of curiosity and adaptability, offering dynamic opportunities to stay current with trends.',
+ 194 │             matchPercentage: 78
+ 195 │           },
+ 196 │           {\n            id: 'project-coordinator',\n            name: 'Project Coordinator',\n            reason: 'With your unique combination of skills and talents, you\\'re positioned for success in managing multiple tasks and helping teams stay organized.',\n            matchPercentage: 72\n          },\n          {\n            id: 'ux-researcher',\n            name: 'UX Researcher',\n            reason: 'The skills you possess are highly valuable in understanding user needs and improving product experiences.',\n            matchPercentage: 68\n          }
+     ·            ▲
+ 197 │         ];
+ 198 │         
+ 199 │         setPersona(samplePersona);
+     ╰────
+
+
+Caused by:
+    Syntax Error
+    at processResult (file://C:\Hackathon\Google and Nxtwave Hackathon\career-advisor\node_modules\next\dist\compiled\webpack\bundle5.js:28:400590)
+    at <unknown> (file://C:\Hackathon\Google and Nxtwave Hackathon\career-advisor\node_modules\next\dist\compiled\webpack\bundle5.js:28:402302)
+    at <unknown> (file://C:\Hackathon\Google and Nxtwave Hackathon\career-advisor\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:8645)
+    at <unknown> (file://C:\Hackathon\Google and Nxtwave Hackathon\career-advisor\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:5019)
+    at r.callback (file://C:\Hackathon\Google and Nxtwave Hackathon\career-advisor\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:4039)
+getServerError @ nodeStackFrames.ts:30
+eval @ index.tsx:935
+setTimeout
+hydrate @ index.tsx:922
+await in hydrate
+pageBootrap @ page-bootstrap.ts:22
+eval @ next-dev.ts:21
+Promise.then
+eval @ next-dev.ts:20
+./node_modules/next/dist/client/next-dev.js @ main.js?ts=1757064418364:809
+options.factory @ webpack.js?ts=1757064418364:647
+__webpack_require__ @ webpack.js?ts=1757064418364:37
+__webpack_exec__ @ main.js?ts=1757064418364:1942
+(anonymous) @ main.js?ts=1757064418364:1943
+webpackJsonpCallback @ webpack.js?ts=1757064418364:1195
+(anonymous) @ main.js?ts=1757064418364:9
+websocket.ts:37 [HMR] connected
+hydration-error-info.ts:72  ./src/components/mobile/ResultsPage.tsx
+Error: 
+  × Expected unicode escape
+     ╭─[C:\Hackathon\Google and Nxtwave Hackathon\career-advisor\src\components\mobile\ResultsPage.tsx:193:1]
+ 193 │             reason: 'This field is ideal for individuals with your combination of curiosity and adaptability, offering dynamic opportunities to stay current with trends.',
+ 194 │             matchPercentage: 78
+ 195 │           },
+ 196 │           {\n            id: 'project-coordinator',\n            name: 'Project Coordinator',\n            reason: 'With your unique combination of skills and talents, you\\'re positioned for success in managing multiple tasks and helping teams stay organized.',\n            matchPercentage: 72\n          },\n          {\n            id: 'ux-researcher',\n            name: 'UX Researcher',\n            reason: 'The skills you possess are highly valuable in understanding user needs and improving product experiences.',\n            matchPercentage: 68\n          }
+     ·            ▲
+ 197 │         ];
+ 198 │         
+ 199 │         setPersona(samplePersona);
+     ╰────
+
+Caused by:
+    Syntax Error
+overrideMethod @ hook.js:608
+console.error @ hydration-error-info.ts:72
+window.console.error @ setup-hydration-warning.ts:21
+handleErrors @ hot-reloader-client.ts:199
+processMessage @ hot-reloader-client.ts:295
+eval @ hot-reloader-client.ts:82
+handleMessage @ websocket.ts:44

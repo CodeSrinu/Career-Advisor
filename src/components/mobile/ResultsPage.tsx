@@ -115,10 +115,43 @@ export default function ResultsPage({ answers, onBack, onSelectRole }: ResultsPa
           confidence: 'high'
         };
         
+        // Transform role reasons to focus on capabilities, skills, and powers
+        const transformRoleReason = (reason: string): string => {
+          // Remove direct references to quiz answers and rephrase to focus on capabilities
+          let transformedReason = reason;
+          
+          // Handle various patterns of direct references to user's answers
+          if (transformedReason.includes("Your")) {
+            // More general transformation that removes personal references
+            transformedReason = transformedReason.replace(
+              /Your.*?(makes you well-suited|is perfect for|are valuable for|make you effective|make you a great fit|would love|enable you|position you)/,
+              "With your unique combination of skills and talents, you're positioned for success in"
+            );
+          }
+          
+          // Replace specific terms to focus on capabilities
+          transformedReason = transformedReason
+            .replace(/natural strengths/g, "inherent capabilities")
+            .replace(/skills that make them well-suited/g, "abilities that align with")
+            .replace(/directly referencing their specific quiz answers/g, "focusing on core competencies")
+            .replace(/capabilities, skills, or natural strengths/g, "unique talents and abilities");
+          
+          // If we still have direct personal references, rephrase more generally
+          if (transformedReason.includes("Your") && transformedReason.includes("well-suited")) {
+            transformedReason = "This career path aligns with your unique talents and offers opportunities to leverage your abilities.";
+          } else if (transformedReason.includes("Your") && transformedReason.includes("perfect for")) {
+            transformedReason = "This field is ideal for individuals with your combination of skills and interests.";
+          } else if (transformedReason.includes("Your") && transformedReason.includes("valuable for")) {
+            transformedReason = "The skills you possess are highly valuable in this career domain.";
+          }
+          
+          return transformedReason;
+        };
+        
         const transformedRoles: RoleMatch[] = aiResponse.recommendedRoles.map((role: any, index: number) => ({
           id: `role-${index}`,
           name: role.role,
-          reason: role.reason,
+          reason: transformRoleReason(role.reason),
           matchPercentage: 100 - (index * 10) // Decreasing percentages for lower ranked roles
         }));
         
@@ -145,31 +178,31 @@ export default function ResultsPage({ answers, onBack, onSelectRole }: ResultsPa
           {
             id: 'full-stack-developer',
             name: 'Full Stack Developer',
-            reason: 'Your adaptable nature makes you well-suited for a role that combines both technical and creative problem-solving.',
+            reason: 'With your unique combination of skills and talents, you\'re positioned for success in a role that combines both technical and creative problem-solving.',
             matchPercentage: 92
           },
           {
             id: 'business-analyst',
             name: 'Business Analyst',
-            reason: 'Your balanced approach to decision-making is ideal for a role that requires both analytical thinking and understanding human behavior.',
+            reason: 'This career path aligns with your unique talents and offers opportunities to leverage your analytical thinking and understanding of human behavior.',
             matchPercentage: 85
           },
           {
             id: 'digital-marketing-specialist',
             name: 'Digital Marketing Specialist',
-            reason: 'Your curiosity and adaptability are perfect for a dynamic field that requires staying current with trends and platforms.',
+            reason: 'This field is ideal for individuals with your combination of curiosity and adaptability, offering dynamic opportunities to stay current with trends.',
             matchPercentage: 78
           },
           {
             id: 'project-coordinator',
             name: 'Project Coordinator',
-            reason: 'Your flexible nature makes you effective at managing multiple tasks and helping teams stay organized.',
+            reason: 'With your unique combination of skills and talents, you are positioned for success in managing multiple tasks and helping teams stay organized.',
             matchPercentage: 72
           },
           {
             id: 'ux-researcher',
             name: 'UX Researcher',
-            reason: 'Your exploratory mindset is valuable for understanding user needs and improving product experiences.',
+            reason: 'The skills you possess are highly valuable in understanding user needs and improving product experiences.',
             matchPercentage: 68
           }
         ];
