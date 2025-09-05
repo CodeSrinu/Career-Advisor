@@ -9,7 +9,33 @@ This is a Next.js 14 application that implements the core workflow of the Career
 1. Google OAuth authentication (simplified for demo)
 2. Native language selection (Telugu, Hindi, Tamil, Marathi)
 3. Career goal setting (already set vs. discovery through psychology questions)
-4. Responsive UI with Tailwind CSS and enhanced animations
+4. AI-powered career recommendations using Google Gemini
+5. Responsive UI with Tailwind CSS and enhanced animations
+
+## 🔥 Firebase Status Update
+
+**Important Notice**: The Firebase backend is currently experiencing connectivity issues. The app gracefully degrades to sample data mode when Firebase is unavailable. All features remain functional with the following limitations:
+
+- User responses are stored locally (lost on refresh)
+- Recommendations use sample data instead of real algorithms
+- Progress is not persisted across sessions
+
+See [FIREBASE_STATUS.md](FIREBASE_STATUS.md) for detailed information and troubleshooting steps.
+
+## ✨ AI-Powered Features
+
+The Career Advisor now includes AI-powered career recommendations using Google Gemini:
+
+1. **Dynamic Career Persona Generation**: Based on psychology quiz answers, the AI creates a unique career persona for each user
+2. **Personalized Role Recommendations**: The AI recommends 5 specific job roles that match the user's persona
+3. **Detailed Role Information**: For each recommended role, the AI generates comprehensive information including:
+   - Role description
+   - Daily responsibilities
+   - Salary ranges
+   - Career progression paths
+   - Required skills
+   - Educational requirements
+   - Job market outlook
 
 ## Features Implemented
 
@@ -21,8 +47,26 @@ This is a Next.js 14 application that implements the core workflow of the Career
 - [x] LocalStorage for data persistence
 - [x] Enhanced UI with gradients, shadows, and transitions
 - [x] Smooth animations between steps
-- [x] Psychology quiz component (demo)
-- [x] Domain explorer component (demo)
+- [x] Psychology quiz component (full implementation)
+- [x] Domain explorer component (full implementation)
+- [x] AI-powered career recommendations using Google Gemini
+- [x] Role deep-dive pages with detailed career information
+- [x] Real-time recommendations with Firebase backend (degraded to sample data mode)
+- [x] Graceful error handling for backend failures
+- [x] Debugging tools for Firebase connectivity issues
+
+## 🛠️ Debugging Tools
+
+When experiencing issues, visit these debugging pages:
+
+- `/test-firebase` - Basic Firebase connectivity test
+- `/test-init` - Detailed initialization diagnostics
+- `/debug-auth` - Authentication debugging tools
+- `/test-firestore` - API endpoint for raw Firestore testing
+- `/test-gemini` - Test Google Gemini API connectivity
+- `/test-ai` - Test AI recommendations service
+- `/test-ai-service` - Automated AI service test
+- `/check-env` - Check environment variables
 
 ## Color Palette
 
@@ -53,12 +97,27 @@ To run the Next.js application:
    npm install
    ```
 
-2. Run the development server:
+2. Set up environment variables:
+   - Copy `.env.local.example` to create your own `.env.local` file
+   - Add your Google OAuth credentials
+   - Add your Firebase configuration values
+   - Add your Google Gemini API key
+
+3. Run the development server:
    ```bash
    npm run dev
    ```
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Testing AI Features
+
+To test the AI-powered features:
+
+1. Visit `/check-env` to verify your environment variables are properly configured
+2. Visit `/test-gemini` to test the Google Gemini API connectivity
+3. Visit `/test-ai-service` to test the AI recommendations service
+4. Complete the full user flow in the main application to see AI-generated recommendations
 
 ## UI/UX Enhancements
 
@@ -87,7 +146,7 @@ To run the Next.js application:
 
 1. ~~Implement proper Google OAuth with NextAuth.js~~ (Completed)
 2. ~~Create Psychology Quiz component~~ (Demo created)
-3. ~~Create Domain Explorer component~~ (Demo created)
+3. ~~Implement AI-powered career recommendations~~ (Completed)
 4. Add the full psychology question flow
 5. Implement the skill assessment section
 6. Add the course content and video viewing features
@@ -112,7 +171,7 @@ The platform covers 8 job domains with multiple sub-roles in each:
 - Data, AI & Research
 - Healthcare & Life Sciences
 - Education & Academia
-- Business, Management & Support Functions
+- Business, Management & Support
 - Creative, Media & Performing Arts
 - Skilled Trades, Services & Physical
 - Entrepreneurship & Self-Employment
@@ -123,8 +182,9 @@ This project was created for a hackathon with the goal of building a Minimum Via
 
 1. **Authentication Flow**: Google OAuth login
 2. **Onboarding**: Language selection and goal setting
-3. **Psychology Quiz**: Demo component for career discovery
-4. **Domain Explorer**: Demo component for browsing career domains
+3. **Psychology Quiz**: Complete 10-question quiz for career discovery
+4. **AI-Powered Recommendations**: Personalized career personas and role recommendations
+5. **Role Deep-Dive**: Detailed information about recommended career paths
 
 The next steps for the hackathon would be to implement:
 1. Goal validation for users with existing goals

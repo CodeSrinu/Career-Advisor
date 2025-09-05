@@ -1,0 +1,125 @@
+{
+  "id": "data-ai-research",
+  "name": "Data, AI & Research",
+  "description": "The cutting edge of innovation, where data drives decisions and artificial intelligence shapes the future.",
+  "icon": "data",
+  "color": "#7c3aed",
+  "subRoles": [
+    {
+      "id": "data-scientist",
+      "domainId": "data-ai-research",
+      "name": "Data Scientist",
+      "shortDescription": "Extracts insights and patterns from complex datasets to drive business decisions.",
+      "longDescription": "Data scientists analyze large datasets to uncover hidden patterns, correlations, and insights that can inform business strategy. They use statistical methods, machine learning algorithms, and data visualization tools to transform raw data into actionable intelligence.",
+      "videoUrl": "/videos/telugu/data-scientist.mp4",
+      "dailyLife": {
+        "typicalDay": [
+          "Review business questions and define analysis scope",
+          "Clean and preprocess large datasets",
+          "Build predictive models and machine learning algorithms",
+          "Create visualizations and dashboards for stakeholders",
+          "Present findings to executives and team members"
+        ],
+        "workEnvironment": "Office or remote, collaborative teams",
+        "hours": "9-6, flexible",
+        "stressLevel": "Moderate"
+      },
+      "salaryBands": {
+        "entry": {
+          "min": 400000,
+          "max": 700000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "mid": {
+          "min": 900000,
+          "max": 1600000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "senior": {
+          "min": 1800000,
+          "max": 3500000,
+          "currency": "₹",
+          "period": "year"
+        }
+      },
+      "careerTrajectory": {
+        "year1": "Junior Data Analyst - Learning fundamentals",
+        "year2": "Data Scientist - Building models",
+        "year3": "Senior Data Scientist - Leading projects",
+        "year5": "Principal Data Scientist/ML Engineer"
+      },
+      "transformationPaths": [
+        {
+          "from": "Mathematics/Statistics Graduate",
+          "to": "Data Scientist",
+          "timeframe": "6-12 months",
+          "requirements": ["Programming basics", "Statistics", "Projects"]
+        },
+        {
+          "from": "Software Engineer",
+          "to": "Data Scientist",
+          "timeframe": "12-18 months",
+          "requirements": ["Statistics", "Machine learning", "Portfolio"]
+        }
+      ],
+      "potential": "High growth field with opportunities in every industry. Remote work possibilities and strong earning potential.",
+      "skills": {
+        "technical": [
+          "Python/R programming",
+          "Statistical analysis",
+          "Machine learning algorithms",
+          "Data visualization (Tableau, Power BI)",
+          "SQL and database management"
+        ],
+        "soft": [
+          "Analytical thinking",
+          "Problem-solving",
+          "Communication",
+          "Business acumen",
+          "Attention to detail"
+        ],
+        "certifications": [
+          "Google Data Analytics Professional Certificate",
+          "AWS Certified Machine Learning",
+          "Microsoft Azure Data Scientist Associate"
+        ]
+      },
+      "education": {
+        "minimum": "Bachelor's degree in Mathematics, Statistics, Computer Science or related field",
+        "preferred": "Master's degree in Data Science or related field",
+        "alternativePaths": [
+          "Online courses + projects",
+          "Bootcamp + portfolio",
+          "Self-taught + open-source contributions"
+        ]
+      },
+      "jobMarket": {
+        "demand": "Very high",
+        "competition": "High",
+        "geographicHotspots": ["Bangalore", "Hyderabad", "Pune", "Chennai", "Delhi"]
+      }
+    },
+    {
+      "id": "ai-ml-engineer",
+      "domainId": "data-ai-research",
+      "name": "AI/ML Engineer",
+      "shortDescription": "Designs and implements artificial intelligence and machine learning systems.",
+      "longDescription": "AI/ML engineers develop and deploy machine learning models and artificial intelligence systems that can learn from data and make predictions or decisions. They work on everything from recommendation systems to autonomous vehicles.",
+      "videoUrl": "/videos/telugu/ai-ml-engineer.mp4"
+    },
+    {
+      "id": "research-scientist",
+      "domainId": "data-ai-research",
+      "name": "Research Scientist",
+      "shortDescription": "Conducts cutting-edge research to advance the field of artificial intelligence.",
+      "longDescription": "Research scientists work on pushing the boundaries of what's possible in AI and machine learning. They publish papers, develop new algorithms, and contribute to the academic and industrial advancement of the field."
+    }
+  ],
+  "overview": {
+    "marketSize": "₹1.8 trillion by 2025",
+    "growthRate": "25% annually",
+    "jobSatisfaction": "4.3/5"
+  }
+}

@@ -1,429 +1,265 @@
-// src/components/mobile/SubRoleDeepDivePage.tsx
+// src/components/mobile/ResultsPage.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
-
-interface Domain {
-  id: string;
-  name: string;
-  description: string;
-  icon: string;
-  color: string;
-  subRoles: SubRole[];
-}
-
-interface SubRole {
-  id: string;
-  domainId: string;
-  name: string;
-  shortDescription: string;
-  longDescription: string;
-  videoUrl: string;
-  dailyLife: string[];
-  salaryBands: {
-    entry: { min: number; max: number; currency: string; period: string };
-    mid: { min: number; max: number; currency: string; period: string };
-    senior: { min: number; max: number; currency: string; period: string };
-  };
-  careerTrajectory: {
-    year1: string;
-    year2: string;
-    year3: string;
-    year5: string;
-  };
-  transformationPaths: Array<{
-    from: string;
-    to: string;
-    timeframe: string;
-    requirements: string[];
-  }>;
-  potential: string;
-  skills: {
-    technical: string[];
-    soft: string[];
-    certifications: string[];
-  };
-  education: {
-    minimum: string;
-    preferred: string;
-    alternativePaths: string[];
-  };
-  jobMarket: {
-    demand: string;
-    competition: string;
-    geographicHotspots: string[];
-  };
-}
+import { useSession } from 'next-auth/react';
+import { saveQuizResponse } from '@/lib/userData';
 
 interface Persona {
   id: string;
   name: string;
   description: string;
-  icon: string;
+  strengths: string[];
+  matchScore?: number;
+  confidence?: string;
+}
+
+interface RoleMatch {
+  id: string;
+  name: string;
+  reason: string;
+  matchPercentage?: number;
 }
 
 interface ResultsPageProps {
   answers: Record<number, string | string[]>;
   onBack: () => void;
-  onSelectDomain: (domainId: string) => void;
+  onSelectRole: (roleId: string, roleName: string, personaSummary: string, roleRank?: number) => void;
 }
 
-export default function ResultsPage({ answers, onBack, onSelectDomain }: ResultsPageProps) {
-  const [subRole, setSubRole] = useState<SubRole | null>(null);
+export default function ResultsPage({ answers, onBack, onSelectRole }: ResultsPageProps) {
+  const { data: session } = useSession();
+  const [roles, setRoles] = useState<RoleMatch[]>([]);
+  const [persona, setPersona] = useState<Persona | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // Sample data - in a real implementation, this would come from an API
-  const sampleSubRoles: Record<string, SubRole> = {
-    'software-engineer': {
-      id: 'software-engineer',
-      domainId: 'digital-core-tech',
-      name: 'Software Engineer',
-      shortDescription: 'Designs, develops, and maintains software applications and systems.',
-      longDescription: 'Software engineers create the programs and applications that run on computers and other devices. They work with programming languages like Python, Java, JavaScript, and C++ to build everything from mobile apps to enterprise systems.',
-      videoUrl: '/videos/telugu/software-engineer.mp4',
-      dailyLife: [
-        'Morning standup meeting with team',
-        'Code development and debugging',
-        'Code reviews and pair programming',
-        'Testing and quality assurance',
-        'Documentation and planning'
-      ],
-      salaryBands: {
-        entry: { min: 300000, max: 600000, currency: '₹', period: 'year' },
-        mid: { min: 800000, max: 1500000, currency: '₹', period: 'year' },
-        senior: { min: 2000000, max: 4000000, currency: '₹', period: 'year' }
-      },
-      careerTrajectory: {
-        year1: 'Junior Developer - Learning fundamentals',
-        year2: 'Software Engineer - Independent contributor',
-        year3: 'Senior Engineer - Technical lead',
-        year5: 'Tech Lead/Architect - System design'
-      },
-      transformationPaths: [
-        {
-          from: 'BCA/MCA Graduate',
-          to: 'Software Engineer',
-          timeframe: '6-12 months',
-          requirements: ['Programming basics', 'Data structures', 'Projects']
-        },
-        {
-          from: 'Career Switcher',
-          to: 'Software Engineer',
-          timeframe: '12-18 months',
-          requirements: ['Bootcamp completion', 'Portfolio projects', 'Internship']
-        }
-      ],
-      potential: 'High growth field with opportunities in every industry. Remote work possibilities and strong earning potential.',
-      skills: {
-        technical: [
-          'Programming languages (Python, Java, JavaScript)',
-          'Database management',
-          'Version control (Git)',
-          'Testing and debugging',
-          'API development'
-        ],
-        soft: [
-          'Problem-solving',
-          'Communication',
-          'Teamwork',
-          'Adaptability',
-          'Attention to detail'
-        ],
-        certifications: [
-          'AWS Certified Developer',
-          'Google Professional Cloud Developer',
-          'Microsoft Azure Developer'
-        ],
-        education: {
-          minimum: 'Bachelor\'s degree in Computer Science or related field',
-          preferred: 'Master\'s degree in Computer Science or Engineering',
-          alternativePaths: [
-            'Coding bootcamp + portfolio',
-            'Self-taught + open-source contributions',
-            'Vocational training + certifications'
-          ]
-        },
-        jobMarket: {
-          demand: 'Very high',
-          competition: 'Moderate',
-          geographicHotspots: ['Bangalore', 'Hyderabad', 'Pune', 'Chennai', 'Delhi']
-        }
+  // Convert frontend answers to backend format
+  const convertAnswersForBackend = (frontendAnswers: Record<number, string | string[]>): Record<string, any> => {
+    const backendAnswers: Record<string, any> = {};
+    
+    // Map frontend question IDs to backend keys
+    const questionIdMap: Record<number, string> = {
+      1: 'childhoodInterests',
+      2: 'favoriteToy',
+      3: 'childhoodAspiration',
+      4: 'spendingPreference',
+      5: 'inspirationalStatement',
+      6: 'idealDailyVibe',
+      7: 'nonNegotiables',
+      8: 'publicSpeaking',
+      9: 'secretChoice',
+      10: 'goalOwnership'
+    };
+    
+    Object.entries(frontendAnswers).forEach(([questionId, answer]) => {
+      const backendKey = questionIdMap[parseInt(questionId)];
+      if (backendKey) {
+        backendAnswers[backendKey] = answer;
       }
-    },
-    'mobile-game-dev': {
-      id: 'mobile-game-dev',
-      domainId: 'digital-core-tech',
-      name: 'Mobile & Game Developer',
-      shortDescription: 'Creates applications and games for mobile devices and gaming platforms.',
-      longDescription: 'Mobile and game developers design and build interactive experiences for smartphones, tablets, and gaming consoles. They work with specialized frameworks and engines to create engaging user experiences.',
-      videoUrl: '/videos/telugu/mobile-game-dev.mp4',
-      dailyLife: [
-        'Design gameplay mechanics',
-        'Code game features and mechanics',
-        'Test and debug applications',
-        'Optimize performance for devices',
-        'Collaborate with artists and designers'
-      ],
-      salaryBands: {
-        entry: { min: 250000, max: 500000, currency: '₹', period: 'year' },
-        mid: { min: 700000, max: 1200000, currency: '₹', period: 'year' },
-        senior: { min: 1500000, max: 3000000, currency: '₹', period: 'year' }
-      },
-      careerTrajectory: {
-        year1: 'Junior Developer - Learning platforms',
-        year2: 'Developer - Building features',
-        year3: 'Senior Developer - Leading projects',
-        year5: 'Lead Developer/Technical Director'
-      },
-      transformationPaths: [
-        {
-          from: 'Software Engineer',
-          to: 'Game Developer',
-          timeframe: '6-12 months',
-          requirements: ['Game engine skills', 'Mathematics', 'Portfolio']
-        },
-        {
-          from: 'Graphic Designer',
-          to: 'Game Developer',
-          timeframe: '12-18 months',
-          requirements: ['Programming skills', 'Game design', 'Projects']
-        }
-      ],
-      potential: 'Creative field with opportunities in entertainment, education, and enterprise applications.',
-      skills: {
-        technical: [
-          'Game engines (Unity, Unreal)',
-          'Mobile development (iOS/Android)',
-          '3D mathematics and physics',
-          'Performance optimization',
-          'Cross-platform development'
-        ],
-        soft: [
-          'Creativity',
-          'Attention to detail',
-          'Collaboration',
-          'Time management',
-          'User empathy'
-        ],
-        certifications: [
-          'Unity Certified Developer',
-          'Unreal Engine Certification',
-          'Mobile Development Certifications'
-        ],
-        education: {
-          minimum: 'Bachelor\'s degree in Computer Science, Game Design, or related',
-          preferred: 'Specialized game development programs',
-          alternativePaths: [
-            'Online courses + game jams',
-            'Self-taught + portfolio',
-            'Bootcamp + projects'
-          ]
-        },
-        jobMarket: {
-          demand: 'High',
-          competition: 'High',
-          geographicHotspots: ['Bangalore', 'Mumbai', 'Hyderabad', 'Pune']
-        }
-      }
-    }
+    });
+    
+    return backendAnswers;
   };
 
-  // Sample personas
-  const personas: Persona[] = [
-    {
-      id: 'visionary',
-      name: 'The Visionary',
-      description: 'You\'re a natural leader with a knack for seeing the big picture. Your innovative thinking and drive inspire others to achieve great things.',
-      icon: 'groups'
-    },
-    {
-      id: 'creator',
-      name: 'The Creator',
-      description: 'You thrive on bringing ideas to life through artistic expression and innovation. Your unique perspective transforms ordinary concepts into extraordinary experiences.',
-      icon: 'draw'
-    },
-    {
-      id: 'analyst',
-      name: 'The Analyst',
-      description: 'You excel at dissecting complex problems and finding logical solutions. Your methodical approach and attention to detail make you invaluable in any analytical field.',
-      icon: 'search'
-    }
-  ];
-
-  // Sample domains
-  const domains: Domain[] = [
-    {
-      id: 'digital-core-tech',
-      name: 'Digital & Core Tech',
-      description: 'Software development, infrastructure, and emerging technologies',
-      icon: 'code',
-      color: 'bg-blue-100 text-blue-800',
-      subRoles: [
-        sampleSubRoles['software-engineer'],
-        sampleSubRoles['mobile-game-dev']
-      ]
-    },
-    {
-      id: 'data-ai-research',
-      name: 'Data, AI & Research',
-      description: 'Data science, machine learning, and scientific research',
-      icon: 'bar_chart',
-      color: 'bg-purple-100 text-purple-800',
-      subRoles: []
-    },
-    {
-      id: 'healthcare-life-sciences',
-      name: 'Healthcare & Life Sciences',
-      description: 'Medical care, research, and health technology',
-      icon: 'local_hospital',
-      color: 'bg-red-100 text-red-800',
-      subRoles: []
-    }
-  ];
-
-  // In a real implementation, this would fetch from an API
+  // Fetch real recommendations from our API
   useEffect(() => {
-    const loadSubRoleData = async () => {
+    const fetchRecommendations = async () => {
       try {
+        console.log("Fetching recommendations with answers:", answers);
         setLoading(true);
+        setError(null);
         
-        // Simulate API call delay
-        await new Promise(resolve => setTimeout(resolve, 500));
+        // Convert answers to backend format
+        const backendAnswers = convertAnswersForBackend(answers);
+        console.log("Converted backend answers:", backendAnswers);
         
-        // In a real implementation, you would calculate the persona and domains based on answers
-        // For now, we'll use sample data
-        const subRoleData = sampleSubRoles['software-engineer'];
-        setSubRole(subRoleData);
-      } catch (error) {
-        console.error('Error loading sub-role data:', error);
+        // Save quiz response to Firestore (non-blocking)
+        if (session?.user?.id) {
+          saveQuizResponse(session.user.id, backendAnswers)
+            .catch(err => console.warn('Failed to save quiz response:', err));
+        }
+        
+        // Call our API to generate AI recommendations
+        console.log("Calling /api/ai-recommendations...");
+        const response = await fetch('/api/ai-recommendations', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ quizAnswers: backendAnswers }),
+        });
+
+        console.log("API response status:", response.status);
+        
+        if (!response.ok) {
+          throw new Error(`API request failed with status ${response.status}`);
+        }
+
+        const aiResponse = await response.json();
+        console.log("Received AI response:", aiResponse);
+        
+        // Check if we got fallback data (predefined roles)
+        const isFallbackData = aiResponse.personaName === "The Adaptive Explorer";
+        if (isFallbackData) {
+          console.log("WARNING: Returning fallback/predefined data instead of AI-generated content");
+        }
+        
+        // Transform AI response to our component state
+        const transformedPersona: Persona = {
+          id: 'ai-generated',
+          name: aiResponse.personaName,
+          description: aiResponse.personaSummary,
+          strengths: ['Adaptability', 'Problem Solving', 'Communication'],
+          matchScore: 100,
+          confidence: 'high'
+        };
+        
+        const transformedRoles: RoleMatch[] = aiResponse.recommendedRoles.map((role: any, index: number) => ({
+          id: `role-${index}`,
+          name: role.role,
+          reason: role.reason,
+          matchPercentage: 100 - (index * 10) // Decreasing percentages for lower ranked roles
+        }));
+        
+        console.log("Transformed persona:", transformedPersona);
+        console.log("Transformed roles:", transformedRoles);
+        
+        setPersona(transformedPersona);
+        setRoles(transformedRoles);
+      } catch (err) {
+        console.error('Error fetching recommendations:', err);
+        setError('Failed to generate recommendations. Please try again.');
+        
+        // Fallback to sample data
+        const samplePersona: Persona = {
+          id: 'adaptive-explorer',
+          name: 'The Adaptive Explorer',
+          description: 'You\'re curious and flexible, with a natural ability to adapt to different environments. You thrive when you can explore various options before committing to a path.',
+          strengths: ['Adaptability', 'Curiosity', 'Problem Solving'],
+          matchScore: 85,
+          confidence: 'medium'
+        };
+        
+        const sampleRoles: RoleMatch[] = [
+          {
+            id: 'full-stack-developer',
+            name: 'Full Stack Developer',
+            reason: 'Your adaptable nature makes you well-suited for a role that combines both technical and creative problem-solving.',
+            matchPercentage: 92
+          },
+          {
+            id: 'business-analyst',
+            name: 'Business Analyst',
+            reason: 'Your balanced approach to decision-making is ideal for a role that requires both analytical thinking and understanding human behavior.',
+            matchPercentage: 85
+          },
+          {
+            id: 'digital-marketing-specialist',
+            name: 'Digital Marketing Specialist',
+            reason: 'Your curiosity and adaptability are perfect for a dynamic field that requires staying current with trends and platforms.',
+            matchPercentage: 78
+          },
+          {
+            id: 'project-coordinator',
+            name: 'Project Coordinator',
+            reason: 'Your flexible nature makes you effective at managing multiple tasks and helping teams stay organized.',
+            matchPercentage: 72
+          },
+          {
+            id: 'ux-researcher',
+            name: 'UX Researcher',
+            reason: 'Your exploratory mindset is valuable for understanding user needs and improving product experiences.',
+            matchPercentage: 68
+          }
+        ];
+        
+        setPersona(samplePersona);
+        setRoles(sampleRoles);
       } finally {
         setLoading(false);
       }
     };
 
-    loadSubRoleData();
-  }, [answers]);
+    fetchRecommendations();
+  }, [answers, session?.user?.id]);
 
-  // Format salary for display with LPA
-  const formatSalaryWithLPA = (min: number, max: number, currency: string) => {
-    // Convert to lakhs for easier reading
-    const minLakhs = (min / 100000).toFixed(1);
-    const maxLakhs = (max / 100000).toFixed(1);
-    return `${currency}${minLakhs}L-${currency}${maxLakhs}L`;
-  };
-
-  // Get appropriate icon for each activity
-  const getActivityIcon = (activity: string) => {
-    if (activity.includes('standup') || activity.includes('meeting') || activity.includes('team')) {
-      return 'groups';
-    } else if (activity.includes('code') || activity.includes('development') || activity.includes('debugging')) {
-      return 'code';
-    } else if (activity.includes('review') || activity.includes('pair')) {
-      return 'rate_review';
-    } else if (activity.includes('test') || activity.includes('quality')) {
-      return 'verified';
-    } else if (activity.includes('document') || activity.includes('planning')) {
-      return 'description';
+  // Get strength icon
+  const getStrengthIcon = (strength: string) => {
+    if (strength.includes('Leadership') || strength.includes('Communication')) {
+      return (
+        <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+      );
+    } else if (strength.includes('Creativity') || strength.includes('Design')) {
+      return (
+        <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+        </svg>
+      );
+    } else if (strength.includes('Analytical') || strength.includes('Research')) {
+      return (
+        <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      );
     } else {
-      return 'work';
-    }
-  };
-
-  // Get domain icon
-  const getDomainIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'code':
-        return (
-          <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-        );
-      case 'bar_chart':
-        return (
-          <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-          </svg>
-        );
-      case 'local_hospital':
-        return (
-          <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-          </svg>
-        );
-      default:
-        return (
-          <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-        );
-    }
-  };
-
-  // Get persona icon
-  const getPersonaIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'groups':
-        return (
-          <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-        );
-      case 'draw':
-        return (
-          <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-          </svg>
-        );
-      case 'search':
-        return (
-          <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-        );
-      default:
-        return (
-          <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-          </svg>
-        );
+      return (
+        <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg>
+      );
     }
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex flex-col">
-        <header className="flex items-center p-4">
-          <button className="flex size-10 shrink-0 items-center justify-center text-slate-600">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-          <h1 className="flex-1 text-center text-lg font-bold text-slate-800 pr-10">Results</h1>
+      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white flex flex-col">
+        <header className="sticky top-0 z-10 bg-white shadow-sm">
+          <div className="flex items-center p-4">
+            <div className="flex size-10 shrink-0 items-center justify-center">
+              <div className="bg-gray-200 rounded-full w-6 h-6 animate-pulse"></div>
+            </div>
+            <div className="flex-1 text-center">
+              <div className="h-6 bg-gray-200 rounded animate-pulse w-1/3 mx-auto"></div>
+            </div>
+            <div className="w-10"></div>
+          </div>
         </header>
         <main className="flex-1 p-4">
           <div className="space-y-6">
+            {/* Progress indicator */}
+            <div className="mb-2">
+              <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div className="h-full bg-blue-500 rounded-full w-3/4 animate-pulse"></div>
+              </div>
+            </div>
+            
             {/* Persona Card Skeleton */}
-            <div className="rounded-2xl bg-[#F0FDF4] p-6 shadow-sm">
+            <div className="rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 p-6 shadow-lg">
               <div className="flex flex-col items-center gap-4">
-                <div className="flex size-16 items-center justify-center rounded-full bg-white">
+                <div className="flex size-16 items-center justify-center rounded-full bg-white shadow-md">
                   <div className="bg-gray-200 rounded-full w-8 h-8 animate-pulse"></div>
                 </div>
-                <div className="flex flex-col gap-2 w-full">
-                  <div className="h-6 bg-gray-200 rounded animate-pulse"></div>
-                  <div className="h-4 bg-gray-200 rounded animate-pulse w-3/4"></div>
+                <div className="flex flex-col gap-3 w-full">
+                  <div className="h-6 bg-gray-200 rounded animate-pulse w-1/2 mx-auto"></div>
+                  <div className="h-4 bg-gray-200 rounded animate-pulse w-3/4 mx-auto"></div>
+                  <div className="flex flex-wrap justify-center gap-2 mt-2">
+                    {[...Array(3)].map((_, i) => (
+                      <div key={i} className="h-6 bg-gray-200 rounded-full animate-pulse w-20"></div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Domains Section Skeleton */}
+            {/* Roles Section Skeleton */}
             <div>
               <div className="h-6 bg-gray-200 rounded animate-pulse w-1/2 mb-4"></div>
               <div className="space-y-4">
-                {[...Array(3)].map((_, i) => (
+                {[...Array(5)].map((_, i) => (
                   <div key={i} className="flex items-center gap-4 rounded-xl border border-slate-100 bg-white p-4 shadow-sm">
-                    <div className="flex size-12 items-center justify-center rounded-lg bg-gray-100">
-                      <div className="bg-gray-200 rounded-full w-6 h-6 animate-pulse"></div>
-                    </div>
                     <div className="flex-1 flex flex-col gap-2">
                       <div className="h-4 bg-gray-200 rounded animate-pulse w-1/3"></div>
                       <div className="h-3 bg-gray-200 rounded animate-pulse w-2/3"></div>
@@ -433,23 +269,35 @@ export default function ResultsPage({ answers, onBack, onSelectDomain }: Results
                 ))}
               </div>
             </div>
+            
+            {/* Info Card Skeleton */}
+            <div className="bg-blue-50 rounded-xl p-4 border border-blue-100">
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 mt-0.5">
+                  <div className="bg-gray-200 rounded-full w-5 h-5 animate-pulse"></div>
+                </div>
+                <div className="h-4 bg-gray-200 rounded animate-pulse w-full"></div>
+              </div>
+            </div>
           </div>
         </main>
       </div>
     );
   }
 
-  if (!subRole) {
+  if (error) {
     return (
-      <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4">
-        <div className="text-center">
-          <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <h2 className="text-xl font-bold text-gray-800 mb-2">Results Not Found</h2>
-          <p className="text-gray-600 mb-6">Sorry, we couldn't calculate your results.</p>
+      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white flex flex-col items-center justify-center p-4">
+        <div className="text-center max-w-md">
+          <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">Error Loading Results</h2>
+          <p className="text-gray-600 mb-6">{error}</p>
           <button
-            className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all duration-300"
+            className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-md hover:shadow-lg font-medium"
             onClick={onBack}
           >
             Go Back
@@ -459,68 +307,112 @@ export default function ResultsPage({ answers, onBack, onSelectDomain }: Results
     );
   }
 
-  // Select a random persona for demo purposes
-  const userPersona = personas[Math.floor(Math.random() * personas.length)];
+  // Use the real persona or fallback to a sample one
+  const userPersona = persona || {
+    id: 'adaptive-explorer',
+    name: 'The Adaptive Explorer',
+    description: 'You\'re curious and flexible, with a natural ability to adapt to different environments. You thrive when you can explore various options before committing to a path.',
+    strengths: ['Adaptability', 'Curiosity', 'Problem Solving']
+  };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-      {/* Header */}
-      <header className="sticky top-0 z-10 border-b border-gray-200 bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white flex flex-col">
+      {/* Header with progress */}
+      <header className="sticky top-0 z-10 bg-white shadow-sm">
         <div className="flex items-center p-4">
           <button 
-            className="flex size-10 shrink-0 items-center justify-center text-slate-600"
+            className="flex size-10 shrink-0 items-center justify-center text-slate-600 hover:bg-gray-100 rounded-full transition-colors"
             onClick={onBack}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 18l-6-6 6-6" />
             </svg>
           </button>
-          <h1 className="flex-1 text-center text-lg font-bold text-slate-800 pr-10">Results</h1>
+          <div className="flex-1 text-center">
+            <h1 className="text-lg font-bold text-slate-800">Your Career Match</h1>
+          </div>
+          <div className="w-10"></div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto p-4">
+      <main className="flex-1 overflow-y-auto p-4 pb-20">
         <div className="space-y-6">
-          {/* Persona Card */}
-          <div className="rounded-2xl bg-[#F0FDF4] p-5 shadow-sm">
-            <div className="flex flex-col items-center gap-3 text-center">
-              <div className="flex size-14 items-center justify-center rounded-full bg-white">
-                {getPersonaIcon(userPersona.icon)}
-              </div>
-              <div className="flex flex-col gap-1">
-                <h2 className="text-xl font-bold text-slate-900">{userPersona.name}</h2>
-                <p className="text-sm text-slate-600">{userPersona.description}</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Recommended Domains */}
-          <div>
-            <h3 className="text-lg font-bold text-slate-800 mb-3">Your Recommended Career Domains</h3>
-            <div className="space-y-3">
-              {domains.slice(0, 3).map((domain) => (
-                <div 
-                  key={domain.id}
-                  className="flex items-center gap-3 rounded-xl border border-slate-100 bg-white p-3 shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer"
-                  onClick={() => onSelectDomain(domain.id)}
-                >
-                  <div className="flex size-10 items-center justify-center rounded-lg bg-green-50">
-                    {getDomainIcon(domain.icon)}
-                  </div>
-                  <div className="flex-1 flex flex-col">
-                    <h4 className="font-semibold text-slate-800 text-sm">{domain.name}</h4>
-                    <p className="text-xs text-slate-500">{domain.description}</p>
-                  </div>
-                  <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          
+          {/* Persona Card with enhanced design */}
+          <div className="rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 p-6 shadow-sm border border-blue-100">
+            <div className="flex flex-col items-center gap-4">
+              <div className="relative">
+                {/* Persona Icon */}
+                <div className="flex size-20 items-center justify-center rounded-full bg-white shadow-md border-2 border-blue-200">
+                  <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                   </svg>
                 </div>
-              ))}
+              </div>
+              <div className="flex flex-col gap-2 text-center">
+                <h2 className="text-xl font-bold text-slate-900">{userPersona.name}</h2>
+                <p className="text-sm text-slate-600">
+                  You have incredible potential in areas that align with your natural strengths: <span className="font-semibold text-blue-600">{userPersona.strengths.join(', ')}</span>. 
+                  Based on your unique personality and values, these career paths would allow you to thrive and make a meaningful impact.
+                </p>
+                
+                {/* Strengths badges */}
+                <div className="flex flex-wrap justify-center gap-2 mt-2">
+                  {userPersona.strengths.map((strength, index) => (
+                    <div key={index} className="flex items-center gap-1 bg-white bg-opacity-80 px-3 py-1 rounded-full text-xs font-medium text-blue-700 border border-blue-200">
+                      {getStrengthIcon(strength)}
+                      <span>{strength}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Additional Info */}
+          {/* Recommended Roles */}
+          <div>
+            <h3 className="text-lg font-bold text-slate-800 mb-4">Your Career Recommendations</h3>
+            
+            <div className="space-y-3">
+              {roles.map((role, index) => {
+                // Use your green shades for borders with decreasing intensity
+                const borderClasses = [
+                  'border-2 border-[#008000] border-opacity-40',   // #008000 (darkest green) for #1
+                  'border-2 border-[#33a033] border-opacity-30',   // #33a033 (dark green) for #2
+                  'border-2 border-[#66c066] border-opacity-20',   // #66c066 (medium green) for #3
+                  'border-2 border-[#99d999] border-opacity-15',   // #99d999 (light green) for #4
+                  'border-2 border-[#ccf0cc] border-opacity-10'    // #ccf0cc (lightest green) for #5
+                ];
+                
+                // Same background as persona card
+                const bgClass = 'bg-gradient-to-r from-blue-50 to-indigo-50';
+                
+                return (
+                  <div 
+                    key={role.id}
+                    className={`flex items-center gap-4 rounded-2xl p-4 transition-all duration-300 hover:shadow-sm cursor-pointer ${
+                      bgClass
+                    } ${borderClasses[index]}`}
+                    onClick={() => onSelectRole(role.id, role.name, userPersona.description, index + 1)}
+                  >
+                    <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 font-bold text-sm">
+                      #{index + 1}
+                    </div>
+                    <div className="flex-1 flex flex-col">
+                      <h4 className="font-bold text-slate-800">{role.name}</h4>
+                      <p className="text-sm text-slate-700 mt-1">{role.reason}</p>
+                    </div>
+                    <svg className="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Action Card */}
           <div className="bg-blue-50 rounded-xl p-4 border border-blue-100">
             <div className="flex items-start gap-3">
               <div className="flex-shrink-0 mt-0.5">
@@ -528,13 +420,26 @@ export default function ResultsPage({ answers, onBack, onSelectDomain }: Results
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <p className="text-sm text-blue-700">
-                These recommendations are based on your psychology quiz answers. Tap on any domain to explore career paths in detail.
-              </p>
+              <div>
+                <h3 className="font-bold text-blue-800 mb-1">Explore Your Options</h3>
+                <p className="text-sm text-blue-700">
+                  All {roles.length} recommendations above align with your personality. Tap on any to see detailed career information.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </main>
+      
+      {/* Fixed Bottom Button */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 shadow-lg">
+        <button 
+          className="w-full py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-bold shadow-md hover:from-green-600 hover:to-green-700 transition-all duration-300"
+          onClick={() => roles.length > 0 && onSelectRole(roles[0].id, roles[0].name, userPersona.description, 1)}
+        >
+          {roles.length > 0 ? `Explore Top Match: ${roles[0].name}` : 'Explore Careers'}
+        </button>
+      </div>
     </div>
   );
 }

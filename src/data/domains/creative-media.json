@@ -1,0 +1,124 @@
+{
+  "id": "creative-media",
+  "name": "Creative, Media & Performing Arts",
+  "description": "Expressing ideas and emotions through artistic mediums, media production, and performance.",
+  "icon": "creative",
+  "color": "#ec4899",
+  "subRoles": [
+    {
+      "id": "graphic-designer",
+      "domainId": "creative-media",
+      "name": "Graphic Designer",
+      "shortDescription": "Creates visual concepts to communicate ideas and captivate audiences.",
+      "longDescription": "Graphic designers create visual concepts using software or by hand to communicate ideas that inspire, inform, or captivate consumers. They develop the overall layout and production design for advertisements, brochures, magazines, and corporate reports.",
+      "videoUrl": "/videos/telugu/graphic-designer.mp4",
+      "dailyLife": {
+        "typicalDay": [
+          "Meet with clients to understand design requirements",
+          "Brainstorm creative concepts and ideas",
+          "Create visual designs using design software",
+          "Revise designs based on client feedback",
+          "Prepare final designs for production"
+        ],
+        "workEnvironment": "Design studios, advertising agencies, in-house corporate teams",
+        "hours": "9-6, flexible with project deadlines",
+        "stressLevel": "Moderate"
+      },
+      "salaryBands": {
+        "entry": {
+          "min": 200000,
+          "max": 400000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "mid": {
+          "min": 500000,
+          "max": 900000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "senior": {
+          "min": 1000000,
+          "max": 2000000,
+          "currency": "₹",
+          "period": "year"
+        }
+      },
+      "careerTrajectory": {
+        "year1": "Junior Designer - Learning design fundamentals",
+        "year2": "Graphic Designer - Creating client projects",
+        "year3": "Senior Designer - Leading design projects",
+        "year5": "Art Director/Creative Director"
+      },
+      "transformationPaths": [
+        {
+          "from": "Art/Design Graduate",
+          "to": "Graphic Designer",
+          "timeframe": "3-6 months",
+          "requirements": ["Portfolio", "Software skills", "Internship"]
+        },
+        {
+          "from": "Self-taught Designer",
+          "to": "Graphic Designer",
+          "timeframe": "6-12 months",
+          "requirements": ["Strong portfolio", "Software proficiency", "Networking"]
+        }
+      ],
+      "potential": "Creative field with opportunities in advertising, branding, digital media, and entertainment. Freelance opportunities provide flexibility.",
+      "skills": {
+        "technical": [
+          "Adobe Creative Suite (Photoshop, Illustrator, InDesign)",
+          "Typography and layout design",
+          "Brand identity development",
+          "Digital design for web and mobile",
+          "Print production knowledge"
+        ],
+        "soft": [
+          "Creativity",
+          "Communication",
+          "Attention to detail",
+          "Time management",
+          "Client relationship skills"
+        ],
+        "certifications": [
+          "Adobe Certified Expert",
+          "Graphic Design Certification",
+          "UI/UX Design Certification"
+        ]
+      },
+      "education": {
+        "minimum": "Bachelor's degree in Graphic Design or related field",
+        "preferred": "Master's degree in Design or Fine Arts",
+        "alternativePaths": [
+          "Design bootcamps",
+          "Online courses + portfolio",
+          "Self-taught with strong portfolio"
+        ]
+      },
+      "jobMarket": {
+        "demand": "High",
+        "competition": "High",
+        "geographicHotspots": ["Mumbai", "Delhi", "Bangalore", "Chennai", "Kolkata"]
+      }
+    },
+    {
+      "id": "content-creator",
+      "domainId": "creative-media",
+      "name": "Content Creator",
+      "shortDescription": "Produces engaging digital content for various media platforms.",
+      "longDescription": "Content creators develop and produce various forms of digital content for social media, websites, blogs, and other platforms. They combine writing, photography, video editing, and social media skills to engage audiences."
+    },
+    {
+      "id": "film-editor",
+      "domainId": "creative-media",
+      "name": "Film Editor",
+      "shortDescription": "Assembles raw footage into finished films and videos.",
+      "longDescription": "Film editors work with directors and producers to select and assemble film clips into a finished product that tells a story, evokes emotions, or informs audiences. They use both technical skills and creative vision to shape the final film."
+    }
+  ],
+  "overview": {
+    "marketSize": "₹1.2 trillion by 2025",
+    "growthRate": "15% annually",
+    "jobSatisfaction": "4.1/5"
+  }
+}

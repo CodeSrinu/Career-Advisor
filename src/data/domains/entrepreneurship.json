@@ -1,0 +1,124 @@
+{
+  "id": "entrepreneurship",
+  "name": "Entrepreneurship & Self-Employment",
+  "description": "Creating and managing your own business ventures to pursue passions and generate value.",
+  "icon": "entrepreneur",
+  "color": "#ea580c",
+  "subRoles": [
+    {
+      "id": "startup-founder",
+      "domainId": "entrepreneurship",
+      "name": "Startup Founder",
+      "shortDescription": "Creates and leads a new business venture to solve problems or meet market needs.",
+      "longDescription": "Startup founders identify market opportunities, develop business ideas, and create companies to bring their vision to life. They handle all aspects of building a business, from product development to fundraising to team building.",
+      "videoUrl": "/videos/telugu/startup-founder.mp4",
+      "dailyLife": {
+        "typicalDay": [
+          "Morning standup with team to review priorities",
+          "Meet with investors or potential partners",
+          "Product development and strategy sessions",
+          "Customer meetings and feedback sessions",
+          "Financial planning and administrative tasks"
+        ],
+        "workEnvironment": "Co-working spaces, home offices, various locations",
+        "hours": "60-80 hours per week, highly variable",
+        "stressLevel": "High"
+      },
+      "salaryBands": {
+        "entry": {
+          "min": 0,
+          "max": 500000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "mid": {
+          "min": 500000,
+          "max": 2000000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "senior": {
+          "min": 2000000,
+          "max": 10000000,
+          "currency": "₹",
+          "period": "year"
+        }
+      },
+      "careerTrajectory": {
+        "year1": "Startup Founder - Validating idea and building MVP",
+        "year2": "Startup Founder - Securing funding and growing team",
+        "year3": "CEO - Scaling business operations",
+        "year5": "Successful Entrepreneur/Mentor to other founders"
+      },
+      "transformationPaths": [
+        {
+          "from": "Any Professional Background",
+          "to": "Startup Founder",
+          "timeframe": "6-24 months",
+          "requirements": ["Business idea", "Initial funding", "Basic business skills"]
+        },
+        {
+          "from": "Corporate Professional",
+          "to": "Founder",
+          "timeframe": "12-36 months",
+          "requirements": ["Industry expertise", "Network", "Financial planning"]
+        }
+      ],
+      "potential": "Unlimited earning potential with high risk. Opportunity to create impact and pursue passions. Requires strong commitment and resilience.",
+      "skills": {
+        "technical": [
+          "Business planning and strategy",
+          "Financial management and fundraising",
+          "Marketing and sales",
+          "Product development",
+          "Legal and regulatory compliance"
+        ],
+        "soft": [
+          "Leadership",
+          "Resilience",
+          "Communication",
+          "Decision-making",
+          "Adaptability"
+        ],
+        "certifications": [
+          "Entrepreneurship programs",
+          "Business management courses",
+          "Industry-specific certifications"
+        ]
+      },
+      "education": {
+        "minimum": "No formal education requirements",
+        "preferred": "Business degree or relevant industry experience",
+        "alternativePaths": [
+          "Entrepreneurship programs",
+          "Mentorship",
+          "Hands-on experience"
+        ]
+      },
+      "jobMarket": {
+        "demand": "Self-created",
+        "competition": "Market-driven",
+        "geographicHotspots": ["Bangalore", "Mumbai", "Delhi", "Hyderabad", "Pune"]
+      }
+    },
+    {
+      "id": "freelance-consultant",
+      "domainId": "entrepreneurship",
+      "name": "Freelance Consultant",
+      "shortDescription": "Provides specialized expertise to businesses on a project basis.",
+      "longDescription": "Freelance consultants offer their professional expertise to businesses and individuals on a contract basis. They work in various fields such as management, technology, marketing, and finance."
+    },
+    {
+      "id": "small-business-owner",
+      "domainId": "entrepreneurship",
+      "name": "Small Business Owner",
+      "shortDescription": "Owns and operates a small business serving local or niche markets.",
+      "longDescription": "Small business owners create and manage businesses that serve specific markets or communities. They handle all aspects of running a business, from operations to marketing to finance."
+    }
+  ],
+  "overview": {
+    "marketSize": "₹5.5 trillion by 2025",
+    "growthRate": "18% annually",
+    "jobSatisfaction": "4.0/5"
+  }
+}

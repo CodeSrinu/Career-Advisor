@@ -1,5 +1,3 @@
-
-
 // src/components/mobile/LoginScreen.tsx
 'use client';
 
@@ -7,6 +5,7 @@ import { signIn } from 'next-auth/react';
 
 export default function LoginScreen() {
   const handleGoogleLogin = () => {
+    // Use NextAuth for Google authentication
     signIn('google', { callbackUrl: '/' });
   };
 
@@ -16,8 +15,8 @@ export default function LoginScreen() {
         {/* Hero Graphic */}
         <div className="w-full h-64 rounded-xl overflow-hidden">
           <svg className="w-full h-full" fill="none" viewBox="0 0 375 256" xmlns="http://www.w3.org/2000/svg">
-            <path d="M-154.5 137.957C-79.6667 87.7905 51 31.9571 133.5 137.957C216 243.957 325.5 289.457 419.5 208.457" stroke="#3fe44a" stroke-linecap="round" stroke-width="80"></path>
-            <path d="M-134 266.957C-59.1667 216.791 71.5 160.957 154 266.957C236.5 372.957 346 418.457 440 337.457" stroke="#e8f3e9" stroke-linecap="round" stroke-width="60"></path>
+            <path d="M-154.5 137.957C-79.6667 87.7905 51 31.9571 133.5 137.957C216 243.957 325.5 289.457 419.5 208.457" stroke="#3fe44a" strokeLinecap="round" strokeWidth="80"></path>
+            <path d="M-134 266.957C-59.1667 216.791 71.5 160.957 154 266.957C236.5 372.957 346 418.457 440 337.457" stroke="#e8f3e9" strokeLinecap="round" strokeWidth="60"></path>
           </svg>
         </div>
 

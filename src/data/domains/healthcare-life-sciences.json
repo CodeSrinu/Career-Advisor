@@ -1,0 +1,119 @@
+{
+  "id": "healthcare-life-sciences",
+  "name": "Healthcare & Life Sciences",
+  "description": "Improving human health through medical care, research, and innovative healthcare technologies.",
+  "icon": "health",
+  "color": "#dc2626",
+  "subRoles": [
+    {
+      "id": "medical-doctor",
+      "domainId": "healthcare-life-sciences",
+      "name": "Medical Doctor",
+      "shortDescription": "Diagnoses and treats patients to maintain and restore health.",
+      "longDescription": "Medical doctors examine patients, take medical histories, diagnose illnesses and injuries, and prescribe medications or treatments. They work in various specialties from general practice to highly specialized fields like neurosurgery or cardiology.",
+      "videoUrl": "/videos/telugu/medical-doctor.mp4",
+      "dailyLife": {
+        "typicalDay": [
+          "Morning rounds checking on patients",
+          "Diagnose new patients and review test results",
+          "Perform procedures or surgeries",
+          "Consult with other healthcare professionals",
+          "Update patient records and prescriptions"
+        ],
+        "workEnvironment": "Hospitals, clinics, private practice",
+        "hours": "Long shifts, on-call duties",
+        "stressLevel": "High"
+      },
+      "salaryBands": {
+        "entry": {
+          "min": 300000,
+          "max": 600000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "mid": {
+          "min": 800000,
+          "max": 1500000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "senior": {
+          "min": 2000000,
+          "max": 5000000,
+          "currency": "₹",
+          "period": "year"
+        }
+      },
+      "careerTrajectory": {
+        "year1": "Intern - Rotating through departments",
+        "year2": "Resident - Specializing in chosen field",
+        "year3": "Junior Doctor - Practicing independently",
+        "year5": "Senior Doctor/Specialist"
+      },
+      "transformationPaths": [
+        {
+          "from": "MBBS Graduate",
+          "to": "Medical Doctor",
+          "timeframe": "1-2 years",
+          "requirements": ["Internship completion", "Medical license", "Specialization training"]
+        }
+      ],
+      "potential": "Noble profession with job security and respect in society. Specializations offer diverse career paths.",
+      "skills": {
+        "technical": [
+          "Medical knowledge and clinical skills",
+          "Diagnostic abilities",
+          "Surgical techniques",
+          "Patient care and management",
+          "Medical research and evidence-based practice"
+        ],
+        "soft": [
+          "Empathy and compassion",
+          "Communication",
+          "Critical thinking",
+          "Attention to detail",
+          "Emotional resilience"
+        ],
+        "certifications": [
+          "MBBS degree",
+          "Medical license",
+          "Specialization certifications",
+          "Continuing medical education credits"
+        ]
+      },
+      "education": {
+        "minimum": "MBBS degree from recognized medical college",
+        "preferred": "MD/MS for specialization",
+        "alternativePaths": [
+          "Alternative medicine degrees (AYUSH)",
+          "Paramedical courses",
+          "Healthcare administration"
+        ]
+      },
+      "jobMarket": {
+        "demand": "High",
+        "competition": "Moderate",
+        "geographicHotspots": ["Mumbai", "Delhi", "Bangalore", "Chennai", "Kolkata"]
+      }
+    },
+    {
+      "id": "biomedical-researcher",
+      "domainId": "healthcare-life-sciences",
+      "name": "Biomedical Researcher",
+      "shortDescription": "Conducts research to advance medical science and develop new treatments.",
+      "longDescription": "Biomedical researchers design and conduct experiments to understand diseases, develop new drugs, and improve medical treatments. They work in laboratories, universities, pharmaceutical companies, and research institutions."
+    },
+    {
+      "id": "healthcare-tech-specialist",
+      "domainId": "healthcare-life-sciences",
+      "name": "Healthcare Technology Specialist",
+      "shortDescription": "Develops and implements technology solutions for healthcare delivery.",
+      "longDescription": "Healthcare technology specialists bridge the gap between healthcare and technology. They develop medical software, implement electronic health records, and work on telemedicine platforms."
+    }
+  ],
+  "overview": {
+    "marketSize": "₹2.2 trillion by 2025",
+    "growthRate": "12% annually",
+    "jobSatisfaction": "4.0/5"
+  }
+}

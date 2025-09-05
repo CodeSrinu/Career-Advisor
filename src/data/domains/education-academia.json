@@ -1,0 +1,124 @@
+{
+  "id": "education-academia",
+  "name": "Education & Academia",
+  "description": "Shaping minds and advancing knowledge through teaching, research, and educational innovation.",
+  "icon": "education",
+  "color": "#10b981",
+  "subRoles": [
+    {
+      "id": "university-professor",
+      "domainId": "education-academia",
+      "name": "University Professor",
+      "shortDescription": "Teaches students and conducts research in a specialized field of study.",
+      "longDescription": "University professors educate students at the college or university level, typically in a specific subject area. They also conduct original research, publish scholarly articles, and contribute to their academic discipline.",
+      "videoUrl": "/videos/telugu/university-professor.mp4",
+      "dailyLife": {
+        "typicalDay": [
+          "Lecture or teach classes",
+          "Grade assignments and exams",
+          "Conduct research in their field",
+          "Write research papers and articles",
+          "Attend departmental meetings and conferences"
+        ],
+        "workEnvironment": "Universities and colleges",
+        "hours": "Flexible, but often beyond standard work hours",
+        "stressLevel": "Moderate to High"
+      },
+      "salaryBands": {
+        "entry": {
+          "min": 300000,
+          "max": 500000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "mid": {
+          "min": 600000,
+          "max": 1000000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "senior": {
+          "min": 1200000,
+          "max": 2500000,
+          "currency": "₹",
+          "period": "year"
+        }
+      },
+      "careerTrajectory": {
+        "year1": "Assistant Professor - Beginning teaching career",
+        "year2": "Assistant Professor - Continuing research",
+        "year3": "Associate Professor - Tenure track",
+        "year5": "Full Professor/Department Head"
+      },
+      "transformationPaths": [
+        {
+          "from": "PhD Graduate",
+          "to": "University Professor",
+          "timeframe": "1-3 years",
+          "requirements": ["Doctoral degree", "Teaching experience", "Research publications"]
+        },
+        {
+          "from": "Industry Professional",
+          "to": "Professor",
+          "timeframe": "3-5 years",
+          "requirements": ["Advanced degree", "Professional experience", "Academic qualifications"]
+        }
+      ],
+      "potential": "Respected profession with opportunities for intellectual growth. Tenure track offers job security for qualified candidates.",
+      "skills": {
+        "technical": [
+          "Subject matter expertise",
+          "Research methodology",
+          "Academic writing and publishing",
+          "Curriculum development",
+          "Assessment and evaluation"
+        ],
+        "soft": [
+          "Communication",
+          "Leadership",
+          "Critical thinking",
+          "Patience",
+          "Mentoring abilities"
+        ],
+        "certifications": [
+          "PhD or terminal degree in field",
+          "Teaching certifications",
+          "Research grants and funding experience"
+        ]
+      },
+      "education": {
+        "minimum": "Master's degree for some positions, PhD preferred",
+        "preferred": "PhD or terminal degree in relevant field",
+        "alternativePaths": [
+          "Industry experience + advanced degree",
+          "Teaching certifications",
+          "Online education specialization"
+        ]
+      },
+      "jobMarket": {
+        "demand": "Moderate",
+        "competition": "High",
+        "geographicHotspots": ["Delhi", "Bangalore", "Hyderabad", "Pune", "Chennai"]
+      }
+    },
+    {
+      "id": "educational-technologist",
+      "domainId": "education-academia",
+      "name": "Educational Technologist",
+      "shortDescription": "Designs and implements technology solutions for learning and education.",
+      "longDescription": "Educational technologists work at the intersection of education and technology. They develop e-learning platforms, create digital educational content, and implement learning management systems."
+    },
+    {
+      "id": "curriculum-developer",
+      "domainId": "education-academia",
+      "name": "Curriculum Developer",
+      "shortDescription": "Designs educational programs and learning materials.",
+      "longDescription": "Curriculum developers create educational content, design learning experiences, and develop assessment tools for schools, universities, and training organizations."
+    }
+  ],
+  "overview": {
+    "marketSize": "₹800 billion by 2025",
+    "growthRate": "8% annually",
+    "jobSatisfaction": "3.8/5"
+  }
+}

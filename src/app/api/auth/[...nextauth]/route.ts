@@ -16,14 +16,10 @@ const handler = NextAuth({
       return session;
     },
   },
-  // Add proper session configuration
   session: {
     strategy: "jwt",
   },
-  // Add proper pages configuration
-  pages: {
-    signIn: "/", // Custom sign in page
-  },
+  debug: true,
 })
 
 export { handler as GET, handler as POST }

@@ -1,6 +1,9 @@
 // src/lib/psychologyScoring.ts
 // Psychology scoring algorithms
 
+// Version information
+export const PSYCHOLOGY_QUIZ_VERSION = "1.0.0";
+
 export interface PsychologyAnswer {
   questionId: number;
   answer: string;

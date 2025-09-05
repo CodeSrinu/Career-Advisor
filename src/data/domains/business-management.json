@@ -1,0 +1,124 @@
+{
+  "id": "business-management",
+  "name": "Business, Management & Support Functions",
+  "description": "Driving organizational success through strategic leadership, operations, and support services.",
+  "icon": "business",
+  "color": "#f59e0b",
+  "subRoles": [
+    {
+      "id": "business-analyst",
+      "domainId": "business-management",
+      "name": "Business Analyst",
+      "shortDescription": "Analyzes business processes and recommends improvements to drive efficiency and growth.",
+      "longDescription": "Business analysts evaluate business operations, processes, and systems to identify opportunities for improvement. They work with stakeholders to gather requirements, analyze data, and recommend solutions that enhance business performance.",
+      "videoUrl": "/videos/telugu/business-analyst.mp4",
+      "dailyLife": {
+        "typicalDay": [
+          "Meet with stakeholders to understand business needs",
+          "Gather and analyze business requirements",
+          "Create process flow diagrams and documentation",
+          "Identify inefficiencies and recommend solutions",
+          "Collaborate with technical teams on implementation"
+        ],
+        "workEnvironment": "Office settings, client locations",
+        "hours": "9-6, occasional overtime for project deadlines",
+        "stressLevel": "Moderate"
+      },
+      "salaryBands": {
+        "entry": {
+          "min": 350000,
+          "max": 600000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "mid": {
+          "min": 700000,
+          "max": 1200000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "senior": {
+          "min": 1500000,
+          "max": 2500000,
+          "currency": "₹",
+          "period": "year"
+        }
+      },
+      "careerTrajectory": {
+        "year1": "Junior Business Analyst - Learning fundamentals",
+        "year2": "Business Analyst - Independent contributor",
+        "year3": "Senior Business Analyst - Leading projects",
+        "year5": "Lead Business Analyst/Project Manager"
+      },
+      "transformationPaths": [
+        {
+          "from": "Any Graduate",
+          "to": "Business Analyst",
+          "timeframe": "6-12 months",
+          "requirements": ["Analytical skills", "Communication", "Certifications"]
+        },
+        {
+          "from": "Software Engineer",
+          "to": "Business Analyst",
+          "timeframe": "3-6 months",
+          "requirements": ["Domain knowledge", "Communication", "Business acumen"]
+        }
+      ],
+      "potential": "Versatile career with opportunities in every industry. Strong demand for professionals who can bridge business and technology.",
+      "skills": {
+        "technical": [
+          "Requirements gathering and documentation",
+          "Process modeling and analysis",
+          "Data analysis and visualization",
+          "Project management fundamentals",
+          "Tools (Excel, SQL, Tableau, JIRA)"
+        ],
+        "soft": [
+          "Communication",
+          "Problem-solving",
+          "Stakeholder management",
+          "Critical thinking",
+          "Adaptability"
+        ],
+        "certifications": [
+          "Certified Business Analysis Professional (CBAP)",
+          "PMI-PBA (Project Management Institute)",
+          "Agile Certification"
+        ]
+      },
+      "education": {
+        "minimum": "Bachelor's degree in any field",
+        "preferred": "MBA or specialized business degree",
+        "alternativePaths": [
+          "Certification programs",
+          "On-the-job training",
+          "Industry experience"
+        ]
+      },
+      "jobMarket": {
+        "demand": "High",
+        "competition": "Moderate",
+        "geographicHotspots": ["Mumbai", "Bangalore", "Delhi", "Hyderabad", "Pune"]
+      }
+    },
+    {
+      "id": "product-manager",
+      "domainId": "business-management",
+      "name": "Product Manager",
+      "shortDescription": "Defines product strategy and leads cross-functional teams to deliver successful products.",
+      "longDescription": "Product managers are responsible for the strategy, roadmap, and feature definition of a product or product line. They work with engineering, design, marketing, and sales teams to bring products to market."
+    },
+    {
+      "id": "operations-manager",
+      "domainId": "business-management",
+      "name": "Operations Manager",
+      "shortDescription": "Oversees day-to-day business operations to ensure efficiency and effectiveness.",
+      "longDescription": "Operations managers plan, direct, and coordinate the operations of public or private sector organizations. They develop policies and strategies to improve operational efficiency and productivity."
+    }
+  ],
+  "overview": {
+    "marketSize": "₹3.5 trillion by 2025",
+    "growthRate": "10% annually",
+    "jobSatisfaction": "3.9/5"
+  }
+}

@@ -10,10 +10,11 @@ For the hackathon, we'll focus on building a Minimum Viable Product (MVP) that d
 - [x] Language selection (Telugu, Hindi, Tamil, Marathi)
 - [x] Goal status selection (Yes/No)
 
-### 2. Psychology-Based Goal Discovery
-- [ ] Implement 10-question psychology quiz
-- [ ] Create algorithm to match users to career domains
-- [ ] Display recommended domains and sub-roles
+### 2. Psychology-Based Goal Discovery (In Progress)
+- [x] Implement 10-question psychology quiz
+- [x] Create algorithm to match users to career domains
+- [x] Display recommended domains and sub-roles
+- [ ] Connect frontend to backend recommendation engine (Completed)
 
 ### 3. Goal Validation for Users with Existing Goals
 - [ ] Implement 5-question psychology validation
@@ -68,11 +69,12 @@ For the hackathon, we'll focus on building a Minimum Viable Product (MVP) that d
 
 ## Day-by-Day Plan
 
-### Day 1: Foundation & Psychology Questions
-- [ ] Implement psychology quiz (10 questions)
-- [ ] Create persona matching algorithm
-- [ ] Build psychology validation (5 questions)
-- [ ] Design domain/sub-role display components
+### Day 1: Foundation & Psychology Questions (In Progress)
+- [x] Implement psychology quiz (10 questions)
+- [x] Create persona matching algorithm
+- [x] Build psychology validation (5 questions)
+- [x] Design domain/sub-role display components
+- [x] Connect frontend to backend recommendation engine
 
 ### Day 2: Domain Deep Dive & Skill Assessment
 - [ ] Create detailed domain/sub-role pages

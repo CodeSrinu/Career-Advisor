@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.local.example
 
 # vercel
 .vercel
@@ -40,6 +41,28 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# editors
+/.idea/
+/.vscode/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Icon?
+*.lnk
+
+# logs
+*.log
+
+# temp files
+*.tmp
+*.temp
+
 # unwanted directories
 /.augment/
 /.clinerules/
@@ -47,3 +70,11 @@ next-env.d.ts
 /.roo/
 /errors/
 /types/
+.clinerules/byterover-rules.md
+.kilocode/rules/byterover-rules.md
+.roo/rules/byterover-rules.md
+.windsurf/rules/byterover-rules.md
+.cursor/rules/byterover-rules.mdc
+.kiro/steering/byterover-rules.md
+.qoder/rules/byterover-rules.md
+.augment/rules/byterover-rules.md

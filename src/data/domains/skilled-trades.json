@@ -1,0 +1,124 @@
+{
+  "id": "skilled-trades",
+  "name": "Skilled Trades, Services & Physical",
+  "description": "Providing essential services and craftsmanship through skilled trades and hands-on work.",
+  "icon": "trades",
+  "color": "#0d9488",
+  "subRoles": [
+    {
+      "id": "electrician",
+      "domainId": "skilled-trades",
+      "name": "Electrician",
+      "shortDescription": "Installs, maintains, and repairs electrical systems in homes, businesses, and factories.",
+      "longDescription": "Electricians install and maintain electrical systems, including wiring, circuits, and electrical components in residential, commercial, and industrial settings. They read blueprints, follow safety regulations, and troubleshoot electrical problems.",
+      "videoUrl": "/videos/telugu/electrician.mp4",
+      "dailyLife": {
+        "typicalDay": [
+          "Travel to job sites and review work orders",
+          "Install or repair electrical wiring and components",
+          "Test circuits and systems for safety and functionality",
+          "Read blueprints and technical diagrams",
+          "Maintain tools and equipment"
+        ],
+        "workEnvironment": "Various locations including homes, offices, factories, outdoors",
+        "hours": "8-10 hours, may include evenings and weekends",
+        "stressLevel": "Moderate"
+      },
+      "salaryBands": {
+        "entry": {
+          "min": 180000,
+          "max": 300000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "mid": {
+          "min": 350000,
+          "max": 600000,
+          "currency": "₹",
+          "period": "year"
+        },
+        "senior": {
+          "min": 700000,
+          "max": 1200000,
+          "currency": "₹",
+          "period": "year"
+        }
+      },
+      "careerTrajectory": {
+        "year1": "Apprentice Electrician - Learning trade skills",
+        "year2": "Journeyman Electrician - Working independently",
+        "year3": "Master Electrician - Supervising projects",
+        "year5": "Electrical Contractor/Business Owner"
+      },
+      "transformationPaths": [
+        {
+          "from": "ITI/Diploma in Electrical",
+          "to": "Electrician",
+          "timeframe": "2-4 years",
+          "requirements": ["Apprenticeship", "Licensing", "Hands-on experience"]
+        },
+        {
+          "from": "Career Switcher",
+          "to": "Electrician",
+          "timeframe": "3-5 years",
+          "requirements": ["Trade school", "Apprenticeship", "Licensing"]
+        }
+      ],
+      "potential": "Stable career with consistent demand. Opportunities for self-employment and business ownership. Physical work provides job satisfaction for hands-on individuals.",
+      "skills": {
+        "technical": [
+          "Electrical theory and mathematics",
+          "Wiring and circuit installation",
+          "Diagnostic and troubleshooting skills",
+          "Safety protocols and regulations",
+          "Blueprint reading and interpretation"
+        ],
+        "soft": [
+          "Problem-solving",
+          "Attention to detail",
+          "Physical stamina",
+          "Customer service",
+          "Time management"
+        ],
+        "certifications": [
+          "Electrician License",
+          "Safety certifications",
+          "Specialized equipment training"
+        ]
+      },
+      "education": {
+        "minimum": "High school diploma or equivalent",
+        "preferred": "Trade school diploma or ITI certificate",
+        "alternativePaths": [
+          "Apprenticeship programs",
+          "On-the-job training",
+          "Vocational training"
+        ]
+      },
+      "jobMarket": {
+        "demand": "High",
+        "competition": "Low to Moderate",
+        "geographicHotspots": ["Mumbai", "Delhi", "Bangalore", "Hyderabad", "Chennai"]
+      }
+    },
+    {
+      "id": "plumber",
+      "domainId": "skilled-trades",
+      "name": "Plumber",
+      "shortDescription": "Installs and repairs piping systems for water, gas, and drainage.",
+      "longDescription": "Plumbers install and repair piping systems that carry water, gas, and waste in residential, commercial, and industrial buildings. They use various tools and equipment to ensure systems function properly and meet safety codes."
+    },
+    {
+      "id": "automotive-technician",
+      "domainId": "skilled-trades",
+      "name": "Automotive Technician",
+      "shortDescription": "Diagnoses and repairs vehicles and automotive systems.",
+      "longDescription": "Automotive technicians diagnose, maintain, and repair cars and light trucks. They use computerized diagnostic equipment to identify problems and perform repairs on engines, transmissions, brakes, and other vehicle systems."
+    }
+  ],
+  "overview": {
+    "marketSize": "₹900 billion by 2025",
+    "growthRate": "7% annually",
+    "jobSatisfaction": "3.7/5"
+  }
+}

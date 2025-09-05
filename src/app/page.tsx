@@ -6,14 +6,12 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import LoginScreen from '@/components/mobile/LoginScreen';
 import OnboardingScreen from '@/components/mobile/OnboardingScreen';
 import PsychologyQuiz from '@/components/mobile/PsychologyQuiz';
-import DomainExplorer from '@/components/mobile/DomainExplorer';
 import ResultsPage from '@/components/mobile/ResultsPage';
-import DomainExplorerPage from '@/components/mobile/DomainExplorerPage';
-import SubRoleDeepDivePage from '@/components/mobile/SubRoleDeepDivePage';
+import RoleDeepDivePage from '@/components/mobile/RoleDeepDivePage';
 
 export default function Home() {
   const { data: session, status } = useSession();
-  const [currentStep, setCurrentStep] = useState<'login' | 'onboarding' | 'psychologyQuiz' | 'results' | 'domainExplorerPage' | 'subRoleDeepDive'>('login');
+  const [currentStep, setCurrentStep] = useState<'login' | 'onboarding' | 'psychologyQuiz' | 'results' | 'roleDeepDive'>('login');
   const [onboardingData, setOnboardingData] = useState<{
     language: string;
     state: string;
@@ -21,8 +19,10 @@ export default function Home() {
     goal: string;
   } | null>(null);
   const [psychologyAnswers, setPsychologyAnswers] = useState<Record<number, string | string[]>>({});
-  const [selectedDomainId, setSelectedDomainId] = useState<string>('');
-  const [selectedSubRoleId, setSelectedSubRoleId] = useState<string>('');
+  const [selectedRoleId, setSelectedRoleId] = useState<string>('');
+  const [selectedRoleName, setSelectedRoleName] = useState<string>('');
+  const [personaContext, setPersonaContext] = useState<string>('');
+  const [selectedRoleRank, setSelectedRoleRank] = useState<number>(1);
 
   // Check if user is already logged in
   useEffect(() => {
@@ -61,9 +61,9 @@ export default function Home() {
     
     if (data.hasGoal) {
       localStorage.setItem('userGoal', data.goal);
-      // Instead of going directly to domain explorer, we should go to results first
-      // Then results page can determine the domain based on the goal
-      setCurrentStep('results');
+      // For now, we'll still show the psychology quiz even if they have a goal
+      // In a full implementation, we might skip this or use a different flow
+      setCurrentStep('psychologyQuiz');
     } else {
       // User wants to explore, show psychology quiz
       setCurrentStep('psychologyQuiz');
@@ -71,29 +71,25 @@ export default function Home() {
   };
 
   const handlePsychologyQuizComplete = (answers: Record<number, string | string[]>) => {
-    // In a real implementation, we would calculate domain matches based on answers
-    // For now, we'll just proceed to results page
+    // Save the psychology answers and proceed to results page
     setPsychologyAnswers(answers);
     localStorage.setItem('psychologyAnswers', JSON.stringify(answers));
     setCurrentStep('results');
   };
 
-  const handleDomainSelect = (domainId: string) => {
-    // Set the selected domain ID and navigate to the domain explorer page
-    setSelectedDomainId(domainId);
-    setCurrentStep('domainExplorerPage');
-  };
-
-  const handleSelectSubRole = (subRoleId: string) => {
-    // Set the selected sub-role ID and navigate to the sub-role deep dive page
-    setSelectedSubRoleId(subRoleId);
-    setCurrentStep('subRoleDeepDive');
+  const handleRoleSelect = (roleId: string, roleName: string, personaSummary: string, roleRank: number = 1) => {
+    // Set the selected role ID and navigate to the role deep dive page
+    setSelectedRoleId(roleId);
+    setSelectedRoleName(roleName);
+    setPersonaContext(personaSummary);
+    setSelectedRoleRank(roleRank);
+    setCurrentStep('roleDeepDive');
   };
 
   const handleStartLearning = () => {
     // In a real implementation, we would start the learning path
     // For now, we'll just show an alert
-    alert(`You're ready to start learning! In a full implementation, you would begin your personalized learning path for ${selectedSubRoleId}.`);
+    alert(`You're ready to start learning! In a full implementation, you would begin your personalized learning path for ${selectedRoleName}.`);
     // setCurrentStep('learningPath');
   };
 
@@ -131,35 +127,26 @@ export default function Home() {
     );
   }
 
-  // Show results page
+  // Show results page with AI-generated recommendations
   if (currentStep === 'results') {
     return (
       <ResultsPage 
         answers={psychologyAnswers}
         onBack={() => setCurrentStep('psychologyQuiz')}
-        onSelectDomain={handleDomainSelect}
+        onSelectRole={handleRoleSelect}
       />
     );
   }
 
-  // Show domain explorer page
-  if (currentStep === 'domainExplorerPage') {
+  // Show role deep dive page
+  if (currentStep === 'roleDeepDive') {
     return (
-      <DomainExplorerPage 
-        domainId={selectedDomainId}
+      <RoleDeepDivePage 
+        roleId={selectedRoleId}
+        roleName={selectedRoleName}
+        personaContext={personaContext}
+        roleRank={selectedRoleRank}
         onBack={() => setCurrentStep('results')}
-        onSelectSubRole={handleSelectSubRole}
-      />
-    );
-  }
-
-  // Show sub-role deep dive page
-  if (currentStep === 'subRoleDeepDive') {
-    return (
-      <SubRoleDeepDivePage 
-        subRoleId={selectedSubRoleId}
-        domainId={selectedDomainId}
-        onBack={() => setCurrentStep('domainExplorerPage')}
         onStartLearning={handleStartLearning}
       />
     );
