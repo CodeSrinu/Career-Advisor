@@ -27,9 +27,17 @@ export default function Home() {
   // Check if user is already logged in
   useEffect(() => {
     if (status === 'authenticated') {
-      // If we're still on the login step, send user to onboarding
+      // If we're still on the login step, check if we should skip onboarding
       if (currentStep === 'login') {
-        setCurrentStep('onboarding');
+        // Check if we should skip onboarding (coming from goal validation)
+        const urlParams = new URLSearchParams(window.location.search);
+        const skipOnboarding = urlParams.get('skipOnboarding') === 'true';
+        
+        if (skipOnboarding) {
+          setCurrentStep('psychologyQuiz');
+        } else {
+          setCurrentStep('onboarding');
+        }
       }
     } else if (status === 'unauthenticated') {
       // If user is not authenticated, make sure we're on login step
@@ -61,13 +69,10 @@ export default function Home() {
     
     if (data.hasGoal) {
       localStorage.setItem('userGoal', data.goal);
-      // For now, we'll still show the psychology quiz even if they have a goal
-      // In a full implementation, we might skip this or use a different flow
-      setCurrentStep('psychologyQuiz');
-    } else {
-      // User wants to explore, show psychology quiz
-      setCurrentStep('psychologyQuiz');
     }
+    
+    // Always show the psychology quiz
+    setCurrentStep('psychologyQuiz');
   };
 
   const handlePsychologyQuizComplete = (answers: Record<number, string | string[]>) => {

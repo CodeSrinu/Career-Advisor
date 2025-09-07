@@ -36,6 +36,7 @@ interface Domain {
 
 interface DomainExplorerProps {
   onSelectDomain: (domainId: string) => void;
+  onSelectSubRole: (domainId: string, subRoleId: string) => void;
   onBack: () => void;
 }
 
@@ -296,37 +297,30 @@ export default function DomainExplorer({ onSelectDomain, onBack }: DomainExplore
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 18l-6-6 6-6" />
             </svg>
           </button>
-          <h1 className="flex-1 text-center text-lg font-bold text-slate-800 pr-10">Explore Careers</h1>
+          <h1 className="flex-1 text-center text-lg font-bold text-slate-800">Explore Careers</h1>
+          <div className="w-10"></div> {/* Spacer for alignment */}
         </div>
       </header>
 
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto p-4">
-        {/* Title */}
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">Career Domains</h2>
-          <p className="text-gray-600">Select a domain to explore career paths</p>
-        </div>
-
-        {/* Domain Grid - Reduced height cards */}
-        <div className="grid grid-cols-2 gap-4">
+        {/* Domain List - Horizontal cards with reduced height */}
+        <div className="space-y-3">
           {domains.map((domain) => (
             <div
               key={domain.id}
-              className={`rounded-xl p-4 border-2 transition-all cursor-pointer ${
-                selectedDomain === domain.id
-                  ? 'border-green-500 bg-green-50'
-                  : 'border-gray-200 bg-white'
-              }`}
+              className={`rounded-xl p-4 border-2 transition-all cursor-pointer flex items-center ${selectedDomain === domain.id ? 'border-green-500 bg-green-50' : 'border-gray-200 bg-white'}`}
               onClick={() => handleSelectDomain(domain.id)}
             >
-              <div className="flex flex-col items-center text-center">
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl mb-3 ${domain.color}`}>
-                  {getDomainIcon(domain.icon, domain.color)}
-                </div>
-                <h3 className="font-semibold text-gray-800 text-sm mb-1 leading-tight">{domain.name}</h3>
-                <p className="text-gray-600 text-xs leading-tight">{domain.description}</p>
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg mr-4 ${domain.color}`}>
+                {getDomainIcon(domain.icon, domain.color)}
               </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-gray-800 text-sm">{domain.name}</h3>
+              </div>
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </div>
           ))}
         </div>
@@ -347,10 +341,7 @@ export default function DomainExplorer({ onSelectDomain, onBack }: DomainExplore
                 <div 
                   key={subRole.id}
                   className="p-3 rounded-lg border border-gray-200 bg-gray-50 hover:bg-gray-100 cursor-pointer transition-colors"
-                  onClick={() => {
-                    // In a real implementation, you would navigate to the sub-role details
-                    alert(`In a full implementation, you would see detailed information about ${subRole.name}`);
-                  }}
+                  onClick={() => onSelectSubRole(selectedDomain, subRole.id)}
                 >
                   <h4 className="font-semibold text-gray-800 text-sm">{subRole.name}</h4>
                   <p className="text-gray-600 text-xs mt-1">{subRole.shortDescription}</p>
@@ -360,7 +351,7 @@ export default function DomainExplorer({ onSelectDomain, onBack }: DomainExplore
             
             <div className="mt-4 flex gap-2">
               <button
-                className="flex-1 py-2 px-4 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg text-sm font-medium hover:from-green-700 hover:to-green-800 transition-all"
+                className="flex-1 py-2 px-4 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg text-sm font-medium hover:from-green-600 hover:to-green-700 transition-all shadow-md hover:shadow-lg"
                 onClick={() => {
                   // In a real implementation, you would navigate to the sub-role explorer
                   alert(`In a full implementation, you would proceed to explore sub-roles in ${domains.find(d => d.id === selectedDomain)?.name}`);

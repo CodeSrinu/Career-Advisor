@@ -2,6 +2,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface OnboardingScreenProps {
   onContinue: (data: {
@@ -13,6 +14,7 @@ interface OnboardingScreenProps {
 }
 
 export default function OnboardingScreen({ onContinue }: OnboardingScreenProps) {
+  const router = useRouter();
   const [language, setLanguage] = useState('telugu');
   const [state, setState] = useState('');
   const [hasGoal, setHasGoal] = useState<boolean | null>(null);
@@ -39,12 +41,23 @@ export default function OnboardingScreen({ onContinue }: OnboardingScreenProps) 
     if (hasGoal === null) return;
     if (hasGoal && !goal.trim()) return;
     
-    onContinue({
-      language,
-      state,
-      hasGoal,
-      goal
-    });
+    // Save the goal to session storage for the next screen
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('userGoal', goal);
+    }
+    
+    // If user has a goal, navigate to goal validation
+    if (hasGoal) {
+      router.push('/goal-validation');
+    } else {
+      // If user doesn't have a goal, continue with onboarding
+      onContinue({
+        language,
+        state,
+        hasGoal: false,
+        goal: ''
+      });
+    }
   };
 
   return (

@@ -1,23 +1,38 @@
 // src/app/domain-explorer/page.tsx
 'use client';
 
-import DomainExplorer from '@/components/DomainExplorer';
-import Link from 'next/link';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import DomainExplorer from '@/components/mobile/DomainExplorer';
 
 export default function DomainExplorerPage() {
+  const router = useRouter();
+  const [selectedDomain, setSelectedDomain] = useState<string | null>(null);
+
+  const handleSelectDomain = (domainId: string) => {
+    setSelectedDomain(domainId);
+  };
+
+  const handleSelectSubRole = (domainId: string, subRoleId: string) => {
+    // Navigate to the sub-role deep-dive page
+    router.push(`/sub-role-deep-dive?domainId=${domainId}&subRoleId=${subRoleId}`);
+  };
+
+  const handleBack = () => {
+    if (selectedDomain) {
+      setSelectedDomain(null);
+    } else {
+      router.back();
+    }
+  };
+
   return (
-    <div className="font-sans min-h-screen bg-slate-100 p-4 md:p-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-8 text-center">
-          <Link href="/" className="inline-block mb-4 text-blue-600 hover:text-blue-800">
-            &larr; Back to Home
-          </Link>
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Explore Career Domains</h1>
-          <p className="text-gray-600">Discover different career fields that might interest you</p>
-        </div>
-        
-        <DomainExplorer />
-      </div>
+    <div className="font-sans min-h-screen bg-white">
+      <DomainExplorer 
+        onSelectDomain={handleSelectDomain}
+        onSelectSubRole={handleSelectSubRole}
+        onBack={handleBack}
+      />
     </div>
   );
 }
