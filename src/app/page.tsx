@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import { useSearchParams } from 'next/navigation';
 import LoginScreen from '@/components/mobile/LoginScreen';
 import OnboardingScreen from '@/components/mobile/OnboardingScreen';
 import PsychologyQuiz from '@/components/mobile/PsychologyQuiz';
@@ -11,6 +12,7 @@ import RoleDeepDivePage from '@/components/mobile/RoleDeepDivePage';
 
 export default function Home() {
   const { data: session, status } = useSession();
+  const searchParams = useSearchParams();
   const [currentStep, setCurrentStep] = useState<'login' | 'onboarding' | 'psychologyQuiz' | 'results' | 'roleDeepDive'>('login');
   const [onboardingData, setOnboardingData] = useState<{
     language: string;
@@ -27,11 +29,30 @@ export default function Home() {
   // Check if user is already logged in
   useEffect(() => {
     if (status === 'authenticated') {
+      // Check for deep-dive parameters
+      const deepDive = searchParams.get('deepDive');
+      if (deepDive === 'true') {
+        const roleId = searchParams.get('roleId') || '';
+        const roleName = searchParams.get('roleName') || '';
+        const personaContext = searchParams.get('personaContext') || '';
+        const roleRank = parseInt(searchParams.get('roleRank') || '1', 10);
+        
+        console.log('Deep-dive parameters found:', { roleId, roleName, personaContext, roleRank });
+        
+        if (roleId && roleName) {
+          setSelectedRoleId(roleId);
+          setSelectedRoleName(roleName);
+          setPersonaContext(personaContext);
+          setSelectedRoleRank(roleRank);
+          setCurrentStep('roleDeepDive');
+          return;
+        }
+      }
+      
       // If we're still on the login step, check if we should skip onboarding
       if (currentStep === 'login') {
         // Check if we should skip onboarding (coming from goal validation)
-        const urlParams = new URLSearchParams(window.location.search);
-        const skipOnboarding = urlParams.get('skipOnboarding') === 'true';
+        const skipOnboarding = searchParams.get('skipOnboarding') === 'true';
         
         if (skipOnboarding) {
           setCurrentStep('psychologyQuiz');
@@ -45,7 +66,7 @@ export default function Home() {
         setCurrentStep('login');
       }
     }
-  }, [status, currentStep]);
+  }, [status, currentStep, searchParams]);
 
   const handleGoogleLogin = () => {
     // Clear any existing onboarding data to ensure user goes through onboarding
@@ -92,10 +113,9 @@ export default function Home() {
   };
 
   const handleStartLearning = () => {
-    // In a real implementation, we would start the learning path
-    // For now, we'll just show an alert
-    alert(`You're ready to start learning! In a full implementation, you would begin your personalized learning path for ${selectedRoleName}.`);
-    // setCurrentStep('learningPath');
+    // Navigate to the skill assessment page
+    console.log('handleStartLearning called with:', { selectedRoleId, selectedRoleName });
+    window.location.href = `/skill-assessment?roleId=${selectedRoleId}&roleName=${encodeURIComponent(selectedRoleName)}`;
   };
 
   const handleLogout = () => {
@@ -145,6 +165,7 @@ export default function Home() {
 
   // Show role deep dive page
   if (currentStep === 'roleDeepDive') {
+    console.log('Rendering RoleDeepDivePage with props:', { selectedRoleId, selectedRoleName, personaContext, selectedRoleRank });
     return (
       <RoleDeepDivePage 
         roleId={selectedRoleId}

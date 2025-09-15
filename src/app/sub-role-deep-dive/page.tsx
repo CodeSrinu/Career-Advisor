@@ -16,7 +16,8 @@ export default function SubRoleDeepDivePageRoute() {
   };
 
   const handleStartLearning = () => {
-    alert('In a full implementation, you would start the learning path for this role.');
+    // Navigate to the skill assessment page
+    router.push(`/skill-assessment?roleId=${subRoleId}&domainId=${domainId}`);
   };
 
   if (!subRoleId || !domainId) {

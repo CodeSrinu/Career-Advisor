@@ -510,7 +510,7 @@ export default function SubRoleDeepDivePage({ subRoleId, domainId, onBack, onSta
           className="w-full rounded-full bg-green-500 py-2.5 text-center text-sm font-bold text-white shadow-lg hover:bg-green-600 transition-colors"
           onClick={onStartLearning}
         >
-          Start Level 1 →
+          Calculate My Starting Level
         </button>
       </footer>
     </div>

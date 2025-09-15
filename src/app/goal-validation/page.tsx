@@ -1,7 +1,7 @@
 // src/app/goal-validation/page.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import GoalValidation from '@/components/mobile/GoalValidation';
 
@@ -21,12 +21,12 @@ export default function GoalValidationPage() {
 
   // Get user goal from session/local storage or props
   // This is a simplified example - in a real app, you'd get this from context or API
-  useState(() => {
+  useEffect(() => {
     // In a real implementation, you would fetch the user's goal from context or API
     // For now, we'll simulate getting the goal from URL params or session
     const goal = typeof window !== 'undefined' ? sessionStorage.getItem('userGoal') || 'Software Engineer' : 'Software Engineer';
     setUserGoal(goal);
-  });
+  }, []);
 
   const handleValidationComplete = (answers: Record<number, string>, score: number) => {
     setQuizAnswers(answers);
@@ -52,6 +52,25 @@ export default function GoalValidationPage() {
     router.push('/?skipOnboarding=true');
   };
 
+  const handleContinueWithGoal = () => {
+    // Redirect to the main page with query parameters to trigger deep-dive
+    const roleId = `user-goal-${userGoal.toLowerCase().replace(/\s+/g, '-')}`;
+    const roleName = userGoal;
+    const personaContext = `User has chosen ${userGoal} as their career goal with a pressure score of ${pressureScore}. Primary motivation: ${quizAnswers[0] || 'Not specified'}.`;
+    const roleRank = 1;
+    
+    // Encode the parameters for URL
+    const queryParams = new URLSearchParams({
+      deepDive: 'true',
+      roleId,
+      roleName,
+      personaContext,
+      roleRank: roleRank.toString()
+    }).toString();
+    
+    router.push(`/?${queryParams}`);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <GoalValidation
@@ -60,6 +79,7 @@ export default function GoalValidationPage() {
         onBack={handleBack}
         onExploreAlternatives={handleExploreAlternatives}
         onGetAIRecommendation={handleGetAIRecommendation}
+        onContinueWithGoal={handleContinueWithGoal}
       />
     </div>
   );

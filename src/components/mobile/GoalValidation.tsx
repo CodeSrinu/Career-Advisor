@@ -36,9 +36,10 @@ interface GoalValidationProps {
   onBack: () => void;
   onExploreAlternatives: () => void;
   onGetAIRecommendation: () => void;
+  onContinueWithGoal?: () => void;
 }
 
-export default function GoalValidation({ userGoal, onComplete, onBack, onExploreAlternatives, onGetAIRecommendation }: GoalValidationProps) {
+export default function GoalValidation({ userGoal, onComplete, onBack, onExploreAlternatives, onGetAIRecommendation, onContinueWithGoal }: GoalValidationProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [isCalculating, setIsCalculating] = useState(false);
@@ -396,7 +397,7 @@ export default function GoalValidation({ userGoal, onComplete, onBack, onExplore
                   </button>
                   <button
                     className="flex-1 py-3 px-4 bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold rounded-xl transition-all duration-300 hover:from-red-600 hover:to-red-700"
-                    onClick={handleViewResults}
+                    onClick={onContinueWithGoal || handleViewResults}
                   >
                     Continue Anyway
                   </button>
@@ -410,7 +411,7 @@ export default function GoalValidation({ userGoal, onComplete, onBack, onExplore
                     ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700' 
                     : 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700'
                 }`}
-                onClick={handleViewResults}
+                onClick={onContinueWithGoal || handleViewResults}
               >
                 Continue
               </button>

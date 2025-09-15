@@ -330,12 +330,12 @@ export default function RoleDeepDivePage({
       </main>
 
       {/* Fixed Bottom Button */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 shadow-lg">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 shadow-lg z-50">
         <button 
-          className="w-full py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-bold shadow-md hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-[1.02]"
+          className="w-full py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-bold shadow-md shadow-green-200/50 hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-[1.02]"
           onClick={onStartLearning}
         >
-          Start Learning Path
+          <span className="truncate">Calculate My Starting Level</span>
         </button>
       </div>
     </div>

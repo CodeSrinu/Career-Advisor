@@ -1,176 +1,50 @@
-app-index.tsx:25  Warning: Extra attributes from the server: data-new-gr-c-s-check-loaded,data-gr-ext-installed Error Component Stack
-    at body (<anonymous>)
-    at html (<anonymous>)
-    at RootLayout [Server] (<anonymous>)
-    at RedirectErrorBoundary (redirect-boundary.tsx:48:5)
-    at RedirectBoundary (redirect-boundary.tsx:79:9)
-    at NotFoundErrorBoundary (not-found-boundary.tsx:32:5)
-    at NotFoundBoundary (not-found-boundary.tsx:117:9)
-    at DevRootNotFoundBoundary (dev-root-not-found-boundary.tsx:20:3)
-    at ReactDevOverlay (ReactDevOverlay.tsx:98:3)
-    at HotReload (hot-reloader-client.tsx:452:3)
-    at Router (app-router.tsx:300:9)
-    at ErrorBoundaryHandler (error-boundary.tsx:68:11)
-    at ErrorBoundary (error-boundary.tsx:171:9)
-    at AppRouter (app-router.tsx:706:3)
-    at ServerRoot (app-index.tsx:126:13)
-    at Root (app-index.tsx:133:17)
-overrideMethod @ hook.js:608
-window.console.error @ app-index.tsx:25
-console.error @ hydration-error-info.ts:72
-printWarning @ react-dom.development.js:94
-error @ react-dom.development.js:68
-warnForExtraAttributes @ react-dom.development.js:32731
-diffHydratedProperties @ react-dom.development.js:35117
-hydrateInstance @ react-dom.development.js:36127
-prepareToHydrateHostInstance @ react-dom.development.js:7246
-completeWork @ react-dom.development.js:19725
-completeUnitOfWork @ react-dom.development.js:25963
-performUnitOfWork @ react-dom.development.js:25759
-workLoopConcurrent @ react-dom.development.js:25734
-renderRootConcurrent @ react-dom.development.js:25690
-performConcurrentWorkOnRoot @ react-dom.development.js:24504
-workLoop @ scheduler.development.js:256
-flushWork @ scheduler.development.js:225
-performWorkUntilDeadline @ scheduler.development.js:534
-hot-reloader-client.tsx:297 [Fast Refresh] rebuilding
-hot-reloader-client.tsx:74 [Fast Refresh] done in 823ms
-hot-reloader-client.tsx:74 [Fast Refresh] done in 858ms
-VM1423 goalValidation.ts:11   POST http://localhost:3000/api/validate-goal 500 (Internal Server Error)
-validateUserGoal @ VM1423 goalValidation.ts:11
-calculateValidationScore @ VM1422 GoalValidation.tsx:132
-handleNext @ VM1422 GoalValidation.tsx:109
-callCallback @ react-dom.development.js:20565
-invokeGuardedCallbackImpl @ react-dom.development.js:20614
-invokeGuardedCallback @ react-dom.development.js:20689
-invokeGuardedCallbackAndCatchFirstError @ react-dom.development.js:20703
-executeDispatch @ react-dom.development.js:32128
-processDispatchQueueItemsInOrder @ react-dom.development.js:32160
-processDispatchQueue @ react-dom.development.js:32173
-dispatchEventsForPlugins @ react-dom.development.js:32184
-eval @ react-dom.development.js:32374
-batchedUpdates$1 @ react-dom.development.js:24953
-batchedUpdates @ react-dom.development.js:28844
-dispatchEventForPluginEventSystem @ react-dom.development.js:32373
-dispatchEvent @ react-dom.development.js:30141
-dispatchDiscreteEvent @ react-dom.development.js:30112
-app-index.tsx:25  AI validation failed, using fallback scoring: Failed to validate user goal with AI: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent: [404 Not Found] models/gemini-pro is not found for API version v1, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
-overrideMethod @ hook.js:608
-window.console.error @ app-index.tsx:25
-console.error @ hydration-error-info.ts:72
-validateUserGoal @ VM1423 goalValidation.ts:28
-await in validateUserGoal
-calculateValidationScore @ VM1422 GoalValidation.tsx:132
-handleNext @ VM1422 GoalValidation.tsx:109
-callCallback @ react-dom.development.js:20565
-invokeGuardedCallbackImpl @ react-dom.development.js:20614
-invokeGuardedCallback @ react-dom.development.js:20689
-invokeGuardedCallbackAndCatchFirstError @ react-dom.development.js:20703
-executeDispatch @ react-dom.development.js:32128
-processDispatchQueueItemsInOrder @ react-dom.development.js:32160
-processDispatchQueue @ react-dom.development.js:32173
-dispatchEventsForPlugins @ react-dom.development.js:32184
-eval @ react-dom.development.js:32374
-batchedUpdates$1 @ react-dom.development.js:24953
-batchedUpdates @ react-dom.development.js:28844
-dispatchEventForPluginEventSystem @ react-dom.development.js:32373
-dispatchEvent @ react-dom.development.js:30141
-dispatchDiscreteEvent @ react-dom.development.js:30112
-hot-reloader-client.tsx:297 [Fast Refresh] rebuilding
-hot-reloader-client.tsx:74 [Fast Refresh] done in 10653ms
-hot-reloader-client.tsx:297 [Fast Refresh] rebuilding
-hot-reloader-client.tsx:74 [Fast Refresh] done in 516ms
-hot-reloader-client.tsx:297 [Fast Refresh] rebuilding
-hot-reloader-client.tsx:74 [Fast Refresh] done in 613ms
-hot-reloader-client.tsx:297 [Fast Refresh] rebuilding
-hot-reloader-client.tsx:74 [Fast Refresh] done in 4045ms
-hot-reloader-client.tsx:297 [Fast Refresh] rebuilding
-hot-reloader-client.tsx:74 [Fast Refresh] done in 1170ms
-hot-reloader-client.tsx:297 [Fast Refresh] rebuilding
-hot-reloader-client.tsx:74 [Fast Refresh] done in 318ms
-hot-reloader-client.tsx:297 [Fast Refresh] rebuilding
-hot-reloader-client.tsx:297 [Fast Refresh] rebuilding
-hot-reloader-client.tsx:74 [Fast Refresh] done in 857ms
-hot-reloader-client.tsx:297 [Fast Refresh] rebuilding
-hot-reloader-client.tsx:74 [Fast Refresh] done in 3634ms
-page.tsx:37 Validation complete with score: 50
-page.tsx:37 Validation complete with score: 50
-hot-reloader-client.tsx:297 [Fast Refresh] rebuilding
-app-index.tsx:25  ./src/components/mobile/GoalValidation.tsx
-Error: 
-  × Unexpected token `div`. Expected jsx identifier
-     ╭─[C:\Hackathon\Google and Nxtwave Hackathon\career-advisor\src\components\mobile\GoalValidation.tsx:267:1]
- 267 │ 
- 268 │   if (pressureScore !== null) {
- 269 │     return (
- 270 │       <div className="min-h-screen bg-gray-50 flex flex-col">
-     ·        ───
- 271 │         {/* Header */}
- 272 │         <header className="p-4 bg-white border-b border-gray-200">
- 273 │           <div className="flex items-center">
-     ╰────
-
-Caused by:
-    Syntax Error
-
-Import trace for requested module:
-./src/components/mobile/GoalValidation.tsx
-./src/app/goal-validation/page.tsx
-overrideMethod @ hook.js:608
-window.console.error @ app-index.tsx:25
-console.error @ hydration-error-info.ts:72
-handleErrors @ hot-reloader-client.tsx:262
-processMessage @ hot-reloader-client.tsx:322
-handler @ hot-reloader-client.tsx:531
-app-index.tsx:25  ./src/components/mobile/GoalValidation.tsx
-Error: 
-  × Unexpected token `div`. Expected jsx identifier
-     ╭─[C:\Hackathon\Google and Nxtwave Hackathon\career-advisor\src\components\mobile\GoalValidation.tsx:267:1]
- 267 │ 
- 268 │   if (pressureScore !== null) {
- 269 │     return (
- 270 │       <div className="min-h-screen bg-gray-50 flex flex-col">
-     ·        ───
- 271 │         {/* Header */}
- 272 │         <header className="p-4 bg-white border-b border-gray-200">
- 273 │           <div className="flex items-center">
-     ╰────
-
-Caused by:
-    Syntax Error
-
-Import trace for requested module:
-./src/components/mobile/GoalValidation.tsx
-./src/app/goal-validation/page.tsx
-overrideMethod @ hook.js:608
-window.console.error @ app-index.tsx:25
-console.error @ hydration-error-info.ts:72
-handleErrors @ hot-reloader-client.tsx:262
-processMessage @ hot-reloader-client.tsx:322
-handler @ hot-reloader-client.tsx:531
-app-index.tsx:25  ./src/components/mobile/GoalValidation.tsx
-Error: 
-  × Unexpected token `div`. Expected jsx identifier
-     ╭─[C:\Hackathon\Google and Nxtwave Hackathon\career-advisor\src\components\mobile\GoalValidation.tsx:267:1]
- 267 │ 
- 268 │   if (pressureScore !== null) {
- 269 │     return (
- 270 │       <div className="min-h-screen bg-gray-50 flex flex-col">
-     ·        ───
- 271 │         {/* Header */}
- 272 │         <header className="p-4 bg-white border-b border-gray-200">
- 273 │           <div className="flex items-center">
-     ╰────
-
-Caused by:
-    Syntax Error
-
-Import trace for requested module:
-./src/components/mobile/GoalValidation.tsx
-./src/app/goal-validation/page.tsx
-overrideMethod @ hook.js:608
-window.console.error @ app-index.tsx:25
-console.error @ hydration-error-info.ts:72
-handleErrors @ hot-reloader-client.tsx:262
-processMessage @ hot-reloader-client.tsx:322
-handler @ hot-reloader-client.tsx:531
+index.iife.js:40 content ui loaded
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+AISkillAssessment.tsx:46 useEffect triggered for: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer'}
+AISkillAssessment.tsx:53 Loading questions for: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+AISkillAssessment.tsx:46 useEffect triggered for: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer'}
+AISkillAssessment.tsx:53 Loading questions for: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+AISkillAssessment.tsx:64 Question API response status: 200
+AISkillAssessment.tsx:71 Received questions data: {questions: Array(10)}
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+AISkillAssessment.tsx:64 Question API response status: 200
+AISkillAssessment.tsx:71 Received questions data: {questions: Array(10)}
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+AISkillAssessment.tsx:118 Submitting assessment with: {questionCount: 10, answerCount: 10, checkedCount: 0, hasOpenResponse: false}
+AISkillAssessment.tsx:131 Sending analysis request to API...
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+AISkillAssessment.tsx:147 Analysis API response status: 200
+AISkillAssessment.tsx:154 Received analysis result: {skillLevel: 1, analysisSummary: "You're taking your first steps in this exciting fi… and the right guidance, you'll progress quickly.", strengths: Array(2), learningOpportunities: Array(4)}
+AISkillAssessment.tsx:164 Stored assessment data in localStorage for career roadmap
+AISkillAssessmentResults.tsx:151 Continue button clicked from overview tab
+page.tsx:41 handleContinue called with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: '', assessmentResult: {…}}
+page.tsx:46 Navigating to: /career-quest?roleId=user-goal-ai-developer&roleName=AI%20Developer&domainId=&startingLevel=1
+hot-reloader-client.js:187 [Fast Refresh] rebuilding
+hot-reloader-client.js:44 [Fast Refresh] done in 1426ms
+hot-reloader-client.js:44 [Fast Refresh] done in 1468ms
+page.tsx:57 CareerQuestPage mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: '', startingLevel: 1}
+page.tsx:57 CareerQuestPage mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: '', startingLevel: 1}
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+CareerQuestRoadmap.tsx:62 Loading roadmap for: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: '', startingLevel: 1}
+page.tsx:49 Retrieved assessment data from localStorage: {questions: Array(10), answers: {…}, openResponse: ''}
+CareerQuestRoadmap.tsx:62 Loading roadmap for: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: '', startingLevel: 1}
+page.tsx:49 Retrieved assessment data from localStorage: {questions: Array(10), answers: {…}, openResponse: ''}
+page.tsx:57 CareerQuestPage mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: '', startingLevel: 1}
+page.tsx:57 CareerQuestPage mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: '', startingLevel: 1}
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+CareerQuestRoadmap.tsx:79 Roadmap API response status: 200
+CareerQuestRoadmap.tsx:86 Received roadmap data: {units: Array(3)}
+CareerQuestRoadmap.tsx:89 Set units: (3) [{…}, {…}, {…}]
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+CareerQuestRoadmap.tsx:79 Roadmap API response status: 200
+CareerQuestRoadmap.tsx:86 Received roadmap data: {units: Array(3)}
+CareerQuestRoadmap.tsx:89 Set units: (3) [{…}, {…}, {…}]
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-ai-developer', roleName: 'AI Developer', domainId: ''}
