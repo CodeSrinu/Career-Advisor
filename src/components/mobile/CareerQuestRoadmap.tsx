@@ -85,6 +85,13 @@ export default function CareerQuestRoadmap({
         const data = await response.json();
         console.log("Received roadmap data:", data);
         
+        // Store the roadmap data in localStorage for use by other components
+        try {
+          localStorage.setItem('careerQuest_roadmap', JSON.stringify(data));
+        } catch (err) {
+          console.warn('Could not store roadmap in localStorage:', err);
+        }
+        
         setUnits(data.units);
         console.log("Set units:", data.units);
       } catch (err: any) {
@@ -94,6 +101,14 @@ export default function CareerQuestRoadmap({
         // Fallback to default roadmap
         const defaultRoadmap = getDefaultRoadmap(roleId, roleName, startingLevel);
         console.log("Using default roadmap:", defaultRoadmap);
+        
+        // Store the default roadmap data in localStorage for use by other components
+        try {
+          localStorage.setItem('careerQuest_roadmap', JSON.stringify({ units: defaultRoadmap }));
+        } catch (err) {
+          console.warn('Could not store default roadmap in localStorage:', err);
+        }
+        
         setUnits(defaultRoadmap);
       } finally {
         setIsLoading(false);

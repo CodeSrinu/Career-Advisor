@@ -1,5 +1,6 @@
 // src/app/api/learning-module/quiz/route.ts
 import { NextResponse } from 'next/server';
+import { POST as generateQuizContent } from './content-route';
 
 interface QuizRequest {
   quizId: string;
@@ -41,14 +42,48 @@ export async function POST(request: Request) {
 
     console.log("Quiz API called with:", { quizId: body.quizId, moduleId: body.moduleId, moduleName: body.moduleName });
     
-    // In a real implementation, this would fetch from a database
-    // For now, we'll return mock data
+    // Call the content generation API instead of using mock data
+    // We need to transform the request to match the content-route interface
+    const contentRequest = new Request(request, {
+      body: JSON.stringify({
+        quizId: body.quizId,
+        quizTitle: body.moduleName, // Using moduleName as the quiz title for now
+        courseTitle: body.moduleName,
+        careerField: 'General', // This would be dynamically determined
+        userId: body.userId || 'default-user'
+      })
+    });
+    
+    const contentResponse = await generateQuizContent(contentRequest);
+    const contentData = await contentResponse.json();
+    
+    // Transform the content data to match our expected format
+    const quizContent: QuizContent = {
+      id: contentData.content?.id || body.quizId,
+      title: contentData.content?.title || 'Quiz',
+      description: contentData.content?.description || `Test your knowledge of ${body.moduleName}`,
+      questions: contentData.content?.questions || [],
+      duration: contentData.content?.duration || '10 minutes',
+      moduleId: body.moduleId,
+      moduleName: body.moduleName
+    };
+    
+    return NextResponse.json(quizContent);
+    
+  } catch (error: any) {
+    console.error("=== ERROR IN QUIZ API ===");
+    console.error("Error:", error);
+    console.error("Error Message:", error.message);
+    console.error("Stack Trace:", error.stack);
+    
+    // Fallback to mock data if content generation fails
+    console.log("USING FALLBACK MOCK DATA");
     const mockQuiz: QuizContent = {
-      id: body.quizId,
+      id: 'default',
       title: 'Semantic HTML Quiz',
       description: 'Test your knowledge of semantic HTML elements',
-      moduleId: body.moduleId,
-      moduleName: body.moduleName,
+      moduleId: 'default',
+      moduleName: 'HTML Fundamentals',
       duration: '10 minutes',
       questions: [
         {
@@ -93,16 +128,5 @@ export async function POST(request: Request) {
     };
     
     return NextResponse.json(mockQuiz);
-    
-  } catch (error: any) {
-    console.error("=== ERROR IN QUIZ API ===");
-    console.error("Error:", error);
-    console.error("Error Message:", error.message);
-    console.error("Stack Trace:", error.stack);
-    
-    return NextResponse.json(
-      { error: 'Failed to load quiz content' },
-      { status: 500 }
-    );
   }
 }

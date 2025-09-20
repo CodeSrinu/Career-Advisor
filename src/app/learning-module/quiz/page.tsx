@@ -46,8 +46,45 @@ export default function QuizPage() {
         
         console.log("Loading quiz:", { quizId, moduleId, moduleName });
         
-        // In a real implementation, this would call an API to get the quiz content
-        // For now, we'll use mock data
+        // Call our API to get the quiz content
+        const response = await fetch('/api/learning-module/quiz', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            quizId,
+            moduleId,
+            moduleName,
+            userId: 'default-user' // This would be dynamically determined
+          }),
+        });
+        
+        console.log("Quiz API response status:", response.status);
+        
+        if (!response.ok) {
+          throw new Error('Failed to load quiz content');
+        }
+        
+        const data = await response.json();
+        console.log("Received quiz data:", data);
+        
+        const quizData: Quiz = {
+          id: data.id || quizId,
+          title: data.title || 'Quiz',
+          description: data.description || 'Test your knowledge',
+          questions: data.questions || [],
+          duration: data.duration || '10 minutes',
+          moduleId: data.moduleId || moduleId,
+          moduleName: data.moduleName || moduleName
+        };
+        
+        setQuiz(quizData);
+      } catch (err: any) {
+        console.error('Error loading quiz:', err);
+        setError('Failed to load the quiz. Please try again.');
+        
+        // Fallback to mock data
         const mockQuiz: Quiz = {
           id: quizId,
           title: 'Semantic HTML Quiz',
@@ -98,9 +135,6 @@ export default function QuizPage() {
         };
         
         setQuiz(mockQuiz);
-      } catch (err: any) {
-        console.error('Error loading quiz:', err);
-        setError('Failed to load the quiz. Please try again.');
       } finally {
         setLoading(false);
       }

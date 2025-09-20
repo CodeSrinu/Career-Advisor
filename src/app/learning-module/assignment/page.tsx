@@ -39,8 +39,49 @@ export default function AssignmentPage() {
         
         console.log("Loading assignment:", { assignmentId, moduleId, moduleName });
         
-        // In a real implementation, this would call an API to get the assignment content
-        // For now, we'll use mock data
+        // Call our API to get the assignment content
+        const response = await fetch('/api/learning-module/assignment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            assignmentId,
+            moduleId,
+            moduleName,
+            userId: 'default-user' // This would be dynamically determined
+          }),
+        });
+        
+        console.log("Assignment API response status:", response.status);
+        
+        if (!response.ok) {
+          throw new Error('Failed to load assignment content');
+        }
+        
+        const data = await response.json();
+        console.log("Received assignment data:", data);
+        
+        const assignmentData: Assignment = {
+          id: data.id || assignmentId,
+          title: data.title || 'Assignment',
+          description: data.description || 'Complete this assignment',
+          type: data.type || 'assignment',
+          difficulty: data.difficulty || 'beginner',
+          estimatedTime: data.estimatedTime || '1 hour',
+          requirements: data.requirements || [],
+          instructions: data.instructions || [],
+          resources: data.resources || [],
+          moduleId: data.moduleId || moduleId,
+          moduleName: data.moduleName || moduleName
+        };
+        
+        setAssignment(assignmentData);
+      } catch (err: any) {
+        console.error('Error loading assignment:', err);
+        setError('Failed to load the assignment. Please try again.');
+        
+        // Fallback to mock data
         const mockAssignment: Assignment = {
           id: assignmentId,
           title: 'Create a Semantic HTML Portfolio',
@@ -73,9 +114,6 @@ export default function AssignmentPage() {
         };
         
         setAssignment(mockAssignment);
-      } catch (err: any) {
-        console.error('Error loading assignment:', err);
-        setError('Failed to load the assignment. Please try again.');
       } finally {
         setLoading(false);
       }

@@ -43,6 +43,31 @@ export default function LearningModulePage() {
         
         console.log("Loading learning module for:", { nodeId, roleId, roleName, domainId });
         
+        // First, we need to get the node title from the roadmap
+        // In a real implementation, this would be stored in context or passed as a parameter
+        // For now, we'll try to get it from localStorage or use a fallback
+        let courseTitle = 'Course Title'; // Default fallback
+        
+        // Try to get the roadmap data from localStorage
+        try {
+          const storedRoadmap = localStorage.getItem('careerQuest_roadmap');
+          if (storedRoadmap) {
+            const roadmapData = JSON.parse(storedRoadmap);
+            // Search for the node with matching nodeId in all units
+            for (const unit of roadmapData.units) {
+              const node = unit.nodes.find((n: any) => n.id === nodeId);
+              if (node) {
+                courseTitle = node.title;
+                break;
+              }
+            }
+          }
+        } catch (err) {
+          console.warn('Could not retrieve roadmap from localStorage:', err);
+        }
+        
+        console.log("Using course title:", courseTitle);
+        
         // Call our API to generate the course roadmap (Phase 1 - AI Architect)
         const response = await fetch('/api/course-roadmap', {
           method: 'POST',
@@ -51,7 +76,7 @@ export default function LearningModulePage() {
           },
           body: JSON.stringify({ 
             courseId: nodeId, 
-            courseTitle: 'HTML & CSS Deep Dive', // This would be dynamically determined
+            courseTitle: courseTitle,
             careerField: roleName 
           }),
         });

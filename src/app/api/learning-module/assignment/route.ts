@@ -1,5 +1,6 @@
 // src/app/api/learning-module/assignment/route.ts
 import { NextResponse } from 'next/server';
+import { POST as generateAssignmentContent } from './content-route';
 
 interface AssignmentRequest {
   assignmentId: string;
@@ -37,17 +38,55 @@ export async function POST(request: Request) {
 
     console.log("Assignment API called with:", { assignmentId: body.assignmentId, moduleId: body.moduleId, moduleName: body.moduleName });
     
-    // In a real implementation, this would fetch from a database
-    // For now, we'll return mock data
+    // Call the content generation API instead of using mock data
+    // We need to transform the request to match the content-route interface
+    const contentRequest = new Request(request, {
+      body: JSON.stringify({
+        assignmentId: body.assignmentId,
+        assignmentTitle: body.moduleName, // Using moduleName as the assignment title for now
+        courseTitle: body.moduleName,
+        careerField: 'General', // This would be dynamically determined
+        userId: body.userId || 'default-user'
+      })
+    });
+    
+    const contentResponse = await generateAssignmentContent(contentRequest);
+    const contentData = await contentResponse.json();
+    
+    // Transform the content data to match our expected format
+    const assignmentContent: AssignmentContent = {
+      id: contentData.content?.id || body.assignmentId,
+      title: contentData.content?.title || 'Assignment',
+      description: contentData.content?.description || `Complete this assignment to demonstrate your knowledge of ${body.moduleName}`,
+      type: contentData.content?.type || 'assignment',
+      difficulty: contentData.content?.difficulty || 'beginner',
+      estimatedTime: contentData.content?.estimatedTime || '30 minutes',
+      requirements: contentData.content?.requirements || [],
+      instructions: contentData.content?.instructions || [],
+      resources: contentData.content?.resources || [],
+      moduleId: body.moduleId,
+      moduleName: body.moduleName
+    };
+    
+    return NextResponse.json(assignmentContent);
+    
+  } catch (error: any) {
+    console.error("=== ERROR IN ASSIGNMENT API ===");
+    console.error("Error:", error);
+    console.error("Error Message:", error.message);
+    console.error("Stack Trace:", error.stack);
+    
+    // Fallback to mock data if content generation fails
+    console.log("USING FALLBACK MOCK DATA");
     const mockAssignment: AssignmentContent = {
-      id: body.assignmentId,
+      id: 'default',
       title: 'Create a Semantic HTML Portfolio',
       description: 'Build a portfolio website using semantic HTML elements to demonstrate your understanding of proper document structure',
       type: 'assignment',
       difficulty: 'beginner',
       estimatedTime: '1 hour',
-      moduleId: body.moduleId,
-      moduleName: body.moduleName,
+      moduleId: 'default',
+      moduleName: 'HTML Fundamentals',
       requirements: [
         'Use semantic HTML5 elements (<header>, <nav>, <main>, <article>, <section>, <aside>, <footer>)',
         'Implement a responsive design with CSS',
@@ -71,16 +110,5 @@ export async function POST(request: Request) {
     };
     
     return NextResponse.json(mockAssignment);
-    
-  } catch (error: any) {
-    console.error("=== ERROR IN ASSIGNMENT API ===");
-    console.error("Error:", error);
-    console.error("Error Message:", error.message);
-    console.error("Stack Trace:", error.stack);
-    
-    return NextResponse.json(
-      { error: 'Failed to load assignment content' },
-      { status: 500 }
-    );
   }
 }

@@ -33,8 +33,45 @@ export default function VideoLecturePage() {
         
         console.log("Loading video lecture:", { lectureId, moduleId, moduleName });
         
-        // In a real implementation, this would call an API to get the lecture content
-        // For now, we'll use mock data
+        // Call our API to get the lecture content
+        const response = await fetch('/api/learning-module/lecture', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            lectureId,
+            moduleId,
+            moduleName,
+            userId: 'default-user' // This would be dynamically determined
+          }),
+        });
+        
+        console.log("Lecture API response status:", response.status);
+        
+        if (!response.ok) {
+          throw new Error('Failed to load lecture content');
+        }
+        
+        const data = await response.json();
+        console.log("Received lecture data:", data);
+        
+        const lectureData: VideoLecture = {
+          id: data.id || lectureId,
+          title: data.title || 'Video Lecture',
+          description: data.description || 'Learn the fundamentals of your chosen topic',
+          videoUrl: data.videoUrl || 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+          duration: data.duration || '15 minutes',
+          moduleId: data.moduleId || moduleId,
+          moduleName: data.moduleName || moduleName
+        };
+        
+        setLecture(lectureData);
+      } catch (err: any) {
+        console.error('Error loading lecture:', err);
+        setError('Failed to load the video lecture. Please try again.');
+        
+        // Fallback to mock data
         const mockLecture: VideoLecture = {
           id: lectureId,
           title: 'Video Lecture',
@@ -46,9 +83,6 @@ export default function VideoLecturePage() {
         };
         
         setLecture(mockLecture);
-      } catch (err: any) {
-        console.error('Error loading lecture:', err);
-        setError('Failed to load the video lecture. Please try again.');
       } finally {
         setLoading(false);
       }

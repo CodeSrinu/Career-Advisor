@@ -40,8 +40,55 @@ export default function TasksProjectsPage() {
         
         console.log("Loading task/project:", { taskId, projectId, moduleId, moduleName });
         
-        // In a real implementation, this would call an API to get the task/project content
-        // For now, we'll use mock data
+        // Determine which ID to use (taskId or projectId)
+        const itemId = taskId || projectId;
+        if (!itemId) {
+          throw new Error('No task or project ID specified');
+        }
+        
+        // Call our API to get the task/project content
+        const response = await fetch('/api/learning-module/project', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            projectId: itemId, // Using projectId parameter for both tasks and projects
+            moduleId,
+            moduleName,
+            userId: 'default-user' // This would be dynamically determined
+          }),
+        });
+        
+        console.log("Task/Project API response status:", response.status);
+        
+        if (!response.ok) {
+          throw new Error('Failed to load task/project content');
+        }
+        
+        const data = await response.json();
+        console.log("Received task/project data:", data);
+        
+        const taskProjectData: TaskProject = {
+          id: data.id || itemId,
+          title: data.title || 'Task/Project',
+          description: data.description || 'Complete this task/project',
+          type: data.type || (taskId ? 'task' : 'project'),
+          difficulty: data.difficulty || 'beginner',
+          estimatedTime: data.estimatedTime || '2 hours',
+          requirements: data.requirements || [],
+          instructions: data.instructions || [],
+          resources: data.resources || [],
+          moduleId: data.moduleId || moduleId,
+          moduleName: data.moduleName || moduleName
+        };
+        
+        setTaskProject(taskProjectData);
+      } catch (err: any) {
+        console.error('Error loading task/project:', err);
+        setError('Failed to load the task/project. Please try again.');
+        
+        // Fallback to mock data
         const mockTaskProject: TaskProject = {
           id: taskId || projectId,
           title: taskId ? 'Build a Personal Portfolio Website' : 'Create a Responsive Landing Page',
@@ -99,9 +146,6 @@ export default function TasksProjectsPage() {
         };
         
         setTaskProject(mockTaskProject);
-      } catch (err: any) {
-        console.error('Error loading task/project:', err);
-        setError('Failed to load the task/project. Please try again.');
       } finally {
         setLoading(false);
       }

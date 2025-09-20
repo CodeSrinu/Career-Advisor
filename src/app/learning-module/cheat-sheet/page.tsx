@@ -32,8 +32,44 @@ export default function CheatSheetPage() {
         
         console.log("Loading cheat sheet:", { cheatSheetId, moduleId, moduleName });
         
-        // In a real implementation, this would call an API to get the cheat sheet content
-        // For now, we'll use mock data
+        // Call our API to get the cheat sheet content
+        const response = await fetch('/api/learning-module/cheat-sheet', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            cheatSheetId,
+            moduleId,
+            moduleName,
+            userId: 'default-user' // This would be dynamically determined
+          }),
+        });
+        
+        console.log("Cheat Sheet API response status:", response.status);
+        
+        if (!response.ok) {
+          throw new Error('Failed to load cheat sheet content');
+        }
+        
+        const data = await response.json();
+        console.log("Received cheat sheet data:", data);
+        
+        const cheatSheetData: CheatSheet = {
+          id: data.id || cheatSheetId,
+          title: data.title || 'Cheat Sheet',
+          content: data.content || 'Content not available',
+          duration: data.duration || '10 minutes',
+          moduleId: data.moduleId || moduleId,
+          moduleName: data.moduleName || moduleName
+        };
+        
+        setCheatSheet(cheatSheetData);
+      } catch (err: any) {
+        console.error('Error loading cheat sheet:', err);
+        setError('Failed to load the cheat sheet. Please try again.');
+        
+        // Fallback to mock data
         const mockCheatSheet: CheatSheet = {
           id: cheatSheetId,
           title: 'Semantic HTML Elements - Cheat Sheet',
@@ -93,9 +129,6 @@ Semantic HTML elements clearly describe their meaning to both browsers and devel
         };
         
         setCheatSheet(mockCheatSheet);
-      } catch (err: any) {
-        console.error('Error loading cheat sheet:', err);
-        setError('Failed to load the cheat sheet. Please try again.');
       } finally {
         setLoading(false);
       }

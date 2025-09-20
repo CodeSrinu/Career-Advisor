@@ -1,5 +1,6 @@
 // src/app/api/learning-module/project/route.ts
 import { NextResponse } from 'next/server';
+import { POST as generateTaskContent } from '../task/content-route';
 
 interface ProjectRequest {
   projectId: string;
@@ -37,10 +38,48 @@ export async function POST(request: Request) {
 
     console.log("Project API called with:", { projectId: body.projectId, moduleId: body.moduleId, moduleName: body.moduleName });
     
-    // In a real implementation, this would fetch from a database
-    // For now, we'll return mock data
+    // Call the content generation API instead of using mock data
+    // We need to transform the request to match the task content-route interface
+    const contentRequest = new Request(request, {
+      body: JSON.stringify({
+        taskId: body.projectId,
+        taskTitle: body.moduleName, // Using moduleName as the task title for now
+        courseTitle: body.moduleName,
+        careerField: 'General', // This would be dynamically determined
+        userId: body.userId || 'default-user'
+      })
+    });
+    
+    const contentResponse = await generateTaskContent(contentRequest);
+    const contentData = await contentResponse.json();
+    
+    // Transform the content data to match our expected format
+    const projectContent: ProjectContent = {
+      id: contentData.content?.id || body.projectId,
+      title: contentData.content?.title || 'Project',
+      description: contentData.content?.description || `Complete this project to demonstrate your knowledge of ${body.moduleName}`,
+      type: contentData.content?.type || 'project',
+      difficulty: contentData.content?.difficulty || 'beginner',
+      estimatedTime: contentData.content?.estimatedTime || '2 hours',
+      requirements: contentData.content?.requirements || [],
+      instructions: contentData.content?.instructions || [],
+      resources: contentData.content?.resources || [],
+      moduleId: body.moduleId,
+      moduleName: body.moduleName
+    };
+    
+    return NextResponse.json(projectContent);
+    
+  } catch (error: any) {
+    console.error("=== ERROR IN PROJECT API ===");
+    console.error("Error:", error);
+    console.error("Error Message:", error.message);
+    console.error("Stack Trace:", error.stack);
+    
+    // Fallback to mock data if content generation fails
+    console.log("USING FALLBACK MOCK DATA");
     const mockProject: ProjectContent = {
-      id: body.projectId,
+      id: 'default',
       title: body.projectId.includes('tk') ? 'Build a Personal Portfolio Website' : 'Create a Responsive Landing Page',
       description: body.projectId.includes('tk') 
         ? 'Create a responsive personal portfolio website showcasing your skills and projects' 
@@ -48,8 +87,8 @@ export async function POST(request: Request) {
       type: body.projectId.includes('tk') ? 'task' : 'project',
       difficulty: 'beginner',
       estimatedTime: '2 hours',
-      moduleId: body.moduleId,
-      moduleName: body.moduleName,
+      moduleId: 'default',
+      moduleName: 'HTML Fundamentals',
       requirements: body.projectId.includes('tk') 
         ? [
             'Use semantic HTML elements',
@@ -96,16 +135,5 @@ export async function POST(request: Request) {
     };
     
     return NextResponse.json(mockProject);
-    
-  } catch (error: any) {
-    console.error("=== ERROR IN PROJECT API ===");
-    console.error("Error:", error);
-    console.error("Error Message:", error.message);
-    console.error("Stack Trace:", error.stack);
-    
-    return NextResponse.json(
-      { error: 'Failed to load project content' },
-      { status: 500 }
-    );
   }
 }
