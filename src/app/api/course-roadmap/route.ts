@@ -200,6 +200,14 @@ Your final output MUST be a single, clean, valid JSON object representing the en
       throw new Error("AI response does not have the expected structure");
     }
     
+    console.log("Learning units from AI response:", parsedResponse.learningUnits);
+    console.log("Number of learning units:", parsedResponse.learningUnits.length);
+    
+    // Log the types of learning units
+    parsedResponse.learningUnits.forEach((unit: any, index: number) => {
+      console.log(`Unit ${index}: type = ${unit.type}, title = ${unit.title}`);
+    });
+    
     console.log("Successfully parsed AI response");
     
     return NextResponse.json({ roadmap: parsedResponse });

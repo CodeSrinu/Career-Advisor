@@ -89,8 +89,28 @@ export default function LearningModulePage() {
         
         const data = await response.json();
         console.log("Received course roadmap data:", data);
+        console.log("Learning units from API:", data.roadmap.learningUnits);
         
         // Transform the course roadmap data to our internal format
+        const transformedModules = data.roadmap.learningUnits.map((unit: any, index: number) => {
+          const moduleType = unit.type === 'lecture' ? 'lecture' : 
+                            unit.type === 'task' ? 'assignment' : 
+                            unit.type === 'quiz' ? 'quiz' : 'cheat-sheet';
+          
+          console.log(`Transforming unit ${index}: ${unit.type} -> ${moduleType}`);
+          
+          return {
+            id: `unit_${index}`,
+            type: moduleType,
+            title: unit.title,
+            description: unit.description || `Learn ${unit.title}`,
+            duration: unit.duration || '20 min', // This would be dynamically determined
+            status: index === 0 ? 'available' : 'locked' // Only first item is available initially
+          };
+        });
+        
+        console.log("Transformed modules:", transformedModules);
+        
         const transformedModule: LearningModule = {
           id: nodeId,
           title: data.roadmap.courseTitle,
@@ -98,19 +118,8 @@ export default function LearningModulePage() {
           duration: '2 weeks', // This would be dynamically determined
           difficulty: 'beginner', // This would be dynamically determined
           progress: 0, // Start at 0% since this is a new course
-          modules: data.roadmap.learningUnits.map((unit: any, index: number) => ({
-            id: `unit_${index}`,
-            type: unit.type === 'lecture' ? 'lecture' : 
-                  unit.type === 'task' ? 'assignment' : 
-                  unit.type === 'quiz' ? 'quiz' : 'cheat-sheet',
-            title: unit.title,
-            description: unit.description || `Learn ${unit.title}`,
-            duration: unit.duration || '20 min', // This would be dynamically determined
-            status: index === 0 ? 'available' : 'locked' // Only first item is available initially
-          }))
+          modules: transformedModules
         };
-        
-        setLearningModule(transformedModule);
       } catch (err: any) {
         console.error('Error loading learning module:', err);
         setError('Failed to load the learning module. Please try again.');
