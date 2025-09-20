@@ -24,6 +24,7 @@ interface LearningContentModule {
 }
 
 export default function LearningModulePage() {
+  console.log("LearningModulePage component mounting");
   const router = useRouter();
   const searchParams = useSearchParams();
   const nodeId = searchParams.get('nodeId') || '';
@@ -34,8 +35,11 @@ export default function LearningModulePage() {
   const [learningModule, setLearningModule] = useState<LearningModule | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
+  console.log("Component rendered with learningModule:", learningModule);
 
   useEffect(() => {
+    console.log("useEffect called with:", { nodeId, roleId, roleName, domainId });
     const loadLearningModule = async () => {
       try {
         setLoading(true);
@@ -89,7 +93,8 @@ export default function LearningModulePage() {
         
         const data = await response.json();
         console.log("Received course roadmap data:", data);
-        console.log("Learning units from API:", data.roadmap.learningUnits);
+        console.log("Full roadmap data:", JSON.stringify(data, null, 2));
+        console.log("Syllabus from API:", data.roadmap.syllabus);
         
         // Transform the course roadmap data to our internal format
         const transformedModules = data.roadmap.syllabus.map((unit: any, index: number) => {
@@ -118,6 +123,10 @@ export default function LearningModulePage() {
           progress: 0, // Start at 0% since this is a new course
           modules: transformedModules
         };
+        
+        console.log("Setting learning module state:", transformedModule);
+        setLearningModule(transformedModule);
+        console.log("Called setLearningModule");
       } catch (err: any) {
         console.error('Error loading learning module:', err);
         setError('Failed to load the learning module. Please try again.');
@@ -177,6 +186,11 @@ export default function LearningModulePage() {
     } else {
       setError('No module specified');
     }
+    
+    // Cleanup function
+    return () => {
+      console.log("useEffect cleanup called");
+    };
   }, [nodeId, roleId, roleName, domainId]);
 
   const handleBack = () => {
