@@ -35,7 +35,7 @@ export async function POST(request: Request) {
 
     console.log("Lecture API called with:", { lectureId: body.lectureId, moduleId: body.moduleId, moduleName: body.moduleName });
     
-    // In a real implementation, this would fetch from a database
+    // In a real implementation, this would fetch from a database or generate content on-demand
     // For now, we'll return mock data
     const mockLecture: LectureContent = {
       id: body.lectureId,

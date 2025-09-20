@@ -43,7 +43,7 @@ export default function LearningModulePage() {
         
         console.log("Loading learning module for:", { nodeId, roleId, roleName, domainId });
         
-        // Call our API to generate the course roadmap
+        // Call our API to generate the course roadmap (Phase 1 - AI Architect)
         const response = await fetch('/api/course-roadmap', {
           method: 'POST',
           headers: {
@@ -72,7 +72,7 @@ export default function LearningModulePage() {
           description: `A comprehensive guide to ${data.roadmap.courseTitle}.`,
           duration: '2 weeks', // This would be dynamically determined
           difficulty: 'beginner', // This would be dynamically determined
-          progress: 40, // This would be dynamically determined
+          progress: 0, // Start at 0% since this is a new course
           modules: data.roadmap.learningUnits.map((unit: any, index: number) => ({
             id: `unit_${index}`,
             type: unit.type === 'lecture' ? 'lecture' : 
@@ -80,8 +80,8 @@ export default function LearningModulePage() {
                   unit.type === 'quiz' ? 'quiz' : 'cheat-sheet',
             title: unit.title,
             description: unit.description || `Learn ${unit.title}`,
-            duration: '20 min', // This would be dynamically determined
-            status: index === 0 ? 'available' : index < 3 ? 'completed' : 'locked'
+            duration: unit.duration || '20 min', // This would be dynamically determined
+            status: index === 0 ? 'available' : 'locked' // Only first item is available initially
           }))
         };
         
@@ -97,54 +97,38 @@ export default function LearningModulePage() {
           description: 'A comprehensive guide to modern web development.',
           duration: '2 weeks',
           difficulty: 'beginner',
-          progress: 40,
+          progress: 0,
           modules: [
             {
-              id: 'lecture1',
+              id: 'lec_1',
               type: 'lecture',
-              title: 'Lecture 1: Semantic HTML',
-              description: 'Learn the fundamentals of semantic HTML tags and their proper usage.',
+              title: 'Semantic HTML & The DOM',
+              description: 'Learn the fundamentals of semantic HTML tags and the Document Object Model.',
               duration: '20 min',
-              status: 'completed'
-            },
-            {
-              id: 'cheat1',
-              type: 'cheat-sheet',
-              title: 'Cheat Sheet: HTML Tags',
-              description: 'Quick reference guide for commonly used HTML tags and attributes.',
-              duration: '10 min',
-              status: 'completed'
-            },
-            {
-              id: 'quiz1',
-              type: 'quiz',
-              title: 'Quiz 1: HTML Basics',
-              description: 'Test your knowledge of HTML fundamentals.',
-              duration: '15 min',
               status: 'available'
             },
             {
-              id: 'lecture2',
+              id: 'task_1',
+              type: 'assignment',
+              title: 'Task: Build a Sign-Up Form',
+              description: 'Create a responsive sign-up form using semantic HTML elements.',
+              duration: '30 min',
+              status: 'locked'
+            },
+            {
+              id: 'lec_2',
               type: 'lecture',
-              title: 'Lecture 2: CSS Fundamentals',
-              description: 'Introduction to CSS styling and selectors.',
+              title: 'HTML Forms & Input Tags',
+              description: 'Master HTML forms and various input types for user interaction.',
               duration: '25 min',
               status: 'locked'
             },
             {
-              id: 'cheat2',
-              type: 'cheat-sheet',
-              title: 'Cheat Sheet: CSS Selectors',
-              description: 'Comprehensive guide to CSS selectors and their usage.',
-              duration: '12 min',
-              status: 'locked'
-            },
-            {
-              id: 'quiz2',
+              id: 'quiz_1',
               type: 'quiz',
-              title: 'Quiz 2: CSS Styling',
-              description: 'Test your knowledge of CSS styling techniques.',
-              duration: '20 min',
+              title: 'Quiz 1: HTML Fundamentals',
+              description: 'Test your knowledge of HTML fundamentals and semantic elements.',
+              duration: '15 min',
               status: 'locked'
             }
           ]
@@ -167,11 +151,38 @@ export default function LearningModulePage() {
     router.back();
   };
 
-  const handleStartModule = (moduleId: string) => {
-    // In a real implementation, you would navigate to the specific module
-    alert(`Starting module: ${moduleId}
-
-In a full implementation, you would begin this learning activity.`);
+  const handleStartModule = (moduleId: string, moduleType: string) => {
+    // Navigate to the specific module type page with proper parameters
+    // Map our internal types to the actual directory names
+    const pathMap: Record<string, string> = {
+      'video-lecture': 'video-lecture',
+      'cheat-sheet': 'cheat-sheet',
+      'quiz': 'quiz',
+      'tasks-projects': 'tasks-projects',
+      'assignment': 'assignment',
+      'lecture': 'video-lecture'
+    };
+    
+    const actualPath = pathMap[moduleType] || moduleType;
+    const basePath = `/learning-module/${actualPath}`;
+    
+    // Find the module in our data to get its title and other details
+    const module = learningModule?.modules.find(m => m.id === moduleId);
+    
+    if (module) {
+      const params = new URLSearchParams({
+        moduleId: moduleId,
+        moduleName: learningModule?.title || '',
+        [`${module.type}Id`]: moduleId, // Specific ID for the module type
+        title: module.title,
+        description: module.description || ''
+      }).toString();
+      
+      router.push(`${basePath}?${params}`);
+    } else {
+      // Fallback if we can't find the module
+      router.push(`${basePath}?moduleId=${moduleId}`);
+    }
   };
 
   if (loading) {
@@ -269,7 +280,6 @@ In a full implementation, you would begin this learning activity.`);
       case 'quiz':
         return 'help_outline';
       case 'project':
-        return 'code';
       case 'assignment':
         return 'assignment';
       default:
@@ -319,6 +329,24 @@ In a full implementation, you would begin this learning activity.`);
     }
   };
 
+  // Map our module types to directory names for navigation
+  const getModuleTypePath = (type: string) => {
+    switch (type) {
+      case 'lecture':
+        return 'video-lecture';
+      case 'cheat-sheet':
+        return 'cheat-sheet';
+      case 'quiz':
+        return 'quiz';
+      case 'project':
+        return 'tasks-projects';
+      case 'assignment':
+        return 'tasks-projects';
+      default:
+        return 'video-lecture';
+    }
+  };
+
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col justify-between group/design-root overflow-x-hidden" style={{ fontFamily: "'Space Grotesk', 'Noto Sans', sans-serif" }}>
       <div className="flex-grow">
@@ -335,7 +363,7 @@ In a full implementation, you would begin this learning activity.`);
               </svg>
             </button>
             <h1 className="text-gray-800 text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">
-              Course Dashboard
+              {learningModule.title}
             </h1>
           </div>
         </header>
@@ -348,17 +376,17 @@ In a full implementation, you would begin this learning activity.`);
               {/* Progress Circle */}
               <div className="relative size-24">
                 <svg className="size-full" height="36" viewBox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg">
-                  <circle className="stroke-gray-200" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+                  <circle className="stroke-gray-200" cx="18" cy="18" fill="none" r="16" strokeWidth="3"></circle>
                   <circle 
                     className="stroke-green-500" 
                     cx="18" 
                     cy="18" 
                     fill="none" 
                     r="16" 
-                    stroke-dasharray="100" 
-                    stroke-dashoffset={100 - learningModule.progress} 
-                    stroke-linecap="round" 
-                    stroke-width="3" 
+                    strokeDasharray="100" 
+                    strokeDashoffset={100 - learningModule.progress} 
+                    strokeLinecap="round" 
+                    strokeWidth="3" 
                     transform="rotate(-90 18 18)"
                   ></circle>
                 </svg>
@@ -371,7 +399,7 @@ In a full implementation, you would begin this learning activity.`);
               {/* Module Info */}
               <div className="flex-1">
                 <h2 className="text-gray-800 text-xl font-bold leading-tight tracking-[-0.015em]">
-                  {learningModule.title}
+                  Course Dashboard
                 </h2>
                 <p className="text-gray-600 text-sm font-normal leading-normal mt-1">
                   {learningModule.description}
@@ -380,15 +408,16 @@ In a full implementation, you would begin this learning activity.`);
             </div>
           </div>
 
-          {/* Learning Modules List */}
+          {/* Learning Modules List - Phase 2 items */}
           <div className="space-y-3">
+            <h3 className="text-lg font-bold text-gray-800">Learning Path</h3>
             {learningModule.modules.map((module) => (
               <div 
                 key={module.id}
                 className={`flex cursor-pointer items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all hover:shadow-md ${
                   module.status === 'locked' ? 'opacity-70' : ''
                 }`}
-                onClick={() => module.status !== 'locked' && handleStartModule(module.id)}
+                onClick={() => module.status !== 'locked' && handleStartModule(module.id, getModuleTypePath(module.type))}
               >
                 {/* Module Icon */}
                 <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${getIconColor(module.status)}`}>
@@ -404,6 +433,19 @@ In a full implementation, you would begin this learning activity.`);
                   }`}>
                     {module.title}
                   </p>
+                  {module.description && (
+                    <p className={`text-sm mt-1 ${
+                      module.status === 'locked' ? 'text-gray-400' : 'text-gray-600'
+                    }`}>
+                      {module.description}
+                    </p>
+                  )}
+                  {module.duration && (
+                    <div className="flex items-center mt-1">
+                      <span className="material-symbols-outlined text-gray-400 text-sm mr-1">schedule</span>
+                      <span className="text-xs text-gray-500">{module.duration}</span>
+                    </div>
+                  )}
                 </div>
                 
                 {/* Status Icon */}

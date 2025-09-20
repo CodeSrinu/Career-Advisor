@@ -90,7 +90,7 @@ export default function VideoLecturePage() {
           <div className="flex items-center">
             <button 
               onClick={handleBack}
-              className="text-gray-800"
+              className="text-[#333d33]"
             >
               <span className="material-symbols-outlined text-3xl">arrow_back</span>
             </button>
@@ -100,17 +100,17 @@ export default function VideoLecturePage() {
         <main className="flex-grow flex flex-col px-4 space-y-4">
           <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-200 animate-pulse"></div>
           <div className="flex space-x-4">
-            <div className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-gray-100 rounded-lg text-gray-400 text-base font-semibold animate-pulse">
+            <div className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-[#f2fbf2] rounded-lg text-[#333d33] text-base font-semibold animate-pulse">
               <span className="material-symbols-outlined">edit</span>
               <span>Write a Note</span>
             </div>
-            <div className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-gray-100 rounded-lg text-gray-400 text-base font-semibold animate-pulse">
+            <div className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-[#f2fbf2] rounded-lg text-[#333d33] text-base font-semibold animate-pulse">
               <span className="material-symbols-outlined">help_outline</span>
               <span>Post a Doubt</span>
             </div>
           </div>
           <div className="flex justify-center pt-2">
-            <div className="flex items-center gap-2 rounded-full py-2 px-6 bg-gray-100 text-gray-400 text-base font-semibold animate-pulse">
+            <div className="flex items-center gap-2 rounded-full py-2 px-6 bg-[#f2fbf2] text-[#333d33] text-base font-semibold animate-pulse">
               <span className="material-symbols-outlined">description</span>
               <span>View Transcription</span>
             </div>
@@ -137,7 +137,7 @@ export default function VideoLecturePage() {
           <h1 className="text-2xl font-bold text-gray-800 mb-2">Error Loading Lecture</h1>
           <p className="text-gray-600 mb-6">{error}</p>
           <button
-            className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+            className="px-4 py-2 bg-[#06f906] text-black rounded-full hover:bg-[#05e005] transition-colors font-bold"
             onClick={handleBack}
           >
             Back to Course
@@ -154,7 +154,7 @@ export default function VideoLecturePage() {
           <h1 className="text-2xl font-bold text-gray-800 mb-2">Lecture Not Found</h1>
           <p className="text-gray-600 mb-6">The requested video lecture could not be found.</p>
           <button
-            className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+            className="px-4 py-2 bg-[#06f906] text-black rounded-full hover:bg-[#05e005] transition-colors font-bold"
             onClick={handleBack}
           >
             Back to Course
@@ -165,16 +165,16 @@ export default function VideoLecturePage() {
   }
 
   return (
-    <div className="flex h-screen flex-col bg-white" style={{ fontFamily: "'Space Grotesk', 'Noto Sans', sans-serif" }}>
+    <div className="flex h-screen flex-col bg-[#ffffff] font-sans text-[#333d33]">
       <header className="p-4 flex-shrink-0">
         <div className="flex items-center">
           <button 
             onClick={handleBack}
-            className="text-gray-800"
+            className="text-[#333d33]"
           >
             <span className="material-symbols-outlined text-3xl">arrow_back</span>
           </button>
-          <h1 className="text-xl font-bold text-center flex-grow -ml-8">{lecture.title}</h1>
+          <h1 className="text-xl font-bold text-center flex-grow -ml-8">Video Lecture</h1>
         </div>
       </header>
       <main className="flex-grow flex flex-col px-4 space-y-4">
@@ -191,14 +191,14 @@ export default function VideoLecturePage() {
         <div className="flex space-x-4">
           <button 
             onClick={handleWriteNote}
-            className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-green-50 rounded-lg text-gray-800 text-base font-semibold"
+            className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-[#f2fbf2] rounded-lg text-[#333d33] text-base font-semibold"
           >
             <span className="material-symbols-outlined">edit</span>
             <span>Write a Note</span>
           </button>
           <button 
             onClick={handlePostDoubt}
-            className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-green-50 rounded-lg text-gray-800 text-base font-semibold"
+            className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-[#f2fbf2] rounded-lg text-[#333d33] text-base font-semibold"
           >
             <span className="material-symbols-outlined">help_outline</span>
             <span>Post a Doubt</span>
@@ -207,17 +207,17 @@ export default function VideoLecturePage() {
         <div className="flex justify-center pt-2">
           <button 
             onClick={handleViewTranscription}
-            className="flex items-center gap-2 rounded-full py-2 px-6 bg-green-50 text-gray-800 text-base font-semibold"
+            className="flex items-center gap-2 rounded-full py-2 px-6 bg-[#f2fbf2] text-[#333d33] text-base font-semibold"
           >
             <span className="material-symbols-outlined">description</span>
             <span>View Transcription</span>
           </button>
         </div>
       </main>
-      <footer className="p-4 sticky bottom-0 bg-white">
+      <footer className="p-4 sticky bottom-0 bg-[#ffffff]">
         <button 
           onClick={handleNext}
-          className="w-full rounded-full py-4 px-6 bg-green-500 text-black text-lg font-bold hover:bg-green-600 transition-colors"
+          className="w-full rounded-full py-4 px-6 bg-[#06f906] text-black text-lg font-bold"
         >
           Next: View Cheat Sheet →
         </button>
