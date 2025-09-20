@@ -23,32 +23,18 @@ interface QuizQuestion {
 }
 
 interface LearningUnit {
-  type: 'lecture' | 'task' | 'quiz';
+  type: 'lecture' | 'task';
+  id: string;
   title: string;
-  description?: string;
-  videoResource?: VideoResource;
-  cheatSheet?: string;
-  quiz?: QuizQuestion[];
-  practicalTask?: string;
-}
-
-interface MajorProject {
-  title: string;
-  description: string;
-}
-
-interface FinalExamQuestion {
-  question: string;
-  options: string[];
-  correctAnswer: string;
-  explanation: string;
+  videoUrl?: string;
+  problemStatement?: string;
+  requirements?: string[];
 }
 
 interface CourseRoadmap {
   courseTitle: string;
-  learningUnits: LearningUnit[];
-  majorProject: MajorProject;
-  finalExam: FinalExamQuestion[];
+  complexityLevel: string;
+  syllabus: LearningUnit[];
 }
 
 interface GenerateCourseRoadmapResponse {
@@ -86,80 +72,59 @@ export async function POST(request: Request) {
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     
-    // PROMPT FOR GENERATING COURSE ROADMAP - AI TUTOR
+    // PROMPT FOR GENERATING COURSE ROADMAP - AI ARCHITECT (PHASE 1)
     // This prompt is designed to create a comprehensive learning roadmap for a single course
     const prompt = `ROLE:
-You are a lead curriculum designer and a senior ${body.careerField} with 15+ years of real-world experience. You are creating a course module on "${body.courseTitle}". Your primary goal is to teach not just the theory, but the practical, real-world truths that can only be learned on the job or from deep community discussions.
+You are an expert curriculum planner and senior ${body.careerField} professional. Your task is to design a complete structural syllabus for a course on "${body.courseTitle}" at a beginner level.
 
 CONTEXT:
-A student is about to start the course titled "${body.courseTitle}". Your task is to generate the complete, detailed curriculum for this single course. You must act as an expert who is actively connected to the professional community.
+A student is about to start this course. You must create a logical, step-by-step learning plan that takes them from their current level to proficiency in this specific topic. The course must be built around high-quality educational YouTube videos and practical, hands-on tasks.
 
 TASK:
-Generate a complete, structured course module. The curriculum must be dynamic; you will determine the necessary number of lectures, tasks, and their sequence based on the topic's real-world complexity.
+Generate a JSON object that defines the complete syllabus for this course. Your task is to decide the correct sequence of lectures (with YouTube videos) and practical tasks.
 
-Perform Real-Time Research: Before generating the content, actively search for current discussions, tutorials, and expert opinions on this topic from platforms like YouTube, Reddit (e.g., r/cscareerquestions, r/uidesign), Medium, Twitter, and top-tier technical blogs. Your goal is to find the most effective teaching resources and the most common "pain points" beginners face right now.
+ANALYZE THE TOPIC: Break down the course topic into a logical sequence of individual lecture subjects appropriate for the beginner level.
 
-Generate a Dynamic Curriculum: Based on your research, create a logical learning path. The curriculum is a continuous flow of lectures, cheat sheets, quizzes, and tasks. It is not a fixed number of lectures. You will insert tasks and quizzes wherever they are most effective for reinforcing a concept.
+FIND HIGH-QUALITY VIDEO RESOURCES: For each lecture, you must find a specific, high-quality YouTube video link.
 
-For Each Learning Unit (Lecture/Concept), you MUST provide:
+Prioritize Reputable Sources: Your primary choices should be videos from official documentation channels (e.g., Google for Developers), renowned university lectures (e.g., NPTEL, Stanford), or creators highly regarded by the professional community (e.g., freeCodeCamp, Programming with Mosh, Fireship, The Net Ninja).
 
-videoResource: Based on your research, recommend one specific, high-quality YouTube video that is highly praised by the community for teaching this concept. Provide the title and channel.
+Ensure Relevance & Clarity: The video must directly and clearly teach the lecture's subject and be suitable for the specified beginner level.
 
-cheatSheet: This is the most critical component. Create a detailed, NxtWave-style "Cheat Sheet." It must be a "super-summary" that:
-
-Summarizes the core concepts.
-
-Adds 20-30% more value, including detailed code snippets or examples.
-
-Critically, it must include "Insider Tips & Common Pitfalls" that you discovered from your research on Reddit, Twitter, and blogs. This is where you provide the mentor's wisdom.
-
-quiz: A multiple-choice quiz to test understanding.
-
-practicalTask: A hands-on exercise to apply the knowledge.
-
-Conclude with a Major Project & Final Exam: The course must end with:
-
-A realistic majorProject that a junior professional would be expected to build.
-
-A comprehensive finalExam.
+PLACE PRACTICAL TASKS: Strategically insert task nodes between lectures. These tasks must be designed to test the knowledge from the lectures that came just before them. Each task must be structured as a professional project brief.
 
 OUTPUT FORMAT:
-Your final output MUST be a single, clean, valid JSON object representing the entire dynamic curriculum.
+Your final output MUST be a single, clean, valid JSON object representing the course syllabus.
+
+JSON
 
 {
   "courseTitle": "${body.courseTitle}",
-  "learningUnits": [
+  "complexityLevel": "beginner",
+  "syllabus": [
     {
       "type": "lecture",
-      "title": "Variables, Data Types, and Operators",
-      "videoResource": {
-        "title": "JavaScript Variables - Beau teaches JavaScript",
-        "channel": "freeCodeCamp.org"
-      },
-      "cheatSheet": "...",
-      "quiz": [ ... ]
+      "id": "lec_1",
+      "title": "Lecture Title 1",
+      "videoUrl": "https://www.youtube.com/watch?v=..."
+    },
+    {
+      "type": "lecture",
+      "id": "lec_2",
+      "title": "Lecture Title 2",
+      "videoUrl": "https://www.youtube.com/watch?v=..."
     },
     {
       "type": "task",
-      "title": "Task: The Calculator",
-      "description": "Build a simple calculator function that uses different operators."
-    },
-    {
-      "type": "lecture",
-      "title": "Functions and Scope",
-      "videoResource": {
-        "title": "JavaScript Functions - Mosh Hamedani",
-        "channel": "Programming with Mosh"
-      },
-      "cheatSheet": "### Pro-Tip from Reddit:\nMany beginners get confused by 'hoisting'. A simple rule to remember is to always declare your functions and variables at the top of their scope to avoid unexpected behavior...",
-      "quiz": [ ... ]
+      "id": "task_1",
+      "title": "Practical Task Title",
+      "problemStatement": "A clear, real-world problem the user needs to solve.",
+      "requirements": [
+        "A bulleted list of specific requirement #1.",
+        "A bulleted list of specific requirement #2."
+      ]
     }
-  ],
-  "majorProject": {
-    "title": "Build a Dynamic To-Do List App",
-    "description": "Create a functional to-do list application where a user can add, delete, and mark tasks as complete. This will test your knowledge of functions, DOM manipulation, and event listeners."
-  },
-  "finalExam": [ ... ]
+  ]
 }`;
 
     console.log("Sending prompt to AI:");
@@ -195,17 +160,17 @@ Your final output MUST be a single, clean, valid JSON object representing the en
     const parsedResponse = JSON.parse(jsonString);
     
     // Validate that the response has the expected structure
-    if (!parsedResponse.courseTitle || !parsedResponse.learningUnits || !Array.isArray(parsedResponse.learningUnits)) {
+    if (!parsedResponse.courseTitle || !parsedResponse.syllabus || !Array.isArray(parsedResponse.syllabus)) {
       console.log("ERROR: AI response does not have the expected structure");
       throw new Error("AI response does not have the expected structure");
     }
     
-    console.log("Learning units from AI response:", parsedResponse.learningUnits);
-    console.log("Number of learning units:", parsedResponse.learningUnits.length);
+    console.log("Syllabus from AI response:", parsedResponse.syllabus);
+    console.log("Number of syllabus items:", parsedResponse.syllabus.length);
     
-    // Log the types of learning units
-    parsedResponse.learningUnits.forEach((unit: any, index: number) => {
-      console.log(`Unit ${index}: type = ${unit.type}, title = ${unit.title}`);
+    // Log the types of syllabus items
+    parsedResponse.syllabus.forEach((unit: any, index: number) => {
+      console.log(`Syllabus item ${index}: type = ${unit.type}, title = ${unit.title}`);
     });
     
     console.log("Successfully parsed AI response");
@@ -233,50 +198,23 @@ Your final output MUST be a single, clean, valid JSON object representing the en
 function getDefaultCourseRoadmap(courseTitle: string, careerField: string): CourseRoadmap {
   return {
     courseTitle: courseTitle,
-    learningUnits: [
+    complexityLevel: "beginner",
+    syllabus: [
       {
         type: "lecture",
+        id: "lec_1",
         title: "Introduction to " + courseTitle,
-        videoResource: {
-          title: "Getting Started with " + courseTitle,
-          channel: "Expert Channel"
-        },
-        cheatSheet: "### Key Concepts\n- Basic terminology\n- Fundamental principles\n\n### Pro Tips\n- Start with simple examples\n- Practice regularly\n\n### Common Pitfalls\n- Don't skip fundamentals\n- Avoid copying without understanding",
-        quiz: [
-          {
-            question: "What is the most important aspect of learning " + courseTitle + "?",
-            options: [
-              "Memorizing syntax",
-              "Understanding concepts",
-              "Watching videos",
-              "Reading documentation"
-            ],
-            correctAnswer: "Understanding concepts",
-            explanation: "Understanding concepts is more important than memorizing syntax."
-          }
-        ]
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       },
       {
         type: "task",
+        id: "task_1",
         title: "Hands-on Exercise",
-        description: "Complete a basic exercise to practice what you've learned."
-      }
-    ],
-    majorProject: {
-      title: "Capstone Project",
-      description: "Build a comprehensive project that demonstrates your understanding of " + courseTitle
-    },
-    finalExam: [
-      {
-        question: "What is the key takeaway from this course?",
-        options: [
-          "Syntax memorization",
-          "Conceptual understanding",
-          "Tool usage",
-          "Framework knowledge"
-        ],
-        correctAnswer: "Conceptual understanding",
-        explanation: "Conceptual understanding is the foundation for long-term success."
+        problemStatement: "Complete a basic exercise to practice what you've learned.",
+        requirements: [
+          "Follow the instructions provided",
+          "Submit your completed work"
+        ]
       }
     ]
   };

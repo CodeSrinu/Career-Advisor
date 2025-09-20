@@ -92,18 +92,16 @@ export default function LearningModulePage() {
         console.log("Learning units from API:", data.roadmap.learningUnits);
         
         // Transform the course roadmap data to our internal format
-        const transformedModules = data.roadmap.learningUnits.map((unit: any, index: number) => {
-          const moduleType = unit.type === 'lecture' ? 'lecture' : 
-                            unit.type === 'task' ? 'assignment' : 
-                            unit.type === 'quiz' ? 'quiz' : 'cheat-sheet';
+        const transformedModules = data.roadmap.syllabus.map((unit: any, index: number) => {
+          const moduleType = unit.type === 'lecture' ? 'lecture' : 'assignment';
           
-          console.log(`Transforming unit ${index}: ${unit.type} -> ${moduleType}`);
+          console.log(`Transforming syllabus item ${index}: ${unit.type} -> ${moduleType}`);
           
           return {
-            id: `unit_${index}`,
+            id: unit.id || `unit_${index}`,
             type: moduleType,
             title: unit.title,
-            description: unit.description || `Learn ${unit.title}`,
+            description: unit.problemStatement || unit.description || `Learn ${unit.title}`,
             duration: unit.duration || '20 min', // This would be dynamically determined
             status: index === 0 ? 'available' : 'locked' // Only first item is available initially
           };
@@ -158,11 +156,11 @@ export default function LearningModulePage() {
               status: 'locked'
             },
             {
-              id: 'quiz_1',
-              type: 'quiz',
-              title: 'Quiz 1: HTML Fundamentals',
-              description: 'Test your knowledge of HTML fundamentals and semantic elements.',
-              duration: '15 min',
+              id: 'task_2',
+              type: 'assignment',
+              title: 'Task: Create a Contact Page',
+              description: 'Build a complete contact page with form validation.',
+              duration: '35 min',
               status: 'locked'
             }
           ]
