@@ -93,7 +93,6 @@ export default function LearningModulePage() {
         
         const data = await response.json();
         console.log("Received course roadmap data:", data);
-        console.log("Full roadmap data:", JSON.stringify(data, null, 2));
         console.log("Checking data structure:");
         console.log("- data.roadmap:", data.roadmap);
         console.log("- data.roadmap.syllabus:", data.roadmap?.syllabus);
