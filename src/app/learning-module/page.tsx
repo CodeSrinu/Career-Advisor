@@ -129,6 +129,7 @@ export default function LearningModulePage() {
         console.log("Setting learning module state:", transformedModule);
         setLearningModule(transformedModule);
         console.log("Called setLearningModule");
+        setLoading(false);
       } catch (err: any) {
         console.error('Error loading learning module:', err);
         setError('Failed to load the learning module. Please try again.');
@@ -178,7 +179,6 @@ export default function LearningModulePage() {
         };
         
         setLearningModule(mockModule);
-      } finally {
         setLoading(false);
       }
     };
