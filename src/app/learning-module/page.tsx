@@ -94,7 +94,10 @@ export default function LearningModulePage() {
         const data = await response.json();
         console.log("Received course roadmap data:", data);
         console.log("Full roadmap data:", JSON.stringify(data, null, 2));
-        console.log("Syllabus from API:", data.roadmap.syllabus);
+        console.log("Checking data structure:");
+        console.log("- data.roadmap:", data.roadmap);
+        console.log("- data.roadmap.syllabus:", data.roadmap?.syllabus);
+        console.log("- data.roadmap.learningUnits:", data.roadmap?.learningUnits);
         
         // Transform the course roadmap data to our internal format
         const transformedModules = data.roadmap.syllabus.map((unit: any, index: number) => {
