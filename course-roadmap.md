@@ -1,88 +1,162 @@
-Your task is to implement the "AI Tutor" phase. This is the most complex and valuable part of our AI system. It must be triggered on-demand whenever a user starts a new course node. Your implementation will use the powerful Gemini prompt below to generate a complete, NxtWave-style curriculum for that single course. The key innovation is that the AI must act as a real-world expert, grounding its content in genuine, up-to-the-minute information and sentiment from across the internet.
+You are the lead architect for our application, "Career Quest." Your task is to implement our core AI-powered curriculum generation system. The system must be dynamic, personalized, and act as an expert mentor. The key is a sophisticated, multi-step, just-in-time pipeline that generates the roadmap structure first, and then the detailed content for each step (including lectures and tasks) on demand.
 
-The Gemini "AI Tutor" Master Prompt
-ROLE:
-You are a lead curriculum designer and a senior [User's Chosen Career Goal] with 15+ years of real-world experience. You are creating a course module on "[Title of the Course Node]". Your primary goal is to teach not just the theory, but the practical, real-world truths that can only be learned on the job or from deep community discussions.
+The Core Philosophy: A Two-Phase "AI Mentor" System
+The system operates in two distinct phases:
+
+Phase 1: The "AI Architect" – Generates the high-level structural syllabus for an entire course.
+
+Phase 2: The "AI Tutor" – Generates the deep, detailed content for a single item within that syllabus (either a lecture or a task) just-in-time.
+
+The New User & System Flow (Implement This Exact Sequence):
+Step 1: The Course Syllabus Generation (The Architect's Job)
+
+Trigger: A user clicks on a new, locked Course Node (e.g., "HTML & CSS Deep Dive") in their main Career Roadmap.
+
+Action: Your system must make a first, lightweight API call to our "AI Architect."
+
+Goal: The AI's task is to act as an expert curriculum planner. It must analyze the course topic and generate the high-level structural syllabus for the entire course. The AI must return a JSON object containing a logically sequenced list of all the video lectures AND all the practical tasks for the course, correctly placed between the relevant lectures. For example, a task like "Create a Registration Form" should come after the lectures on HTML forms.
+
+Result: The frontend renders the "Course Dashboard" screen. The user can see the entire curriculum of lectures and tasks laid out in order, but only the very first video lecture is unlocked and clickable.
+
+Step 2: Just-in-Time Content Generation for a LECTURE (The Tutor's Job)
+
+Trigger: A user clicks on a "Video Lecture" card in the Course Dashboard.
+
+Action: Make a specific API call to our "AI Tutor."
+
+Goal: Provide the AI with the title of the lecture. The AI's task is to generate the detailed content for this lecture, including:
+
+A specific, high-quality YouTube video link.
+
+An on-demand, cleanly formatted video transcript (if the user requests it).
+
+A detailed Cheat Sheet (the "super-summary" with 20-30% extra value, pro-tips, and examples synthesized from the transcript and external research).
+
+A Quiz to test understanding.
+
+Result: The frontend populates the "Video Lecture," "Cheat Sheet," and "Quiz" screens with this just-generated content.
+
+Step 3: Just-in-Time Content Generation for a TASK (The Tutor's Job, different hat)
+
+Trigger: A user completes the prerequisite lectures and clicks on a "Task" card in the Course Dashboard.
+
+Action: Make another specific API call to our "AI Tutor."
+
+Goal: Provide the AI with the title of the task. The AI's task is to generate a detailed project brief for this practical task. This should include:
+
+A clear Problem Statement.
+
+A checklist of specific Requirements.
+
+For coding tasks, an external link to a platform like LeetCode or a suggestion to use a local editor.
+
+For design tasks, a file upload component.
+
+Result: The frontend populates the "Practical Task / Test" screen with this detailed, professional-style project brief.
+
+Step 4: The Loop Continues
+
+After the user completes a quiz or submits a task, the next item in the Course Dashboard's syllabus unlocks.
+
+This highly effective cycle of just-in-time generation continues until the user has completed all the lectures and tasks in the course.
+
+
+Prompt 1: ROLE:
+You are an expert curriculum planner and senior {{course_topic}} professional. Your task is to design a complete structural syllabus for a course on "{{course_topic}}" at a {{complexity_level}} level.
 
 CONTEXT:
-A student is about to start the course titled "[Title of the Course Node]". Your task is to generate the complete, detailed curriculum for this single course. You must act as an expert who is actively connected to the professional community.
+A student is about to start this course. You must create a logical, step-by-step learning plan that takes them from their current level to proficiency in this specific topic. The course must be built around high-quality educational YouTube videos and practical, hands-on tasks.
 
 TASK:
-Generate a complete, structured course module. The curriculum must be dynamic; you will determine the necessary number of lectures, tasks, and their sequence based on the topic's real-world complexity.
+Generate a JSON object that defines the complete syllabus for this course. Your task is to decide the correct sequence of lectures (with YouTube videos) and practical tasks.
 
-Perform Real-Time Research: Before generating the content, actively search for current discussions, tutorials, and expert opinions on this topic from platforms like YouTube, Reddit (e.g., r/cscareerquestions, r/uidesign), Medium, Twitter, and top-tier technical blogs. Your goal is to find the most effective teaching resources and the most common "pain points" beginners face right now.
+ANALYZE THE TOPIC: Break down the course topic into a logical sequence of individual lecture subjects appropriate for the {{complexity_level}} level.
 
-Generate a Dynamic Curriculum: Based on your research, create a logical learning path. The curriculum is a continuous flow of lectures, cheat sheets, quizzes, and tasks. It is not a fixed number of lectures. You will insert tasks and quizzes wherever they are most effective for reinforcing a concept.
+FIND HIGH-QUALITY VIDEO RESOURCES: For each lecture, you must find a specific, high-quality YouTube video link.
 
-For Each Learning Unit (Lecture/Concept), you MUST provide:
+Prioritize Reputable Sources: Your primary choices should be videos from official documentation channels (e.g., Google for Developers), renowned university lectures (e.g., NPTEL, Stanford), or creators highly regarded by the professional community (e.g., freeCodeCamp, Programming with Mosh, Fireship, The Net Ninja).
 
-videoResource: Based on your research, recommend one specific, high-quality YouTube video that is highly praised by the community for teaching this concept. Provide the title and channel.
+Ensure Relevance & Clarity: The video must directly and clearly teach the lecture's subject and be suitable for the specified {{complexity_level}}.
 
-cheatSheet: This is the most critical component. Create a detailed, NxtWave-style "Cheat Sheet." It must be a "super-summary" that:
-
-Summarizes the core concepts.
-
-Adds 20-30% more value, including detailed code snippets or examples.
-
-Critically, it must include "Insider Tips & Common Pitfalls" that you discovered from your research on Reddit, Twitter, and blogs. This is where you provide the mentor's wisdom.
-
-quiz: A multiple-choice quiz to test understanding.
-
-practicalTask: A hands-on exercise to apply the knowledge.
-
-Conclude with a Major Project & Final Exam: The course must end with:
-
-A realistic majorProject that a junior professional would be expected to build.
-
-A comprehensive finalExam.
+PLACE PRACTICAL TASKS: Strategically insert task nodes between lectures. These tasks must be designed to test the knowledge from the lectures that came just before them. Each task must be structured as a professional project brief.
 
 OUTPUT FORMAT:
-Your final output MUST be a single, clean, valid JSON object representing the entire dynamic curriculum.
+Your final output MUST be a single, clean, valid JSON object representing the course syllabus.
 
 JSON
 
 {
-  "courseTitle": "JavaScript Fundamentals",
-  "learningUnits": [
+  "courseTitle": "{{course_topic}}",
+  "complexityLevel": "{{complexity_level}}",
+  "syllabus": [
     {
       "type": "lecture",
-      "title": "Variables, Data Types, and Operators",
-      "videoResource": {
-        "title": "JavaScript Variables - Beau teaches JavaScript",
-        "channel": "freeCodeCamp.org"
-      },
-      "cheatSheet": "...",
-      "quiz": [ ... ]
+      "id": "lec_1",
+      "title": "Lecture Title 1",
+      "videoUrl": "https://www.youtube.com/watch?v=..."
+    },
+    {
+      "type": "lecture",
+      "id": "lec_2",
+      "title": "Lecture Title 2",
+      "videoUrl": "https://www.youtube.com/watch?v=..."
     },
     {
       "type": "task",
-      "title": "Task: The Calculator",
-      "description": "Build a simple calculator function that uses different operators."
-    },
-    {
-      "type": "lecture",
-      "title": "Functions and Scope",
-      "videoResource": {
-        "title": "JavaScript Functions - Mosh Hamedani",
-        "channel": "Programming with Mosh"
-      },
-      "cheatSheet": "### Pro-Tip from Reddit:\nMany beginners get confused by 'hoisting'. A simple rule to remember is to always declare your functions and variables at the top of their scope to avoid unexpected behavior...",
-      "quiz": [ ... ]
+      "id": "task_1",
+      "title": "Practical Task Title",
+      "problemStatement": "A clear, real-world problem the user needs to solve.",
+      "requirements": [
+        "A bulleted list of specific requirement #1.",
+        "A bulleted list of specific requirement #2."
+      ]
     }
-  ],
-  "majorProject": {
-    "title": "Build a Dynamic To-Do List App",
-    "description": "Create a functional to-do list application where a user can add, delete, and mark tasks as complete. This will test your knowledge of functions, DOM manipulation, and event listeners."
-  },
-  "finalExam": [ ... ]
+  ]
 }
+Prompt 2: The "Content Synthesizer" (Cheat Sheet & Quiz Generator)
+When to use: This is called after the user has watched a specific video lecture and clicks the "Next" button.
 
+What it does: It takes the video's transcript and creates the rich cheat sheet and the context-aware quiz.
 
+The Gemini "Content Synthesizer" Master Prompt
+ROLE:
+You are an expert tutor and research analyst for the subject: "[Title of the specific Lecture]." Your goal is to create a world-class set of study materials based on a video lecture the student has just watched.
 
+CONTEXT:
+A student has just finished watching a video lecture. You are being provided with the complete transcript of that video.
 
+INPUT PARAMETERS:
 
+videoTranscript: "[Insert the full, raw transcript of the video the user just watched]"
 
+TASK:
+Based on the provided videoTranscript, generate a detailed set of study materials.
 
+Create a "Super-Summary" Cheat Sheet:
 
+70% of the content must be a well-structured summary of the key concepts from the provided videoTranscript.
 
+The other 30% is the most critical part. You must perform your own deep research on the internet (Reddit, Medium, technical blogs) to find and add value-added information. This includes "pro-tips," "common pitfalls," deeper explanations, and alternative code examples that a real industry veteran would provide.
 
+Create a Context-Aware Quiz:
+
+Generate a multiple-choice quiz with a dynamic number of questions based on the topic's complexity.
+
+The questions must test the user's understanding of the concepts covered in both the video transcript and the new cheat sheet you just created.
+
+OUTPUT FORMAT:
+Your final output MUST be a single, clean, valid JSON object.
+
+JSON
+
+{
+  "lectureTitle": "Semantic HTML & The DOM",
+  "cheatSheet": "### Key Concepts from the Video\nSemantic HTML provides meaning to your web page...\n\n### Pro-Tip from the Real World\n**Don't overuse `<div>` tags!** A common beginner mistake found on Reddit is wrapping everything in a `<div>`. A better practice is to use `<section>` for distinct parts of your content, which improves accessibility and SEO...",
+  "quiz": [
+    {
+      "question": "According to the cheat sheet, what is a common mistake beginners make?",
+      "options": ["Using too many <p> tags", "Overusing <div> tags", "Not using enough comments"],
+      "answer": "Overusing <div> tags"
+    }
+  ]
+}
