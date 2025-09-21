@@ -114,10 +114,16 @@ JSON
       "videoUrl": "https://www.youtube.com/watch?v=..."
     },
     {
-      "type": "lecture",
-      "id": "lec_2",
-      "title": "Lecture Title 2",
-      "videoUrl": "https://www.youtube.com/watch?v=..."
+      "type": "cheat-sheet",
+      "id": "cs_1",
+      "title": "Cheat Sheet: Lecture Title 1",
+      "description": "Quick reference guide for the key concepts from Lecture Title 1"
+    },
+    {
+      "type": "quiz",
+      "id": "quiz_1",
+      "title": "Quiz 1: Lecture Title 1",
+      "description": "Test your understanding of the key concepts from Lecture Title 1"
     },
     {
       "type": "task",
@@ -128,6 +134,12 @@ JSON
         "A bulleted list of specific requirement #1.",
         "A bulleted list of specific requirement #2."
       ]
+    },
+    {
+      "type": "lecture",
+      "id": "lec_2",
+      "title": "Lecture Title 2",
+      "videoUrl": "https://www.youtube.com/watch?v=..."
     }
   ]
 }`;
@@ -210,6 +222,18 @@ function getDefaultCourseRoadmap(courseTitle: string, careerField: string): Cour
         id: "lec_1",
         title: "Introduction to " + courseTitle,
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      },
+      {
+        type: "cheat-sheet",
+        id: "cs_1",
+        title: "Cheat Sheet: Introduction to " + courseTitle,
+        description: "Quick reference guide for the key concepts from the introduction"
+      },
+      {
+        type: "quiz",
+        id: "quiz_1",
+        title: "Quiz 1: Introduction to " + courseTitle,
+        description: "Test your understanding of the key concepts from the introduction"
       },
       {
         type: "task",

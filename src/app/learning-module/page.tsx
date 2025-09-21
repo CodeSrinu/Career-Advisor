@@ -106,7 +106,25 @@ export default function LearningModulePage() {
         
         // Transform the course roadmap data to our internal format
         const transformedModules = data.roadmap.syllabus.map((unit: any, index: number) => {
-          const moduleType = unit.type === 'lecture' ? 'lecture' : 'assignment';
+          // Map the unit type to our internal module type
+          let moduleType: 'lecture' | 'cheat-sheet' | 'quiz' | 'assignment' = 'assignment';
+          
+          switch (unit.type) {
+            case 'lecture':
+              moduleType = 'lecture';
+              break;
+            case 'cheat-sheet':
+              moduleType = 'cheat-sheet';
+              break;
+            case 'quiz':
+              moduleType = 'quiz';
+              break;
+            case 'task':
+              moduleType = 'assignment';
+              break;
+            default:
+              moduleType = 'assignment';
+          }
           
           console.log(`Transforming syllabus item ${index}: ${unit.type} -> ${moduleType}`);
           
@@ -209,15 +227,14 @@ export default function LearningModulePage() {
     // Navigate to the specific module type page with proper parameters
     // Map our internal types to the actual directory names
     const pathMap: Record<string, string> = {
-      'video-lecture': 'video-lecture',
+      'lecture': 'video-lecture',
       'cheat-sheet': 'cheat-sheet',
       'quiz': 'quiz',
-      'tasks-projects': 'tasks-projects',
-      'assignment': 'assignment',
-      'lecture': 'video-lecture'
+      'project': 'tasks-projects',
+      'assignment': 'tasks-projects'
     };
     
-    const actualPath = pathMap[moduleType] || moduleType;
+    const actualPath = pathMap[moduleType] || 'video-lecture';
     const basePath = `/learning-module/${actualPath}`;
     
     // Find the module in our data to get its title and other details
