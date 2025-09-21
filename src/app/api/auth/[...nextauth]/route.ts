@@ -15,23 +15,22 @@ const handler = NextAuth({
       }
       return session;
     },
+    async redirect({ url, baseUrl }) {
+      // Allows relative callback URLs
+      if (url.startsWith("/")) return `${baseUrl}${url}`
+      // Allows callback URLs on the same origin
+      else if (new URL(url).origin === baseUrl) return url
+      return baseUrl
+    }
   },
   session: {
     strategy: "jwt",
   },
-  debug: true,
-  // Add error handling
-  events: {
-    signIn: async ({ user, account, profile, isNewUser }) => {
-      console.log("Sign in event", { user, account, profile, isNewUser });
-    },
-    signOut: async ({ session, token }) => {
-      console.log("Sign out event", { session, token });
-    },
-  },
+  debug: process.env.NODE_ENV === 'development',
   // Add error page configuration
   pages: {
     error: "/auth/error", // Error code passed in query string as ?error=
+    signIn: "/",
   }
 })
 
