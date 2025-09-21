@@ -22,6 +22,8 @@ export default function VideoLecturePage() {
   const moduleName = searchParams.get('moduleName') || '';
   const lectureTitle = searchParams.get('title') || '';
   
+  console.log("VideoLecturePage mounted with parameters:", { lectureId, moduleId, moduleName, lectureTitle });
+  
   const [lecture, setLecture] = useState<VideoLecture | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -44,6 +46,7 @@ export default function VideoLecturePage() {
             lectureId,
             moduleId,
             moduleName: lectureTitle, // Use the specific lecture title instead of the course name
+            lectureTitle: lectureTitle, // Send the specific lecture title
             userId: 'default-user' // This would be dynamically determined
           }),
         });

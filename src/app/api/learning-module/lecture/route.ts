@@ -6,6 +6,7 @@ interface LectureRequest {
   lectureId: string;
   moduleId: string;
   moduleName: string;
+  lectureTitle?: string;
   userId: string;
 }
 
@@ -34,14 +35,14 @@ export async function POST(request: Request) {
       );
     }
 
-    console.log("Lecture API called with:", { lectureId: body.lectureId, moduleId: body.moduleId, moduleName: body.moduleName });
+    console.log("Lecture API called with:", { lectureId: body.lectureId, moduleId: body.moduleId, moduleName: body.moduleName, lectureTitle: body.lectureTitle });
     
     // Call the content generation API instead of using mock data
     // We need to transform the request to match the content-route interface
     const contentRequest = new Request(request, {
       body: JSON.stringify({
         lectureId: body.lectureId,
-        lectureTitle: body.moduleName, // Using moduleName as the lecture title for now
+        lectureTitle: body.lectureTitle || body.moduleName, // Use specific lecture title if available, fallback to module name
         courseTitle: body.moduleName,
         careerField: 'General', // This would be dynamically determined
         userId: body.userId || 'default-user'
