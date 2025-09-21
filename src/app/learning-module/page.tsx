@@ -31,6 +31,7 @@ export default function LearningModulePage() {
   const roleId = searchParams.get('roleId') || '';
   const roleName = searchParams.get('roleName') || '';
   const domainId = searchParams.get('domainId') || '';
+  const nodeTitle = searchParams.get('nodeTitle') || '';
   
   const [learningModule, setLearningModule] = useState<LearningModule | null>(null);
   const [loading, setLoading] = useState(true);
@@ -51,7 +52,7 @@ export default function LearningModulePage() {
         // First, we need to get the node title from the roadmap
         // In a real implementation, this would be stored in context or passed as a parameter
         // For now, we'll try to get it from localStorage or use a fallback
-        let courseTitle = 'Course Title'; // Default fallback
+        let courseTitle = nodeTitle || 'Course Title'; // Use nodeTitle from URL or default fallback
         
         // Try to get the roadmap data from localStorage
         try {

@@ -63,8 +63,21 @@ export default function CareerQuestPage() {
   const handleStartNode = (nodeId: string) => {
     // Navigate to the learning module for this node
     console.log("handleStartNode called with:", nodeId);
-    console.log("Navigation params:", { roleId, roleName, domainId });
-    router.push(`/learning-module?nodeId=${nodeId}&roleId=${roleId}&roleName=${encodeURIComponent(roleName)}&domainId=${domainId}`);
+    
+    // Find the node in the units to get its title
+    let nodeTitle = 'Course Title'; // Default fallback
+    if (units) {
+      for (const unit of units) {
+        const node = unit.nodes.find(n => n.id === nodeId);
+        if (node) {
+          nodeTitle = node.title;
+          break;
+        }
+      }
+    }
+    
+    console.log("Navigation params:", { roleId, roleName, domainId, nodeTitle });
+    router.push(`/learning-module?nodeId=${nodeId}&roleId=${roleId}&roleName=${encodeURIComponent(roleName)}&domainId=${domainId}&nodeTitle=${encodeURIComponent(nodeTitle)}`);
   };
 
   if (!roleId || !roleName) {
