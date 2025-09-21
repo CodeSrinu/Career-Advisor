@@ -28,6 +28,18 @@ export async function POST(request: Request) {
     
     // Log the incoming request
     console.log("=== AI QUESTION GENERATION API CALLED ===");
+    console.log("Request body:", body);
+    
+    // Get API key from environment variables (server-side only)
+    const apiKey = process.env.GEMINI_API_KEY;
+    
+    console.log("API Key available:", !!apiKey);
+    if (apiKey) {
+      console.log("API Key length:", apiKey.length);
+    } else {
+      console.log("API Key is NULL or UNDEFINED");
+      console.log("Available env vars:", Object.keys(process.env).filter(key => key.includes('GEMINI') || key.includes('API')));
+    }
     console.log("Request Body:", JSON.stringify(body, null, 2));
     
     // Validate input
