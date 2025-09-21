@@ -56,6 +56,7 @@ export async function POST(request: Request) {
         questions: getDefaultQuestions(body.roleId, body.roleName)
       });
     }
+
     console.log("Request Body:", JSON.stringify(body, null, 2));
     
     // Validate input
@@ -67,11 +68,11 @@ export async function POST(request: Request) {
       );
     }
 
-    // Get API key from environment variables (server-side only)
-    const apiKey = process.env.GEMINI_API_KEY;
-    
     console.log("API Key Available:", !!apiKey);
     console.log("API Key Length:", apiKey ? apiKey.length : 0);
+    console.log("Role ID:", body.roleId);
+    console.log("Role Name:", body.roleName);
+    console.log("Full API Key (first 10 chars):", apiKey ? apiKey.substring(0, 10) + "..." : "NONE");
     console.log("Role ID:", body.roleId);
     console.log("Role Name:", body.roleName);
     console.log("Full API Key (first 10 chars):", apiKey ? apiKey.substring(0, 10) + "..." : "NONE");
