@@ -29,6 +29,7 @@ export async function POST(request: Request) {
     // Log the incoming request
     console.log("=== AI QUESTION GENERATION API CALLED ===");
     console.log("Request body:", body);
+    console.log("Timestamp:", new Date().toISOString());
     
     // Get API key from environment variables (server-side only)
     const apiKey = process.env.GEMINI_API_KEY;
@@ -36,9 +37,24 @@ export async function POST(request: Request) {
     console.log("API Key available:", !!apiKey);
     if (apiKey) {
       console.log("API Key length:", apiKey.length);
+      console.log("API Key starts with:", apiKey.substring(0, 10) + "...");
     } else {
       console.log("API Key is NULL or UNDEFINED");
-      console.log("Available env vars:", Object.keys(process.env).filter(key => key.includes('GEMINI') || key.includes('API')));
+      console.log("Available env vars:", Object.keys(process.env).filter(key => key.includes('GEMINI') || key.includes('API')).length);
+      // List some environment variables (without exposing sensitive data)
+      Object.keys(process.env).forEach(key => {
+        if (key.includes('GEMINI') || key.includes('API') || key.includes('KEY')) {
+          console.log(`Env var ${key}:`, process.env[key] ? 'SET' : 'NOT SET');
+        }
+      });
+    }
+    
+    if (!apiKey) {
+      console.log("NO API KEY - Using default questions");
+      // Fallback response if API key is not available
+      return NextResponse.json({
+        questions: getDefaultQuestions(body.roleId, body.roleName)
+      });
     }
     console.log("Request Body:", JSON.stringify(body, null, 2));
     
