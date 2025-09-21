@@ -40,6 +40,7 @@ export default function LearningModulePage() {
 
   useEffect(() => {
     console.log("useEffect called with:", { nodeId, roleId, roleName, domainId });
+    console.log("Looking for nodeId:", nodeId);
     const loadLearningModule = async () => {
       try {
         setLoading(true);
@@ -55,13 +56,17 @@ export default function LearningModulePage() {
         // Try to get the roadmap data from localStorage
         try {
           const storedRoadmap = localStorage.getItem('careerQuest_roadmap');
+          console.log("Stored roadmap data:", storedRoadmap);
           if (storedRoadmap) {
             const roadmapData = JSON.parse(storedRoadmap);
+            console.log("Parsed roadmap data:", roadmapData);
             // Search for the node with matching nodeId in all units
             for (const unit of roadmapData.units) {
               const node = unit.nodes.find((n: any) => n.id === nodeId);
+              console.log("Checking node:", node);
               if (node) {
                 courseTitle = node.title;
+                console.log("Found matching node, courseTitle:", courseTitle);
                 break;
               }
             }
