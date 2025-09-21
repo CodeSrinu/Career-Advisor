@@ -1,0 +1,366 @@
+index.iife.js:40 content ui loaded
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+AISkillAssessment.tsx:46 useEffect triggered for: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur'}
+AISkillAssessment.tsx:53 Loading questions for: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+AISkillAssessment.tsx:46 useEffect triggered for: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur'}
+AISkillAssessment.tsx:53 Loading questions for: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+AISkillAssessment.tsx:64 Question API response status: 200
+AISkillAssessment.tsx:71 Received questions data: {questions: Array(10)}
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+AISkillAssessment.tsx:64 Question API response status: 200
+AISkillAssessment.tsx:71 Received questions data: {questions: Array(10)}
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+AISkillAssessment.tsx:118 Submitting assessment with: {questionCount: 10, answerCount: 10, checkedCount: 0, hasOpenResponse: false}
+AISkillAssessment.tsx:131 Sending analysis request to API...
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+AISkillAssessment.tsx:42 AISkillAssessment mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+AISkillAssessment.tsx:147 Analysis API response status: 200
+AISkillAssessment.tsx:154 Received analysis result: {skillLevel: 0, analysisSummary: "It's great that you're interested in entrepreneurs…ication, you can quickly build a strong skillset.", strengths: Array(0), learningOpportunities: Array(3)}
+AISkillAssessment.tsx:164 Stored assessment data in localStorage for career roadmap
+AISkillAssessmentResults.tsx:151 Continue button clicked from overview tab
+page.tsx:41 handleContinue called with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: '', assessmentResult: {…}}
+page.tsx:46 Navigating to: /career-quest?roleId=user-goal-entrepreneur&roleName=Entrepreneur&domainId=&startingLevel=0
+hot-reloader-client.js:187 [Fast Refresh] rebuilding
+hot-reloader-client.js:44 [Fast Refresh] done in 788ms
+hot-reloader-client.js:44 [Fast Refresh] done in 826ms
+page.tsx:57 CareerQuestPage mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: '', startingLevel: 0}
+page.tsx:57 CareerQuestPage mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: '', startingLevel: 0}
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+CareerQuestRoadmap.tsx:62 Loading roadmap for: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: '', startingLevel: 0}
+page.tsx:49 Retrieved assessment data from localStorage: {questions: Array(10), answers: {…}, openResponse: ''}
+CareerQuestRoadmap.tsx:62 Loading roadmap for: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: '', startingLevel: 0}
+page.tsx:49 Retrieved assessment data from localStorage: {questions: Array(10), answers: {…}, openResponse: ''}
+page.tsx:57 CareerQuestPage mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: '', startingLevel: 0}
+page.tsx:57 CareerQuestPage mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: '', startingLevel: 0}
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+CareerQuestRoadmap.tsx:79 Roadmap API response status: 200
+CareerQuestRoadmap.tsx:86 Received roadmap data: {units: Array(6)}units: Array(6)0: {id: 'unit1', title: 'Unit 1: Foundational Business Principles', description: 'Unit 1: Unit 1: Foundational Business Principles', nodes: Array(6)}1: {id: 'unit2', title: 'Unit 2: Idea Validation & MVP Development', description: 'Unit 2: Unit 2: Idea Validation & MVP Development', nodes: Array(6)}2: {id: 'unit3', title: 'Unit 3: Marketing & Sales Fundamentals', description: 'Unit 3: Unit 3: Marketing & Sales Fundamentals', nodes: Array(6)}3: {id: 'unit4', title: 'Unit 4: Legal & Financial Management', description: 'Unit 4: Unit 4: Legal & Financial Management', nodes: Array(5)}4: {id: 'unit5', title: 'Unit 5: Scaling & Growth Strategies', description: 'Unit 5: Unit 5: Scaling & Growth Strategies', nodes: Array(5)}5: {id: 'unit6', title: 'Unit 6:  Advanced Topics & Future Trends', description: 'Unit 6: Unit 6:  Advanced Topics & Future Trends', nodes: Array(4)}length: 6[[Prototype]]: Array(0)[[Prototype]]: Object
+CareerQuestRoadmap.tsx:96 Set units: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+CareerQuestRoadmap.tsx:79 Roadmap API response status: 200
+CareerQuestRoadmap.tsx:86 Received roadmap data: {units: Array(7)}units: Array(7)0: {id: 'unit1', title: 'Unit 1: Foundations of Business & Entrepreneurship', description: 'Unit 1: Unit 1: Foundations of Business & Entrepreneurship', nodes: Array(6)}1: {id: 'unit2', title: 'Unit 2:  Financial Literacy & Legal Frameworks', description: 'Unit 2: Unit 2:  Financial Literacy & Legal Frameworks', nodes: Array(6)}2: {id: 'unit3', title: 'Unit 3: Marketing, Sales & Customer Acquisition', description: 'Unit 3: Unit 3: Marketing, Sales & Customer Acquisition', nodes: Array(6)}3: {id: 'unit4', title: 'Unit 4: Operations & Team Management', description: 'Unit 4: Unit 4: Operations & Team Management', nodes: Array(6)}4: {id: 'unit5', title: 'Unit 5:  Scaling & Growth Strategies', description: 'Unit 5: Unit 5:  Scaling & Growth Strategies', nodes: Array(6)}5: {id: 'unit6', title: 'Unit 6:  Interview Preparation & Networking', description: 'Unit 6: Unit 6:  Interview Preparation & Networking', nodes: Array(4)}6: {id: 'unit7', title: 'Unit 7: Advanced Topics & Continuous Learning', description: 'Unit 7: Unit 7: Advanced Topics & Continuous Learning', nodes: Array(4)}length: 7[[Prototype]]: Array(0)[[Prototype]]: Object
+CareerQuestRoadmap.tsx:96 Set units: (7) [{…}, {…}, {…}, {…}, {…}, {…}, {…}]
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}domainId: ""roleId: "user-goal-entrepreneur"roleName: "Entrepreneur"[[Prototype]]: Object
+CareerQuestRoadmap.tsx:53 CareerQuestRoadmap mounted with: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+CareerQuestRoadmap.tsx:367 Node clicked: {id: 'node_1', type: 'course', title: 'Introduction to Business Principles', description: 'Learn Introduction to Business Principles', duration: '1 week', …}
+CareerQuestRoadmap.tsx:369 Calling onStartNode with: node_1
+page.tsx:65 handleStartNode called with: node_1
+page.tsx:69 Navigation params: {roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+hot-reloader-client.js:187 [Fast Refresh] rebuilding
+hot-reloader-client.js:44 [Fast Refresh] done in 382ms
+page.tsx:27 LearningModulePage component mounting
+page.tsx:40 Component rendered with learningModule: null
+page.tsx:27 LearningModulePage component mounting
+page.tsx:40 Component rendered with learningModule: null
+page.tsx:43 useEffect called with: {nodeId: 'node_1', roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+page.tsx:44 Looking for nodeId: node_1
+page.tsx:50 Loading learning module for: {nodeId: 'node_1', roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+page.tsx:60 Stored roadmap data: {"units":[{"id":"unit1","title":"Unit 1: Foundations of Business & Entrepreneurship","description":"Unit 1: Unit 1: Foundations of Business & Entrepreneurship","nodes":[{"id":"node_1","type":"course","title":"Introduction to Business Principles","description":"Learn Introduction to Business Principles","duration":"1 week","difficulty":"beginner","skills":[],"status":"available"},{"id":"node_2","type":"course","title":"Understanding the Indian Business Landscape","description":"Learn Understanding the Indian Business Landscape","duration":"1 week","difficulty":"beginner","skills":[],"status":"available"},{"id":"node_3","type":"course","title":"Idea Generation & Validation","description":"Learn Idea Generation & Validation","duration":"1 week","difficulty":"beginner","skills":[],"status":"available"},{"id":"node_4","type":"course","title":"Market Research & Analysis for Indian Markets","description":"Learn Market Research & Analysis for Indian Markets","duration":"1 week","difficulty":"beginner","skills":[],"status":"available"},{"id":"node_5","type":"project","title":"Project: Develop a Business Plan for a Hypothetical Startup (Indian Context)","description":"Learn Project: Develop a Business Plan for a Hypothetical Startup (Indian Context)","duration":"1 week","difficulty":"beginner","skills":[],"status":"available"},{"id":"node_6","type":"reward","title":"Foundational Entrepreneur Badge Unlocked!","description":"Learn Foundational Entrepreneur Badge Unlocked!","duration":"1 week","difficulty":"beginner","skills":[],"status":"available"}]},{"id":"unit2","title":"Unit 2:  Financial Literacy & Legal Frameworks","description":"Unit 2: Unit 2:  Financial Literacy & Legal Frameworks","nodes":[{"id":"node_7","type":"course","title":"Financial Statements & Analysis","description":"Learn Financial Statements & Analysis","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_8","type":"course","title":"Fundraising & Investment Strategies","description":"Learn Fundraising & Investment Strategies","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_9","type":"course","title":"Indian Tax Laws & Regulations for Businesses","description":"Learn Indian Tax Laws & Regulations for Businesses","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_10","type":"course","title":"Legal Structures for Startups in India (Sole Proprietorship, LLP, Pvt Ltd)","description":"Learn Legal Structures for Startups in India (Sole Proprietorship, LLP, Pvt Ltd)","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_11","type":"project","title":"Project: Create a Financial Projection Model for a Startup","description":"Learn Project: Create a Financial Projection Model for a Startup","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_12","type":"reward","title":"Financial Literacy Badge Unlocked!","description":"Learn Financial Literacy Badge Unlocked!","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"}]},{"id":"unit3","title":"Unit 3: Marketing, Sales & Customer Acquisition","description":"Unit 3: Unit 3: Marketing, Sales & Customer Acquisition","nodes":[{"id":"node_13","type":"course","title":"Digital Marketing for Indian Businesses","description":"Learn Digital Marketing for Indian Businesses","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_14","type":"course","title":"Sales Strategies & Techniques","description":"Learn Sales Strategies & Techniques","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_15","type":"course","title":"Customer Relationship Management (CRM)","description":"Learn Customer Relationship Management (CRM)","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_16","type":"course","title":"Building a Strong Brand Identity","description":"Learn Building a Strong Brand Identity","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_17","type":"project","title":"Project: Develop a Marketing Plan for a Chosen Product/Service in India","description":"Learn Project: Develop a Marketing Plan for a Chosen Product/Service in India","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_18","type":"reward","title":"Marketing & Sales Mastery Badge Unlocked!","description":"Learn Marketing & Sales Mastery Badge Unlocked!","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"}]},{"id":"unit4","title":"Unit 4: Operations & Team Management","description":"Unit 4: Unit 4: Operations & Team Management","nodes":[{"id":"node_19","type":"course","title":"Operations Management for Startups","description":"Learn Operations Management for Startups","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_20","type":"course","title":"Building & Managing a High-Performing Team","description":"Learn Building & Managing a High-Performing Team","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_21","type":"course","title":"Project Management Fundamentals","description":"Learn Project Management Fundamentals","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_22","type":"course","title":"Negotiation & Conflict Resolution","description":"Learn Negotiation & Conflict Resolution","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_23","type":"project","title":"Project:  Develop an Operational Plan for a Scalable Startup","description":"Learn Project:  Develop an Operational Plan for a Scalable Startup","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_24","type":"reward","title":"Operations & Team Management Badge Unlocked!","description":"Learn Operations & Team Management Badge Unlocked!","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"}]},{"id":"unit5","title":"Unit 5:  Scaling & Growth Strategies","description":"Unit 5: Unit 5:  Scaling & Growth Strategies","nodes":[{"id":"node_25","type":"course","title":"Growth Hacking Strategies","description":"Learn Growth Hacking Strategies","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_26","type":"course","title":"Strategic Partnerships & Alliances","description":"Learn Strategic Partnerships & Alliances","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_27","type":"course","title":"Scaling Operations & Technology","description":"Learn Scaling Operations & Technology","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_28","type":"course","title":"International Expansion Strategies (Optional, focusing on relevant markets)","description":"Learn International Expansion Strategies (Optional, focusing on relevant markets)","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_29","type":"project","title":"Project:  Develop a Growth Strategy for an Existing Startup","description":"Learn Project:  Develop a Growth Strategy for an Existing Startup","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_30","type":"reward","title":"Growth & Scaling Badge Unlocked!","description":"Learn Growth & Scaling Badge Unlocked!","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"}]},{"id":"unit6","title":"Unit 6:  Interview Preparation & Networking","description":"Unit 6: Unit 6:  Interview Preparation & Networking","nodes":[{"id":"node_31","type":"course","title":"Pitching Your Business Idea to Investors","description":"Learn Pitching Your Business Idea to Investors","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_32","type":"course","title":"Networking & Building Relationships","description":"Learn Networking & Building Relationships","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_33","type":"course","title":"Preparing for Investor Meetings & Due Diligence","description":"Learn Preparing for Investor Meetings & Due Diligence","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_34","type":"course","title":"Negotiating Contracts & Deals","description":"Learn Negotiating Contracts & Deals","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"}]},{"id":"unit7","title":"Unit 7: Advanced Topics & Continuous Learning","description":"Unit 7: Unit 7: Advanced Topics & Continuous Learning","nodes":[{"id":"node_35","type":"course","title":"Data Analytics for Business Decisions","description":"Learn Data Analytics for Business Decisions","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_36","type":"course","title":"Advanced Financial Modeling","description":"Learn Advanced Financial Modeling","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_37","type":"course","title":"Leadership & Management Development","description":"Learn Leadership & Management Development","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_38","type":"course","title":"Emerging Technologies & Their Impact on Business","description":"Learn Emerging Technologies & Their Impact on Business","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"}]}]}
+page.tsx:63 Parsed roadmap data: {units: Array(7)}
+page.tsx:67 Checking node: {id: 'node_1', type: 'course', title: 'Introduction to Business Principles', description: 'Learn Introduction to Business Principles', duration: '1 week', …}
+page.tsx:70 Found matching node, courseTitle: Introduction to Business Principles
+page.tsx:79 Using course title: Introduction to Business Principles
+page.tsx:218 useEffect cleanup called
+page.tsx:43 useEffect called with: {nodeId: 'node_1', roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+page.tsx:44 Looking for nodeId: node_1
+page.tsx:50 Loading learning module for: {nodeId: 'node_1', roleId: 'user-goal-entrepreneur', roleName: 'Entrepreneur', domainId: ''}
+page.tsx:60 Stored roadmap data: {"units":[{"id":"unit1","title":"Unit 1: Foundations of Business & Entrepreneurship","description":"Unit 1: Unit 1: Foundations of Business & Entrepreneurship","nodes":[{"id":"node_1","type":"course","title":"Introduction to Business Principles","description":"Learn Introduction to Business Principles","duration":"1 week","difficulty":"beginner","skills":[],"status":"available"},{"id":"node_2","type":"course","title":"Understanding the Indian Business Landscape","description":"Learn Understanding the Indian Business Landscape","duration":"1 week","difficulty":"beginner","skills":[],"status":"available"},{"id":"node_3","type":"course","title":"Idea Generation & Validation","description":"Learn Idea Generation & Validation","duration":"1 week","difficulty":"beginner","skills":[],"status":"available"},{"id":"node_4","type":"course","title":"Market Research & Analysis for Indian Markets","description":"Learn Market Research & Analysis for Indian Markets","duration":"1 week","difficulty":"beginner","skills":[],"status":"available"},{"id":"node_5","type":"project","title":"Project: Develop a Business Plan for a Hypothetical Startup (Indian Context)","description":"Learn Project: Develop a Business Plan for a Hypothetical Startup (Indian Context)","duration":"1 week","difficulty":"beginner","skills":[],"status":"available"},{"id":"node_6","type":"reward","title":"Foundational Entrepreneur Badge Unlocked!","description":"Learn Foundational Entrepreneur Badge Unlocked!","duration":"1 week","difficulty":"beginner","skills":[],"status":"available"}]},{"id":"unit2","title":"Unit 2:  Financial Literacy & Legal Frameworks","description":"Unit 2: Unit 2:  Financial Literacy & Legal Frameworks","nodes":[{"id":"node_7","type":"course","title":"Financial Statements & Analysis","description":"Learn Financial Statements & Analysis","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_8","type":"course","title":"Fundraising & Investment Strategies","description":"Learn Fundraising & Investment Strategies","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_9","type":"course","title":"Indian Tax Laws & Regulations for Businesses","description":"Learn Indian Tax Laws & Regulations for Businesses","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_10","type":"course","title":"Legal Structures for Startups in India (Sole Proprietorship, LLP, Pvt Ltd)","description":"Learn Legal Structures for Startups in India (Sole Proprietorship, LLP, Pvt Ltd)","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_11","type":"project","title":"Project: Create a Financial Projection Model for a Startup","description":"Learn Project: Create a Financial Projection Model for a Startup","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_12","type":"reward","title":"Financial Literacy Badge Unlocked!","description":"Learn Financial Literacy Badge Unlocked!","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"}]},{"id":"unit3","title":"Unit 3: Marketing, Sales & Customer Acquisition","description":"Unit 3: Unit 3: Marketing, Sales & Customer Acquisition","nodes":[{"id":"node_13","type":"course","title":"Digital Marketing for Indian Businesses","description":"Learn Digital Marketing for Indian Businesses","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_14","type":"course","title":"Sales Strategies & Techniques","description":"Learn Sales Strategies & Techniques","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_15","type":"course","title":"Customer Relationship Management (CRM)","description":"Learn Customer Relationship Management (CRM)","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_16","type":"course","title":"Building a Strong Brand Identity","description":"Learn Building a Strong Brand Identity","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_17","type":"project","title":"Project: Develop a Marketing Plan for a Chosen Product/Service in India","description":"Learn Project: Develop a Marketing Plan for a Chosen Product/Service in India","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_18","type":"reward","title":"Marketing & Sales Mastery Badge Unlocked!","description":"Learn Marketing & Sales Mastery Badge Unlocked!","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"}]},{"id":"unit4","title":"Unit 4: Operations & Team Management","description":"Unit 4: Unit 4: Operations & Team Management","nodes":[{"id":"node_19","type":"course","title":"Operations Management for Startups","description":"Learn Operations Management for Startups","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_20","type":"course","title":"Building & Managing a High-Performing Team","description":"Learn Building & Managing a High-Performing Team","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_21","type":"course","title":"Project Management Fundamentals","description":"Learn Project Management Fundamentals","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_22","type":"course","title":"Negotiation & Conflict Resolution","description":"Learn Negotiation & Conflict Resolution","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_23","type":"project","title":"Project:  Develop an Operational Plan for a Scalable Startup","description":"Learn Project:  Develop an Operational Plan for a Scalable Startup","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_24","type":"reward","title":"Operations & Team Management Badge Unlocked!","description":"Learn Operations & Team Management Badge Unlocked!","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"}]},{"id":"unit5","title":"Unit 5:  Scaling & Growth Strategies","description":"Unit 5: Unit 5:  Scaling & Growth Strategies","nodes":[{"id":"node_25","type":"course","title":"Growth Hacking Strategies","description":"Learn Growth Hacking Strategies","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_26","type":"course","title":"Strategic Partnerships & Alliances","description":"Learn Strategic Partnerships & Alliances","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_27","type":"course","title":"Scaling Operations & Technology","description":"Learn Scaling Operations & Technology","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_28","type":"course","title":"International Expansion Strategies (Optional, focusing on relevant markets)","description":"Learn International Expansion Strategies (Optional, focusing on relevant markets)","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_29","type":"project","title":"Project:  Develop a Growth Strategy for an Existing Startup","description":"Learn Project:  Develop a Growth Strategy for an Existing Startup","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_30","type":"reward","title":"Growth & Scaling Badge Unlocked!","description":"Learn Growth & Scaling Badge Unlocked!","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"}]},{"id":"unit6","title":"Unit 6:  Interview Preparation & Networking","description":"Unit 6: Unit 6:  Interview Preparation & Networking","nodes":[{"id":"node_31","type":"course","title":"Pitching Your Business Idea to Investors","description":"Learn Pitching Your Business Idea to Investors","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_32","type":"course","title":"Networking & Building Relationships","description":"Learn Networking & Building Relationships","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_33","type":"course","title":"Preparing for Investor Meetings & Due Diligence","description":"Learn Preparing for Investor Meetings & Due Diligence","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_34","type":"course","title":"Negotiating Contracts & Deals","description":"Learn Negotiating Contracts & Deals","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"}]},{"id":"unit7","title":"Unit 7: Advanced Topics & Continuous Learning","description":"Unit 7: Unit 7: Advanced Topics & Continuous Learning","nodes":[{"id":"node_35","type":"course","title":"Data Analytics for Business Decisions","description":"Learn Data Analytics for Business Decisions","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_36","type":"course","title":"Advanced Financial Modeling","description":"Learn Advanced Financial Modeling","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_37","type":"course","title":"Leadership & Management Development","description":"Learn Leadership & Management Development","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"},{"id":"node_38","type":"course","title":"Emerging Technologies & Their Impact on Business","description":"Learn Emerging Technologies & Their Impact on Business","duration":"1 week","difficulty":"beginner","skills":[],"status":"locked"}]}]}
+page.tsx:63 Parsed roadmap data: {units: Array(7)}
+page.tsx:67 Checking node: {id: 'node_1', type: 'course', title: 'Introduction to Business Principles', description: 'Learn Introduction to Business Principles', duration: '1 week', …}
+page.tsx:70 Found matching node, courseTitle: Introduction to Business Principles
+page.tsx:79 Using course title: Introduction to Business Principles
+page.tsx:94 Course Roadmap API response status: 200
+page.tsx:101 Received course roadmap data: {roadmap: {…}}
+page.tsx:102 Checking data structure:
+page.tsx:103 - data.roadmap: {courseTitle: 'Introduction to Business Principles', complexityLevel: 'beginner', syllabus: Array(12)}
+page.tsx:104 - data.roadmap.syllabus: (12) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+page.tsx:105 - data.roadmap.learningUnits: undefined
+page.tsx:129 Transforming syllabus item 0: lecture -> lecture
+page.tsx:129 Transforming syllabus item 1: cheat-sheet -> cheat-sheet
+page.tsx:129 Transforming syllabus item 2: task -> assignment
+page.tsx:129 Transforming syllabus item 3: lecture -> lecture
+page.tsx:129 Transforming syllabus item 4: cheat-sheet -> cheat-sheet
+page.tsx:129 Transforming syllabus item 5: task -> assignment
+page.tsx:129 Transforming syllabus item 6: lecture -> lecture
+page.tsx:129 Transforming syllabus item 7: cheat-sheet -> cheat-sheet
+page.tsx:129 Transforming syllabus item 8: task -> assignment
+page.tsx:129 Transforming syllabus item 9: lecture -> lecture
+page.tsx:129 Transforming syllabus item 10: cheat-sheet -> cheat-sheet
+page.tsx:129 Transforming syllabus item 11: task -> assignment
+page.tsx:141 Transformed modules: (12) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+page.tsx:153 Setting learning module state: {id: 'node_1', title: 'Introduction to Business Principles', description: 'A comprehensive guide to Introduction to Business Principles.', duration: '2 weeks', difficulty: 'beginner', …}
+page.tsx:155 Called setLearningModule
+page.tsx:27 LearningModulePage component mounting
+page.tsx:40 Component rendered with learningModule: {id: 'node_1', title: 'Introduction to Business Principles', description: 'A comprehensive guide to Introduction to Business Principles.', duration: '2 weeks', difficulty: 'beginner', …}
+page.tsx:27 LearningModulePage component mounting
+page.tsx:40 Component rendered with learningModule: {id: 'node_1', title: 'Introduction to Business Principles', description: 'A comprehensive guide to Introduction to Business Principles.', duration: '2 weeks', difficulty: 'beginner', …}
+page.tsx:94 Course Roadmap API response status: 200
+page.tsx:101 Received course roadmap data: {roadmap: {…}}
+page.tsx:102 Checking data structure:
+page.tsx:103 - data.roadmap: {courseTitle: 'Introduction to Business Principles', complexityLevel: 'beginner', syllabus: Array(12)}
+page.tsx:104 - data.roadmap.syllabus: (12) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+page.tsx:105 - data.roadmap.learningUnits: undefined
+page.tsx:129 Transforming syllabus item 0: lecture -> lecture
+page.tsx:129 Transforming syllabus item 1: cheat-sheet -> cheat-sheet
+page.tsx:129 Transforming syllabus item 2: task -> assignment
+page.tsx:129 Transforming syllabus item 3: lecture -> lecture
+page.tsx:129 Transforming syllabus item 4: cheat-sheet -> cheat-sheet
+page.tsx:129 Transforming syllabus item 5: task -> assignment
+page.tsx:129 Transforming syllabus item 6: lecture -> lecture
+page.tsx:129 Transforming syllabus item 7: cheat-sheet -> cheat-sheet
+page.tsx:129 Transforming syllabus item 8: task -> assignment
+page.tsx:129 Transforming syllabus item 9: lecture -> lecture
+page.tsx:129 Transforming syllabus item 10: cheat-sheet -> cheat-sheet
+page.tsx:129 Transforming syllabus item 11: task -> assignment
+page.tsx:141 Transformed modules: (12) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+page.tsx:153 Setting learning module state: {id: 'node_1', title: 'Introduction to Business Principles', description: 'A comprehensive guide to Introduction to Business Principles.', duration: '2 weeks', difficulty: 'beginner', …}
+page.tsx:155 Called setLearningModule
+page.tsx:27 LearningModulePage component mounting
+page.tsx:40 Component rendered with learningModule: {id: 'node_1', title: 'Introduction to Business Principles', description: 'A comprehensive guide to Introduction to Business Principles.', duration: '2 weeks', difficulty: 'beginner', …}
+page.tsx:27 LearningModulePage component mounting
+page.tsx:40 Component rendered with learningModule: {id: 'node_1', title: 'Introduction to Business Principles', description: 'A comprehensive guide to Introduction to Business Principles.', duration: '2 weeks', difficulty: 'beginner', …}
+hot-reloader-client.js:187 [Fast Refresh] rebuilding
+hot-reloader-client.js:44 [Fast Refresh] done in 723ms
+page.tsx:218 useEffect cleanup called
+page.tsx:35 Loading video lecture: {lectureId: 'lec_1', moduleId: 'lec_1', moduleName: 'Introduction to Business Principles'}
+page.tsx:35 Loading video lecture: {lectureId: 'lec_1', moduleId: 'lec_1', moduleName: 'Introduction to Business Principles'}lectureId: "lec_1"moduleId: "lec_1"moduleName: "Introduction to Business Principles"[[Prototype]]: Object
+page.tsx:51 Lecture API response status: 200
+page.tsx:58 Received lecture data: {id: 'default', title: 'Introduction to Lecture', description: 'Learn the fundamentals of Introduction to Lecture', videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', transcript: 'This is a placeholder transcript for the lecture o…cluding key concepts, examples, and explanations.', …}
+page.tsx:51 Lecture API response status: 200
+page.tsx:58 Received lecture data: {id: 'default', title: 'Introduction to Lecture', description: 'Learn the fundamentals of Introduction to Lecture', videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', transcript: 'This is a placeholder transcript for the lecture o…cluding key concepts, examples, and explanations.', …}cheatSheet: "## Introduction to Lecture - Cheat Sheet\n\n### Key Concepts\n- Fundamental principles of Introduction to Lecture\n- Core techniques and best practices\n- Common patterns and approaches\n\n### Pro Tips\n- Start with simple examples to build understanding\n- Practice regularly to reinforce concepts\n- Seek feedback from peers and mentors\n\n### Common Pitfalls\n- Don't skip fundamentals in favor of advanced topics\n- Avoid copying code without understanding it\n- Don't neglect testing and validation"description: "Learn the fundamentals of Introduction to Lecture"duration: "15 minutes"id: "default"moduleId: "lec_1"moduleName: "What is Business and Why it Matters?"title: "Introduction to Lecture"transcript: "This is a placeholder transcript for the lecture on Introduction to Lecture. In a real implementation, this would contain a detailed summary of the video content, including key concepts, examples, and explanations."videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"[[Prototype]]: Object
+www.youtube.com/generate_204?rEudFg:1  GET https://www.youtube.com/generate_204?rEudFg net::ERR_BLOCKED_BY_CLIENT
+Image
+eval @ VM180:1
+AW @ dQw4w9WgXcQ:1
+eval @ dQw4w9WgXcQ:1
+Pn @ dQw4w9WgXcQ:1
+Qs @ dQw4w9WgXcQ:1
+jN @ dQw4w9WgXcQ:1
+tW @ dQw4w9WgXcQ:1
+I @ dQw4w9WgXcQ:1
+yZ.kTf_ @ dQw4w9WgXcQ:1
+l4 @ dQw4w9WgXcQ:1
+XT @ dQw4w9WgXcQ:1
+dz @ base.js:1246
+QBb @ base.js:2734
+(anonymous) @ base.js:2733
+u @ base.js:2104
+(anonymous) @ base.js:1678
+setTimeout
+apply @ VM7:8401
+g.Pv @ base.js:1702
+(anonymous) @ base.js:2105
+k.publish @ www-embed-player-pc.js:1570
+g.C8 @ base.js:2109
+(anonymous) @ base.js:2114
+setTimeout
+apply @ VM7:8401
+Ivm.e.onload @ base.js:2115
+script
+F2 @ base.js:383
+g.dG @ base.js:382
+Ivm @ base.js:2115
+vtq @ base.js:2114
+g.tW @ base.js:2113
+sBy @ base.js:2733
+g.z.initialize @ base.js:9080
+lgH @ base.js:3865
+g.d6 @ base.js:3873
+fE @ base.js:7213
+q7H @ base.js:7212
+g.TF @ base.js:7187
+g.TF.create @ base.js:13360
+WZ.a.J @ www-embed-player-pc.js:3679
+WZ @ www-embed-player-pc.js:3681
+k.loadNewVideoConfig @ www-embed-player-pc.js:3674
+(anonymous) @ www-embed-player-pc.js:3672
+setTimeout
+apply @ VM7:8401
+TZ @ www-embed-player-pc.js:3672
+daa @ www-embed-player-pc.js:3713
+(anonymous) @ www-embed-player-pc.js:6503
+(anonymous) @ dQw4w9WgXcQ:11
+base.js:1109  POST https://play.google.com/log?hasfast=true&auth=SAPISIDHASH+05cb87055e02d4e9cbc143a3289451a4705ae915+SAPISID3PHASH+05cb87055e02d4e9cbc143a3289451a4705ae915&authuser=0&format=json net::ERR_BLOCKED_BY_CLIENT
+(anonymous) @ base.js:1109
+JUS @ base.js:1110
+XoH @ base.js:1109
+g.z.flush @ base.js:8293
+wU.flush @ base.js:8303
+flush @ base.js:1223
+g.z.nw @ base.js:8345
+(anonymous) @ base.js:1232
+(anonymous) @ base.js:1227
+setTimeout
+apply @ VM7:8401
+ddb @ base.js:1227
+c3.vj @ base.js:8399
+(anonymous) @ base.js:1243
+Promise.then
+S @ base.js:1243
+Pn @ dQw4w9WgXcQ:1
+Qs @ dQw4w9WgXcQ:1
+jN @ dQw4w9WgXcQ:1
+tW @ dQw4w9WgXcQ:1
+I @ dQw4w9WgXcQ:1
+yZ.kTf_ @ dQw4w9WgXcQ:1
+l4 @ dQw4w9WgXcQ:1
+XT @ dQw4w9WgXcQ:1
+dz @ base.js:1246
+QBb @ base.js:2734
+(anonymous) @ base.js:2733
+u @ base.js:2104
+(anonymous) @ base.js:1678
+setTimeout
+apply @ VM7:8401
+g.Pv @ base.js:1702
+(anonymous) @ base.js:2105
+k.publish @ www-embed-player-pc.js:1570
+g.C8 @ base.js:2109
+(anonymous) @ base.js:2114
+setTimeout
+apply @ VM7:8401
+Ivm.e.onload @ base.js:2115
+script
+F2 @ base.js:383
+g.dG @ base.js:382
+Ivm @ base.js:2115
+vtq @ base.js:2114
+g.tW @ base.js:2113
+sBy @ base.js:2733
+g.z.initialize @ base.js:9080
+lgH @ base.js:3865
+g.d6 @ base.js:3873
+fE @ base.js:7213
+q7H @ base.js:7212
+g.TF @ base.js:7187
+g.TF.create @ base.js:13360
+WZ.a.J @ www-embed-player-pc.js:3679
+WZ @ www-embed-player-pc.js:3681
+k.loadNewVideoConfig @ www-embed-player-pc.js:3674
+(anonymous) @ www-embed-player-pc.js:3672
+setTimeout
+apply @ VM7:8401
+TZ @ www-embed-player-pc.js:3672
+daa @ www-embed-player-pc.js:3713
+(anonymous) @ www-embed-player-pc.js:6503
+(anonymous) @ dQw4w9WgXcQ:11
+VM7:1306  GET https://www.youtube.com/pagead/viewthroughconversion/962985656/?backend=innertube&cname=56&cver=2_20250916&foc_id=uAXFkgsw1L7xaCfnd5JJOw&label=followon_view&ptype=no_rmkt&random=289978267 net::ERR_BLOCKED_BY_CLIENT
+applyHandler @ VM7:1306
+apply @ VM7:2843
+apply @ VM7:3169
+apply @ VM7:4467
+apply @ VM7:5545
+applyHandler @ VM7:6030
+applyHandler @ VM7:7182
+applyHandler @ VM7:8829
+apply @ VM7:9162
+applyHandler @ VM7:10764
+uFb @ base.js:1719
+YGb @ base.js:5437
+(anonymous) @ base.js:5747
+KG.then @ base.js:8611
+fZH @ base.js:5747
+EQS @ base.js:5742
+g.z.NJ @ base.js:11751
+g.z.NJ @ base.js:11758
+g.z.dU @ base.js:12014
+Y1Q @ base.js:5989
+g.z.F7 @ base.js:12006
+(anonymous) @ base.js:1678
+zh @ base.js:1146
+g.z.dispatchEvent @ base.js:8319
+g.z.dispatchEvent @ base.js:9569
+listener @ base.js:6179
+base.js:1109  POST https://play.google.com/log?hasfast=true&auth=SAPISIDHASH+05cb87055e02d4e9cbc143a3289451a4705ae915+SAPISID3PHASH+05cb87055e02d4e9cbc143a3289451a4705ae915&authuser=0&format=json net::ERR_BLOCKED_BY_CLIENT
+(anonymous) @ base.js:1109
+JUS @ base.js:1110
+XoH @ base.js:1109
+g.z.flush @ base.js:8293
+wU.flush @ base.js:8303
+flush @ base.js:1223
+g.z.nw @ base.js:8345
+(anonymous) @ base.js:1232
+(anonymous) @ base.js:1227
+setTimeout
+apply @ VM7:8401
+ddb @ base.js:1227
+c3.vj @ base.js:8399
+dz.Xu @ base.js:8403
+Yl.Gc @ base.js:9091
+g.z.invoke @ base.js:9084
+y1m @ base.js:3866
+S.x.c1a @ base.js:3869
+g.$2g @ base.js:3872
+g.z.Uh @ base.js:12049
+g.z.Zc @ base.js:8529
+setTimeout
+apply @ VM7:8401
+g.hh @ base.js:1183
+g.z.start @ base.js:8526
+g.Sh @ base.js:1478
+g.z.dU @ base.js:12014
+Y1Q @ base.js:5989
+g.z.F7 @ base.js:12006
+(anonymous) @ base.js:1678
+zh @ base.js:1146
+g.z.dispatchEvent @ base.js:8319
+g.z.dispatchEvent @ base.js:9569
+listener @ base.js:6179
+:3000/learning-modul…Why+it+Matters%3F:1 Uncaught (in promise) Error: A listener indicated an asynchronous response by returning true, but the message channel closed before a response was received
+:3000/learning-modul…Why+it+Matters%3F:1 Uncaught (in promise) Error: A listener indicated an asynchronous response by returning true, but the message channel closed before a response was received
+:3000/learning-modul…Why+it+Matters%3F:1 Uncaught (in promise) Error: A listener indicated an asynchronous response by returning true, but the message channel closed before a response was received
+:3000/learning-module/video-lecture?moduleId=lec_1&moduleName=Introduction+to+Business+Principles&lectureId=lec_1&title=What+is+Business+and+Why+it+Matters%3F&description=Learn+What+is+Business+and+Why+it+Matters%3F:1 Unchecked runtime.lastError: A listener indicated an asynchronous response by returning true, but the message channel closed before a response was received
+:3000/learning-modul…Why+it+Matters%3F:1 Uncaught (in promise) Error: A listener indicated an asynchronous response by returning true, but the message channel closed before a response was received
+base.js:1109  POST https://play.google.com/log?hasfast=true&auth=SAPISIDHASH+05cb87055e02d4e9cbc143a3289451a4705ae915+SAPISID3PHASH+05cb87055e02d4e9cbc143a3289451a4705ae915&authuser=0&format=json net::ERR_BLOCKED_BY_CLIENT
+(anonymous) @ base.js:1109
+JUS @ base.js:1110
+XoH @ base.js:1109
+g.z.flush @ base.js:8293
+wU.flush @ base.js:8303
+flush @ base.js:1223
+g.z.nw @ base.js:8345
+zh @ base.js:1146
+g.z.dispatchEvent @ base.js:8319
+g.z.GTd @ base.js:8340
+setTimeout
+apply @ VM7:8401
+g.z.start @ base.js:8341
+lTR @ base.js:1188
+g.z.hQ @ base.js:8349
+g.z.dY @ base.js:8348
+nHy.uc @ base.js:8267
+g.z.Za @ base.js:8390
+Z @ base.js:1244
+jN @ dQw4w9WgXcQ:1
+C @ VM166:1
+dQw4w9WgXcQ:1 Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden.
+Element with focus: <a.media-item-thumbnail-container>
+Ancestor with aria-hidden: <a.media-item-thumbnail-container> <a href=​"https:​/​/​www.youtube.com/​watch?v=ziM_K-n6svk&feature=endscreen" class=​"media-item-thumbnail-container" aria-haspopup=​"false" target=​"_blank" aria-hidden=​"true" style>​…​</a>​
+base.js:1109  POST https://play.google.com/log?hasfast=true&auth=SAPISIDHASH+05cb87055e02d4e9cbc143a3289451a4705ae915+SAPISID3PHASH+05cb87055e02d4e9cbc143a3289451a4705ae915&authuser=0&format=json net::ERR_BLOCKED_BY_CLIENT
+(anonymous) @ base.js:1109
+JUS @ base.js:1110
+XoH @ base.js:1109
+g.z.flush @ base.js:8293
+wU.flush @ base.js:8303
+flush @ base.js:1223
+g.z.nw @ base.js:8345
+zh @ base.js:1146
+g.z.dispatchEvent @ base.js:8319
+g.z.GTd @ base.js:8340
+setTimeout
+apply @ VM7:8401
+g.z.start @ base.js:8341
+lTR @ base.js:1188
+g.z.hQ @ base.js:8349
+g.z.dY @ base.js:8348
+nHy.uc @ base.js:8267
+g.z.Za @ base.js:8390
+Z @ base.js:1244
+jN @ dQw4w9WgXcQ:1
+C @ VM166:1
