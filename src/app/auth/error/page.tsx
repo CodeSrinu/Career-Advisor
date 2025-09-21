@@ -3,8 +3,17 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
+import SuspenseWrapper from '@/components/SuspenseWrapper';
 
 export default function AuthError() {
+  return (
+    <SuspenseWrapper>
+      <AuthErrorContent />
+    </SuspenseWrapper>
+  );
+}
+
+function AuthErrorContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const error = searchParams?.get('error');

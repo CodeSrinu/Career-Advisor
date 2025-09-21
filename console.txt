@@ -9,8 +9,7 @@ Promise.then
 t @ /_next/static/chunks…265354a43de5cd.js:1
 i @ /_next/static/chunks…265354a43de5cd.js:1
 (anonymous) @ /_next/static/chunks…265354a43de5cd.js:1
-(anonymous) @ /_next/static/chunks…265354a43de5cd.js:1
-N @ /_next/static/chunks…265354a43de5cd.js:1
+push.8400.e.exports @ /_next/static/chunks…265354a43de5cd.js:1
 push.998.t.signIn @ /_next/static/chunks…265354a43de5cd.js:1
 onClick @ /_next/static/chunks…f484233e46c8b8.js:1
 a_ @ /_next/static/chunks…698e2e9c7f3a30.js:1
@@ -24,6 +23,7 @@ iV @ /_next/static/chunks…698e2e9c7f3a30.js:1
 sU @ /_next/static/chunks…698e2e9c7f3a30.js:1
 uR @ /_next/static/chunks…698e2e9c7f3a30.js:1
 uM @ /_next/static/chunks…698e2e9c7f3a30.js:1
+index.iife.js:40 content ui loaded
 849-d3265354a43de5cd.js:1  GET https://career-advisor-00.vercel.app/api/auth/session 404 (Not Found)
 (anonymous) @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
@@ -32,9 +32,9 @@ uM @ /_next/static/chunks…698e2e9c7f3a30.js:1
 t @ 849-d3265354a43de5cd.js:1
 i @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
+push.8400.e.exports @ 849-d3265354a43de5cd.js:1
 c @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
+push.8692.t.fetchData @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
@@ -42,7 +42,7 @@ c @ 849-d3265354a43de5cd.js:1
 t @ 849-d3265354a43de5cd.js:1
 i @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
+push.8400.e.exports @ 849-d3265354a43de5cd.js:1
 T @ 849-d3265354a43de5cd.js:1
 R @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
@@ -52,7 +52,7 @@ R @ 849-d3265354a43de5cd.js:1
 t @ 849-d3265354a43de5cd.js:1
 i @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
+push.8400.e.exports @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
 aW @ fd9d1056-99698e2e9c7f3a30.js:1
 oe @ fd9d1056-99698e2e9c7f3a30.js:1
@@ -104,10 +104,9 @@ ol @ fd9d1056-99698e2e9c7f3a30.js:1
 id @ fd9d1056-99698e2e9c7f3a30.js:1
 o @ fd9d1056-99698e2e9c7f3a30.js:1
 T @ 23-084dc0ddac7a3dc9.js:1
-index.iife.js:40 content ui loaded
 23-084dc0ddac7a3dc9.js:1 [next-auth][error][CLIENT_FETCH_ERROR] 
-https://next-auth.js.org/errors#client_fetch_error Unexpected token '<', "<!DOCTYPE "... is not valid JSON {error: {…}, url: '/api/auth/session', message: `Unexpected token '<', "<!DOCTYPE "... is not valid JSON`}client: trueerror: {message: `Unexpected token '<', "<!DOCTYPE "... is not valid JSON`, stack: `SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON`, name: 'SyntaxError'}message: "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"url: "/api/auth/session"[[Prototype]]: Object
-(anonymous) @ 23-084dc0ddac7a3dc9.js:1
+https://next-auth.js.org/errors#client_fetch_error Unexpected token '<', "<!DOCTYPE "... is not valid JSON {error: {…}, url: '/api/auth/session', message: `Unexpected token '<', "<!DOCTYPE "... is not valid JSON`}
+push.353.window.console.error @ 23-084dc0ddac7a3dc9.js:1
 error @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
@@ -116,8 +115,8 @@ error @ 849-d3265354a43de5cd.js:1
 t @ 849-d3265354a43de5cd.js:1
 i @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
+push.8400.e.exports @ 849-d3265354a43de5cd.js:1
+push.7578.t.proxyLogger.r.<computed> @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
@@ -131,9 +130,9 @@ Promise.then
 t @ 849-d3265354a43de5cd.js:1
 i @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
+push.8400.e.exports @ 849-d3265354a43de5cd.js:1
 c @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
+push.8692.t.fetchData @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
@@ -141,7 +140,7 @@ c @ 849-d3265354a43de5cd.js:1
 t @ 849-d3265354a43de5cd.js:1
 i @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
+push.8400.e.exports @ 849-d3265354a43de5cd.js:1
 T @ 849-d3265354a43de5cd.js:1
 R @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
@@ -151,7 +150,7 @@ R @ 849-d3265354a43de5cd.js:1
 t @ 849-d3265354a43de5cd.js:1
 i @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
+push.8400.e.exports @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
 aW @ fd9d1056-99698e2e9c7f3a30.js:1
 oe @ fd9d1056-99698e2e9c7f3a30.js:1
@@ -211,8 +210,8 @@ T @ 23-084dc0ddac7a3dc9.js:1
 t @ 849-d3265354a43de5cd.js:1
 i @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
+push.8400.e.exports @ 849-d3265354a43de5cd.js:1
+push.7578.t.proxyLogger.r.<computed> @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
@@ -226,9 +225,9 @@ Promise.then
 t @ 849-d3265354a43de5cd.js:1
 i @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
+push.8400.e.exports @ 849-d3265354a43de5cd.js:1
 c @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
+push.8692.t.fetchData @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
@@ -236,7 +235,7 @@ c @ 849-d3265354a43de5cd.js:1
 t @ 849-d3265354a43de5cd.js:1
 i @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
+push.8400.e.exports @ 849-d3265354a43de5cd.js:1
 T @ 849-d3265354a43de5cd.js:1
 R @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
@@ -246,7 +245,7 @@ R @ 849-d3265354a43de5cd.js:1
 t @ 849-d3265354a43de5cd.js:1
 i @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
+push.8400.e.exports @ 849-d3265354a43de5cd.js:1
 (anonymous) @ 849-d3265354a43de5cd.js:1
 aW @ fd9d1056-99698e2e9c7f3a30.js:1
 oe @ fd9d1056-99698e2e9c7f3a30.js:1
@@ -298,25 +297,3 @@ ol @ fd9d1056-99698e2e9c7f3a30.js:1
 id @ fd9d1056-99698e2e9c7f3a30.js:1
 o @ fd9d1056-99698e2e9c7f3a30.js:1
 T @ 23-084dc0ddac7a3dc9.js:1
-iframe.js:310 Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (career-advisor-00.vercel.app) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab.
-ml @ iframe.js:310
-(anonymous) @ iframe.js:579
-a @ iframe.js:155
-(anonymous) @ iframe.js:155
-c @ iframe.js:155
-e.vd @ iframe.js:163
-lg @ iframe.js:166
-hg @ iframe.js:166
-F.zk @ iframe.js:165
-a @ iframe.js:155
-(anonymous) @ iframe.js:155
-c @ iframe.js:155
-Qf @ iframe.js:156
-a
-Jf @ iframe.js:156
-cg @ iframe.js:162
-k.l @ iframe.js:160
-os @ iframe.js:578
-(anonymous) @ iframe.js:579
-aj @ iframe.js:240
-b @ iframe.js:238

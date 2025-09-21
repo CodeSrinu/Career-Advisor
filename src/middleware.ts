@@ -6,7 +6,7 @@ export default withAuth({
   },
 })
 
-// Don't invoke Middleware on some paths including API routes for auth
+// Don't invoke Middleware on API routes, static files, or images
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 }
