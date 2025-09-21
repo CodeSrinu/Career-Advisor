@@ -20,6 +20,7 @@ export default function VideoLecturePage() {
   const lectureId = searchParams.get('lectureId') || '';
   const moduleId = searchParams.get('moduleId') || '';
   const moduleName = searchParams.get('moduleName') || '';
+  const lectureTitle = searchParams.get('title') || '';
   
   const [lecture, setLecture] = useState<VideoLecture | null>(null);
   const [loading, setLoading] = useState(true);
@@ -42,7 +43,7 @@ export default function VideoLecturePage() {
           body: JSON.stringify({ 
             lectureId,
             moduleId,
-            moduleName,
+            moduleName: lectureTitle, // Use the specific lecture title instead of the course name
             userId: 'default-user' // This would be dynamically determined
           }),
         });
