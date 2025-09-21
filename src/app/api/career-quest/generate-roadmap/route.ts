@@ -60,6 +60,11 @@ export async function POST(request: Request) {
     
     console.log("Career Quest Roadmap API called with:", { roleId: body.roleId, roleName: body.roleName, domainId: body.domainId, startingLevel: body.startingLevel });
     console.log("API Key available:", !!apiKey);
+    if (apiKey) {
+      console.log("API Key length:", apiKey.length);
+    } else {
+      console.log("API Key is NULL or UNDEFINED");
+    }
     
     if (!apiKey) {
       // Fallback response if API key is not available

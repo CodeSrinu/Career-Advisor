@@ -59,6 +59,11 @@ export async function POST(request: Request) {
     
     console.log("Course Roadmap API called with:", { courseId: body.courseId, courseTitle: body.courseTitle, careerField: body.careerField });
     console.log("API Key available:", !!apiKey);
+    if (apiKey) {
+      console.log("API Key length:", apiKey.length);
+    } else {
+      console.log("API Key is NULL or UNDEFINED");
+    }
     
     if (!apiKey) {
       // Fallback response if API key is not available
