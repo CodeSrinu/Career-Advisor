@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import SuspenseWrapper from '@/components/SuspenseWrapper';
 
 interface TaskProject {
   id: string;
@@ -19,12 +20,20 @@ interface TaskProject {
 }
 
 export default function TasksProjectsPage() {
+  return (
+    <SuspenseWrapper>
+      <TasksProjectsPageContent />
+    </SuspenseWrapper>
+  );
+}
+
+function TasksProjectsPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const taskId = searchParams.get('taskId') || '';
-  const projectId = searchParams.get('projectId') || '';
-  const moduleId = searchParams.get('moduleId') || '';
-  const moduleName = searchParams.get('moduleName') || '';
+  const taskId = searchParams?.get('taskId') || '';
+  const projectId = searchParams?.get('projectId') || '';
+  const moduleId = searchParams?.get('moduleId') || '';
+  const moduleName = searchParams?.get('moduleName') || '';
   
   const [taskProject, setTaskProject] = useState<TaskProject | null>(null);
   const [loading, setLoading] = useState(true);

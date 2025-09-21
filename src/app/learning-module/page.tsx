@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import SuspenseWrapper from '@/components/SuspenseWrapper';
 
 interface LearningModule {
   id: string;
@@ -24,14 +25,22 @@ interface LearningContentModule {
 }
 
 export default function LearningModulePage() {
+  return (
+    <SuspenseWrapper>
+      <LearningModulePageContent />
+    </SuspenseWrapper>
+  );
+}
+
+function LearningModulePageContent() {
   console.log("LearningModulePage component mounting");
   const router = useRouter();
   const searchParams = useSearchParams();
-  const nodeId = searchParams.get('nodeId') || '';
-  const roleId = searchParams.get('roleId') || '';
-  const roleName = searchParams.get('roleName') || '';
-  const domainId = searchParams.get('domainId') || '';
-  const nodeTitle = searchParams.get('nodeTitle') || '';
+  const nodeId = searchParams?.get('nodeId') || '';
+  const roleId = searchParams?.get('roleId') || '';
+  const roleName = searchParams?.get('roleName') || '';
+  const domainId = searchParams?.get('domainId') || '';
+  const nodeTitle = searchParams?.get('nodeTitle') || '';
   
   const [learningModule, setLearningModule] = useState<LearningModule | null>(null);
   const [loading, setLoading] = useState(true);

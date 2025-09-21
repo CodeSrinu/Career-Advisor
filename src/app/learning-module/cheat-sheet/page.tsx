@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import SuspenseWrapper from '@/components/SuspenseWrapper';
 
 interface CheatSheet {
   id: string;
@@ -14,11 +15,19 @@ interface CheatSheet {
 }
 
 export default function CheatSheetPage() {
+  return (
+    <SuspenseWrapper>
+      <CheatSheetPageContent />
+    </SuspenseWrapper>
+  );
+}
+
+function CheatSheetPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const cheatSheetId = searchParams.get('cheatSheetId') || '';
-  const moduleId = searchParams.get('moduleId') || '';
-  const moduleName = searchParams.get('moduleName') || '';
+  const cheatSheetId = searchParams?.get('cheatSheetId') || '';
+  const moduleId = searchParams?.get('moduleId') || '';
+  const moduleName = searchParams?.get('moduleName') || '';
   
   const [cheatSheet, setCheatSheet] = useState<CheatSheet | null>(null);
   const [loading, setLoading] = useState(true);

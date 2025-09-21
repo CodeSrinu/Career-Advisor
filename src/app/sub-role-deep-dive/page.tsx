@@ -4,12 +4,21 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import SubRoleDeepDivePage from '@/components/mobile/SubRoleDeepDivePage';
+import SuspenseWrapper from '@/components/SuspenseWrapper';
 
 export default function SubRoleDeepDivePageRoute() {
+  return (
+    <SuspenseWrapper>
+      <SubRoleDeepDivePageRouteContent />
+    </SuspenseWrapper>
+  );
+}
+
+function SubRoleDeepDivePageRouteContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const subRoleId = searchParams.get('subRoleId') || '';
-  const domainId = searchParams.get('domainId') || '';
+  const subRoleId = searchParams?.get('subRoleId') || '';
+  const domainId = searchParams?.get('domainId') || '';
 
   const handleBack = () => {
     router.back();

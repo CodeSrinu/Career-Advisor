@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import AISkillAssessment from '@/components/mobile/AISkillAssessment';
 import AISkillAssessmentResults from '@/components/mobile/AISkillAssessmentResults';
+import SuspenseWrapper from '@/components/SuspenseWrapper';
 
 interface SkillAssessmentResult {
   skillLevel: number; // 0-4 scale (0: Absolute Beginner, 1: Novice, 2: Apprentice, 3: Advanced, 4: Expert)
@@ -14,11 +15,19 @@ interface SkillAssessmentResult {
 }
 
 export default function SkillAssessmentPage() {
+  return (
+    <SuspenseWrapper>
+      <SkillAssessmentPageContent />
+    </SuspenseWrapper>
+  );
+}
+
+function SkillAssessmentPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const roleId = searchParams.get('roleId') || '';
-  const roleName = searchParams.get('roleName') || '';
-  const domainId = searchParams.get('domainId') || '';
+  const roleId = searchParams?.get('roleId') || '';
+  const roleName = searchParams?.get('roleName') || '';
+  const domainId = searchParams?.get('domainId') || '';
   
   const [assessmentResult, setAssessmentResult] = useState<SkillAssessmentResult | null>(null);
 

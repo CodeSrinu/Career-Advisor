@@ -40,7 +40,7 @@ interface DomainExplorerProps {
   onBack: () => void;
 }
 
-export default function DomainExplorer({ onSelectDomain, onBack }: DomainExplorerProps) {
+export default function DomainExplorer({ onSelectDomain, onSelectSubRole, onBack }: DomainExplorerProps) {
   const router = useRouter();
   const [selectedDomain, setSelectedDomain] = useState<string | null>(null);
   const [domains, setDomains] = useState<Domain[]>([]);

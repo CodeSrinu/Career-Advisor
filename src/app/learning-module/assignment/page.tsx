@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import SuspenseWrapper from '@/components/SuspenseWrapper';
 
 interface Assignment {
   id: string;
@@ -19,11 +20,19 @@ interface Assignment {
 }
 
 export default function AssignmentPage() {
+  return (
+    <SuspenseWrapper>
+      <AssignmentPageContent />
+    </SuspenseWrapper>
+  );
+}
+
+function AssignmentPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const assignmentId = searchParams.get('assignmentId') || '';
-  const moduleId = searchParams.get('moduleId') || '';
-  const moduleName = searchParams.get('moduleName') || '';
+  const assignmentId = searchParams?.get('assignmentId') || '';
+  const moduleId = searchParams?.get('moduleId') || '';
+  const moduleName = searchParams?.get('moduleName') || '';
   
   const [assignment, setAssignment] = useState<Assignment | null>(null);
   const [loading, setLoading] = useState(true);

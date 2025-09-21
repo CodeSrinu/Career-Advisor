@@ -1,6 +1,6 @@
 // src/app/api/skill-assessment/route.ts
 import { NextResponse } from 'next/server';
-import { GoogleGenerativeAI } from \"@google/generative-ai\";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Define TypeScript interface for our request
 interface SkillAssessmentRequest {
@@ -42,9 +42,9 @@ export async function POST(request: Request) {
     if (!apiKey) {
       // Fallback response if API key is not available
       return NextResponse.json({
-        analysis: \"Based on your assessment results, we've analyzed your skill level. You have a good foundation but can improve in several areas.\",
-        strengths: [\"Foundational knowledge\", \"Practical experience\", \"Learning motivation\"],
-        weaknesses: [\"Advanced concepts\", \"Industry tools\", \"Project complexity\"],
+        analysis: "Based on your assessment results, we've analyzed your skill level. You have a good foundation but can improve in several areas.",
+        strengths: ["Foundational knowledge", "Practical experience", "Learning motivation"],
+        weaknesses: ["Advanced concepts", "Industry tools", "Project complexity"],
         level: Math.floor((body.correctAnswers / body.totalQuestions) * 4),
         startingLevel: Math.max(1, Math.floor((body.correctAnswers / body.totalQuestions) * 6)),
         needsPrerequisites: (body.correctAnswers / body.totalQuestions) < 0.5
@@ -53,7 +53,7 @@ export async function POST(request: Request) {
 
     // Initialize the Google Generative AI client
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: \"gemini-1.5-flash\" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     
     // Construct the prompt for the AI
     const prompt = `
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
       ${body.questions.map((q, i) => `${q.id}. ${q.text}: ${body.answers[i] ? 'YES' : 'NO'}`).join('\n')}
       
       OPEN RESPONSE:
-      \"${body.openResponse || 'No response provided'}\"
+      "${body.openResponse || 'No response provided'}"
       
       TASK:
       Based on the assessment data, provide:
@@ -84,12 +84,12 @@ export async function POST(request: Request) {
       OUTPUT FORMAT:
       Return a JSON object with the following structure:
       {
-        \"analysis\": \"Comprehensive analysis text\",
-        \"strengths\": [\"strength1\", \"strength2\", \"strength3\"],
-        \"weaknesses\": [\"weakness1\", \"weakness2\", \"weakness3\"],
-        \"level\": 0,
-        \"startingLevel\": 1,
-        \"needsPrerequisites\": true
+        "analysis": "Comprehensive analysis text",
+        "strengths": ["strength1", "strength2", "strength3"],
+        "weaknesses": ["weakness1", "weakness2", "weakness3"],
+        "level": 0,
+        "startingLevel": 1,
+        "needsPrerequisites": true
       }
     `;
 
@@ -106,27 +106,27 @@ export async function POST(request: Request) {
     
     // Validate that we have a valid JSON string
     if (jsonString.length === 0) {
-      throw new Error(\"AI response did not contain valid JSON\");
+      throw new Error("AI response did not contain valid JSON");
     }
     
     const parsedResponse: SkillAssessmentResponse = JSON.parse(jsonString);
     
     // Validate that the response has the expected structure
     if (!parsedResponse.analysis || !parsedResponse.strengths || !parsedResponse.weaknesses) {
-      throw new Error(\"AI response does not have the expected structure\");
+      throw new Error("AI response does not have the expected structure");
     }
     
     return NextResponse.json(parsedResponse);
     
   } catch (error: any) {
-    console.error(\"Error in skill assessment API:\", error);
+    console.error("Error in skill assessment API:", error);
     
     // Return a fallback response in case of error
     return NextResponse.json(
       {
-        analysis: \"Based on your assessment results, we've analyzed your skill level. You have a good foundation but can improve in several areas.\",
-        strengths: [\"Foundational knowledge\", \"Practical experience\", \"Learning motivation\"],
-        weaknesses: [\"Advanced concepts\", \"Industry tools\", \"Project complexity\"],
+        analysis: "Based on your assessment results, we've analyzed your skill level. You have a good foundation but can improve in several areas.",
+        strengths: ["Foundational knowledge", "Practical experience", "Learning motivation"],
+        weaknesses: ["Advanced concepts", "Industry tools", "Project complexity"],
         level: 1,
         startingLevel: 1,
         needsPrerequisites: true

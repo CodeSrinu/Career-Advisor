@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import CareerQuestRoadmap from '@/components/mobile/CareerQuestRoadmap';
+import SuspenseWrapper from '@/components/SuspenseWrapper';
 
 interface RoadmapNode {
   id: string;
@@ -25,12 +26,20 @@ interface RoadmapUnit {
 }
 
 export default function CareerQuestPage() {
+  return (
+    <SuspenseWrapper>
+      <CareerQuestPageContent />
+    </SuspenseWrapper>
+  );
+}
+
+function CareerQuestPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const roleId = searchParams.get('roleId') || '';
-  const roleName = searchParams.get('roleName') || '';
-  const domainId = searchParams.get('domainId') || '';
-  const startingLevel = parseInt(searchParams.get('startingLevel') || '0');
+  const roleId = searchParams?.get('roleId') || '';
+  const roleName = searchParams?.get('roleName') || '';
+  const domainId = searchParams?.get('domainId') || '';
+  const startingLevel = parseInt(searchParams?.get('startingLevel') || '0');
   
   // We'll store assessment data in localStorage so we can retrieve it
   const [assessmentData, setAssessmentData] = useState<{

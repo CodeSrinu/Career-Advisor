@@ -10,6 +10,8 @@ interface LearningPathDisplayProps {
   onStartStep: (stepId: string) => void;
 }
 
+
+
 export default function LearningPathDisplay({ learningPath, onBack, onStartStep }: LearningPathDisplayProps) {
   const [completedSteps, setCompletedSteps] = useState<string[]>([]);
   const [expandedStep, setExpandedStep] = useState<string | null>(null);
@@ -269,15 +271,15 @@ export default function LearningPathDisplay({ learningPath, onBack, onStartStep 
       </main>
 
       {/* Fixed Bottom Button */}
-      <footer className=\"fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200\">
+      <footer className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200">
         <button
-          className=\"w-full py-3 px-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-xl transition-all duration-300 hover:from-green-600 hover:to-green-700\"
+          className="w-full py-3 px-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-xl transition-all duration-300 hover:from-green-600 hover:to-green-700"
           onClick={() => {
             const nextStep = nextSteps[0];
             if (nextStep) {
               onStartStep(nextStep.id);
             } else {
-              alert('Congratulations! You\\'ve completed all steps in this learning path.');
+              alert('Congratulations! You\'ve completed all steps in this learning path.');
             }
           }}
         >

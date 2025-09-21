@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import SuspenseWrapper from '@/components/SuspenseWrapper';
 
 interface QuizQuestion {
   id: string;
@@ -23,11 +24,19 @@ interface Quiz {
 }
 
 export default function QuizPage() {
+  return (
+    <SuspenseWrapper>
+      <QuizPageContent />
+    </SuspenseWrapper>
+  );
+}
+
+function QuizPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const quizId = searchParams.get('quizId') || '';
-  const moduleId = searchParams.get('moduleId') || '';
-  const moduleName = searchParams.get('moduleName') || '';
+  const quizId = searchParams?.get('quizId') || '';
+  const moduleId = searchParams?.get('moduleId') || '';
+  const moduleName = searchParams?.get('moduleName') || '';
   
   const [quiz, setQuiz] = useState<Quiz | null>(null);
   const [loading, setLoading] = useState(true);

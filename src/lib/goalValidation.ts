@@ -1,6 +1,6 @@
 // src/lib/goalValidation.ts
 
-interface ValidationQuizAnswers {
+export interface ValidationQuizAnswers {
   primaryDrive: string;
   tenYearVision: string;
   problemSolvingApproach: string;

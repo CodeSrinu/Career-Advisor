@@ -1,6 +1,6 @@
 // src/lib/learningPath.ts
 
-interface LearningPathStep {
+export interface LearningPathStep {
   id: string;
   title: string;
   description: string;
@@ -11,7 +11,7 @@ interface LearningPathStep {
   skills: string[]; // Skills that will be developed
 }
 
-interface LearningPath {
+export interface LearningPath {
   id: string;
   name: string;
   description: string;
@@ -27,7 +27,8 @@ export async function generateLearningPath(
   roleId: string,
   roleName: string,
   skillLevel: number,
-  gaps: string[]
+  gaps: string[],
+  domainId?: string
 ): Promise<LearningPath> {
   try {
     // In a real implementation, this would call an AI API to generate a personalized learning path
@@ -240,7 +241,7 @@ export async function generateLearningPath(
     let selectedPath: LearningPath | undefined;
     if (learningPaths[roleId] && learningPaths[roleId][skillLevel]) {
       selectedPath = learningPaths[roleId][skillLevel];
-    } else if (learningPaths[domainId] && learningPaths[domainId][skillLevel]) {
+    } else if (domainId && learningPaths[domainId] && learningPaths[domainId][skillLevel]) {
       selectedPath = learningPaths[domainId][skillLevel];
     } else {
       // Fallback to default learning path

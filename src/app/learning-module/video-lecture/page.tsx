@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import SuspenseWrapper from '@/components/SuspenseWrapper';
 
 interface VideoLecture {
   id: string;
@@ -15,12 +16,20 @@ interface VideoLecture {
 }
 
 export default function VideoLecturePage() {
+  return (
+    <SuspenseWrapper>
+      <VideoLecturePageContent />
+    </SuspenseWrapper>
+  );
+}
+
+function VideoLecturePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const lectureId = searchParams.get('lectureId') || '';
-  const moduleId = searchParams.get('moduleId') || '';
-  const moduleName = searchParams.get('moduleName') || '';
-  const lectureTitle = searchParams.get('title') || '';
+  const lectureId = searchParams?.get('lectureId') || '';
+  const moduleId = searchParams?.get('moduleId') || '';
+  const moduleName = searchParams?.get('moduleName') || '';
+  const lectureTitle = searchParams?.get('title') || '';
   
   console.log("VideoLecturePage mounted with parameters:", { lectureId, moduleId, moduleName, lectureTitle });
   

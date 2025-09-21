@@ -9,8 +9,17 @@ import OnboardingScreen from '@/components/mobile/OnboardingScreen';
 import PsychologyQuiz from '@/components/mobile/PsychologyQuiz';
 import ResultsPage from '@/components/mobile/ResultsPage';
 import RoleDeepDivePage from '@/components/mobile/RoleDeepDivePage';
+import SuspenseWrapper from '@/components/SuspenseWrapper';
 
 export default function Home() {
+  return (
+    <SuspenseWrapper>
+      <HomePageContent />
+    </SuspenseWrapper>
+  );
+}
+
+function HomePageContent() {
   const { data: session, status } = useSession();
   const searchParams = useSearchParams();
   const [currentStep, setCurrentStep] = useState<'login' | 'onboarding' | 'psychologyQuiz' | 'results' | 'roleDeepDive'>('login');
@@ -30,12 +39,12 @@ export default function Home() {
   useEffect(() => {
     if (status === 'authenticated') {
       // Check for deep-dive parameters
-      const deepDive = searchParams.get('deepDive');
+      const deepDive = searchParams?.get('deepDive');
       if (deepDive === 'true') {
-        const roleId = searchParams.get('roleId') || '';
-        const roleName = searchParams.get('roleName') || '';
-        const personaContext = searchParams.get('personaContext') || '';
-        const roleRank = parseInt(searchParams.get('roleRank') || '1', 10);
+        const roleId = searchParams?.get('roleId') || '';
+        const roleName = searchParams?.get('roleName') || '';
+        const personaContext = searchParams?.get('personaContext') || '';
+        const roleRank = parseInt(searchParams?.get('roleRank') || '1', 10);
         
         console.log('Deep-dive parameters found:', { roleId, roleName, personaContext, roleRank });
         
@@ -52,7 +61,7 @@ export default function Home() {
       // If we're still on the login step, check if we should skip onboarding
       if (currentStep === 'login') {
         // Check if we should skip onboarding (coming from goal validation)
-        const skipOnboarding = searchParams.get('skipOnboarding') === 'true';
+        const skipOnboarding = searchParams?.get('skipOnboarding') === 'true';
         
         if (skipOnboarding) {
           setCurrentStep('psychologyQuiz');

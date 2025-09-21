@@ -24,10 +24,10 @@ interface ProjectContent {
 }
 
 export async function POST(request: Request) {
+  // Parse the request body
+  const body: ProjectRequest = await request.json();
+  
   try {
-    // Parse the request body
-    const body: ProjectRequest = await request.json();
-    
     // Validate input
     if (!body.projectId || !body.moduleId || !body.moduleName) {
       return NextResponse.json(
@@ -80,16 +80,16 @@ export async function POST(request: Request) {
     console.log("USING FALLBACK MOCK DATA");
     const mockProject: ProjectContent = {
       id: 'default',
-      title: body.projectId.includes('tk') ? 'Build a Personal Portfolio Website' : 'Create a Responsive Landing Page',
-      description: body.projectId.includes('tk') 
+      title: body.projectId?.includes('tk') ? 'Build a Personal Portfolio Website' : 'Create a Responsive Landing Page',
+      description: body.projectId?.includes('tk') 
         ? 'Create a responsive personal portfolio website showcasing your skills and projects' 
         : 'Design and build a responsive landing page for a fictional product or service',
-      type: body.projectId.includes('tk') ? 'task' : 'project',
+      type: body.projectId?.includes('tk') ? 'task' : 'project',
       difficulty: 'beginner',
       estimatedTime: '2 hours',
-      moduleId: 'default',
-      moduleName: 'HTML Fundamentals',
-      requirements: body.projectId.includes('tk') 
+      moduleId: body.moduleId || 'default',
+      moduleName: body.moduleName || 'HTML Fundamentals',
+      requirements: body.projectId?.includes('tk') 
         ? [
             'Use semantic HTML elements',
             'Implement responsive design with CSS media queries',
@@ -108,7 +108,7 @@ export async function POST(request: Request) {
             'Optimize for performance',
             'Include accessibility features'
           ],
-      instructions: body.projectId.includes('tk') 
+      instructions: body.projectId?.includes('tk') 
         ? [
             'Plan your portfolio structure and content',
             'Set up the basic HTML structure with semantic elements',

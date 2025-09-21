@@ -23,12 +23,13 @@ interface QuizQuestion {
 }
 
 interface LearningUnit {
-  type: 'lecture' | 'task';
+  type: 'lecture' | 'task' | 'cheat-sheet' | 'quiz';
   id: string;
   title: string;
   videoUrl?: string;
   problemStatement?: string;
   requirements?: string[];
+  description?: string;
 }
 
 interface CourseRoadmap {
