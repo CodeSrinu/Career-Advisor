@@ -17,10 +17,15 @@ const handler = NextAuth({
       return session;
     },
     async jwt({ token, account, profile }) {
-      // Persist the OAuth access_token and or the user id to the token right after signin
+      // Persist the OAuth access_token to the token right after signin
       if (account) {
         token.accessToken = account.access_token;
-        token.id = profile?.id;
+      }
+      // Add profile information to token
+      if (profile) {
+        token.name = profile.name;
+        token.email = profile.email;
+        token.picture = profile.picture;
       }
       return token;
     },
