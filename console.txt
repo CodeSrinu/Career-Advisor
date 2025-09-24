@@ -1,299 +1,62 @@
-  GET https://career-advisor-00.vercel.app/api/auth/error 404 (Not Found)
-(anonymous) @ /_next/static/chunks…265354a43de5cd.js:1
-(anonymous) @ /_next/static/chunks…265354a43de5cd.js:1
-(anonymous) @ /_next/static/chunks…265354a43de5cd.js:1
-(anonymous) @ /_next/static/chunks…265354a43de5cd.js:1
-t @ /_next/static/chunks…265354a43de5cd.js:1
-i @ /_next/static/chunks…265354a43de5cd.js:1
-Promise.then
-t @ /_next/static/chunks…265354a43de5cd.js:1
-i @ /_next/static/chunks…265354a43de5cd.js:1
-(anonymous) @ /_next/static/chunks…265354a43de5cd.js:1
-push.8400.e.exports @ /_next/static/chunks…265354a43de5cd.js:1
-push.998.t.signIn @ /_next/static/chunks…265354a43de5cd.js:1
-onClick @ /_next/static/chunks…f484233e46c8b8.js:1
-a_ @ /_next/static/chunks…698e2e9c7f3a30.js:1
-aR @ /_next/static/chunks…698e2e9c7f3a30.js:1
-(anonymous) @ /_next/static/chunks…698e2e9c7f3a30.js:1
-sF @ /_next/static/chunks…698e2e9c7f3a30.js:1
-sM @ /_next/static/chunks…698e2e9c7f3a30.js:1
-(anonymous) @ /_next/static/chunks…698e2e9c7f3a30.js:1
-o4 @ /_next/static/chunks…698e2e9c7f3a30.js:1
-iV @ /_next/static/chunks…698e2e9c7f3a30.js:1
-sU @ /_next/static/chunks…698e2e9c7f3a30.js:1
-uR @ /_next/static/chunks…698e2e9c7f3a30.js:1
-uM @ /_next/static/chunks…698e2e9c7f3a30.js:1
-index.iife.js:40 content ui loaded
-849-d3265354a43de5cd.js:1  GET https://career-advisor-00.vercel.app/api/auth/session 404 (Not Found)
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-t @ 849-d3265354a43de5cd.js:1
-i @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-push.8400.e.exports @ 849-d3265354a43de5cd.js:1
-c @ 849-d3265354a43de5cd.js:1
-push.8692.t.fetchData @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-t @ 849-d3265354a43de5cd.js:1
-i @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-push.8400.e.exports @ 849-d3265354a43de5cd.js:1
-T @ 849-d3265354a43de5cd.js:1
-R @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-t @ 849-d3265354a43de5cd.js:1
-i @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-push.8400.e.exports @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-aW @ fd9d1056-99698e2e9c7f3a30.js:1
-oe @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-id @ fd9d1056-99698e2e9c7f3a30.js:1
-o @ fd9d1056-99698e2e9c7f3a30.js:1
-T @ 23-084dc0ddac7a3dc9.js:1
-23-084dc0ddac7a3dc9.js:1 [next-auth][error][CLIENT_FETCH_ERROR] 
-https://next-auth.js.org/errors#client_fetch_error Unexpected token '<', "<!DOCTYPE "... is not valid JSON {error: {…}, url: '/api/auth/session', message: `Unexpected token '<', "<!DOCTYPE "... is not valid JSON`}
-push.353.window.console.error @ 23-084dc0ddac7a3dc9.js:1
-error @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-t @ 849-d3265354a43de5cd.js:1
-i @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-push.8400.e.exports @ 849-d3265354a43de5cd.js:1
-push.7578.t.proxyLogger.r.<computed> @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-t @ 849-d3265354a43de5cd.js:1
-s @ 849-d3265354a43de5cd.js:1
-Promise.then
-t @ 849-d3265354a43de5cd.js:1
-i @ 849-d3265354a43de5cd.js:1
-Promise.then
-t @ 849-d3265354a43de5cd.js:1
-i @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-push.8400.e.exports @ 849-d3265354a43de5cd.js:1
-c @ 849-d3265354a43de5cd.js:1
-push.8692.t.fetchData @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-t @ 849-d3265354a43de5cd.js:1
-i @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-push.8400.e.exports @ 849-d3265354a43de5cd.js:1
-T @ 849-d3265354a43de5cd.js:1
-R @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-t @ 849-d3265354a43de5cd.js:1
-i @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-push.8400.e.exports @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-aW @ fd9d1056-99698e2e9c7f3a30.js:1
-oe @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-id @ fd9d1056-99698e2e9c7f3a30.js:1
-o @ fd9d1056-99698e2e9c7f3a30.js:1
-T @ 23-084dc0ddac7a3dc9.js:1
-849-d3265354a43de5cd.js:1  POST https://career-advisor-00.vercel.app/api/auth/_log 405 (Method Not Allowed)
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-t @ 849-d3265354a43de5cd.js:1
-i @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-push.8400.e.exports @ 849-d3265354a43de5cd.js:1
-push.7578.t.proxyLogger.r.<computed> @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-t @ 849-d3265354a43de5cd.js:1
-s @ 849-d3265354a43de5cd.js:1
-Promise.then
-t @ 849-d3265354a43de5cd.js:1
-i @ 849-d3265354a43de5cd.js:1
-Promise.then
-t @ 849-d3265354a43de5cd.js:1
-i @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-push.8400.e.exports @ 849-d3265354a43de5cd.js:1
-c @ 849-d3265354a43de5cd.js:1
-push.8692.t.fetchData @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-t @ 849-d3265354a43de5cd.js:1
-i @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-push.8400.e.exports @ 849-d3265354a43de5cd.js:1
-T @ 849-d3265354a43de5cd.js:1
-R @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-t @ 849-d3265354a43de5cd.js:1
-i @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-push.8400.e.exports @ 849-d3265354a43de5cd.js:1
-(anonymous) @ 849-d3265354a43de5cd.js:1
-aW @ fd9d1056-99698e2e9c7f3a30.js:1
-oe @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-or @ fd9d1056-99698e2e9c7f3a30.js:1
-ol @ fd9d1056-99698e2e9c7f3a30.js:1
-id @ fd9d1056-99698e2e9c7f3a30.js:1
-o @ fd9d1056-99698e2e9c7f3a30.js:1
-T @ 23-084dc0ddac7a3dc9.js:1
+NEXTAUTH_SECRET
+All Environments
+
+UsHeojPa1OXFv8a8JLY3Nxb9xf9sE3tQdh4SXh0LvA0=
+Added 3d ago
+
+
+NEXTAUTH_URL
+All Environments
+
+https://career-advisor-00.vercel.app
+Added 3d ago
+
+
+NEXT_PUBLIC_FIREBASE_PROJECT_ID
+All Environments
+•••••••••••••••
+
+Added 3d ago
+
+
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+All Environments
+•••••••••••••••
+
+Added 3d ago
+
+
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+All Environments
+•••••••••••••••
+
+Added 3d ago
+
+
+NEXT_PUBLIC_FIREBASE_APP_ID
+All Environments
+•••••••••••••••
+
+Added 3d ago
+
+
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+All Environments
+•••••••••••••••
+
+Added 3d ago
+
+
+GEMINI_API_KEY
+All Environments
+•••••••••••••••
+
+Added 3d ago
+
+
+NEXT_PUBLIC_FIREBASE_API_KEY
+All Environments
+•••••••••••••••
+
+Added 3d ago
+
