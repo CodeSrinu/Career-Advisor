@@ -1,37 +1,37 @@
-20:10:24.444 Running build in Washington, D.C., USA (East) – iad1
-20:10:24.444 Build machine configuration: 2 cores, 8 GB
-20:10:24.471 Cloning github.com/CodeSrinu/Career-Advisor (Branch: master, Commit: 26ac572)
-20:10:24.898 Cloning completed: 427.000ms
-20:10:25.709 Restored build cache from previous deployment (3TpQeZqKYg5bhLi15oR4rgFh3XLW)
-20:10:26.534 Running "vercel build"
-20:10:26.986 Vercel CLI 48.1.1
-20:10:27.630 Installing dependencies...
-20:10:29.241 
-20:10:29.243 up to date in 1s
-20:10:29.243 
-20:10:29.244 176 packages are looking for funding
-20:10:29.244   run `npm fund` for details
-20:10:29.276 Detected Next.js version: 14.2.3
-20:10:29.282 Running "npm run build"
-20:10:29.392 
-20:10:29.392 > career-advisor@0.1.0 build
-20:10:29.393 > next build
-20:10:29.393 
-20:10:30.203   ▲ Next.js 14.2.3
-20:10:30.204 
-20:10:30.281    Creating an optimized production build ...
-20:10:43.273  ✓ Compiled successfully
-20:10:43.274    Linting and checking validity of types ...
-20:10:51.164 Failed to compile.
-20:10:51.164 
-20:10:51.165 ./app/api/auth/[...nextauth]/route.ts:23:29
-20:10:51.165 Type error: Property 'id' does not exist on type 'Profile'.
-20:10:51.165 
-20:10:51.166 [0m [90m 21 |[39m       [36mif[39m (account) {[0m
-20:10:51.166 [0m [90m 22 |[39m         token[33m.[39maccessToken [33m=[39m account[33m.[39maccess_token[33m;[39m[0m
-20:10:51.166 [0m[31m[1m>[22m[39m[90m 23 |[39m         token[33m.[39mid [33m=[39m profile[33m?[39m[33m.[39mid[33m;[39m[0m
-20:10:51.166 [0m [90m    |[39m                             [31m[1m^[22m[39m[0m
-20:10:51.166 [0m [90m 24 |[39m       }[0m
-20:10:51.167 [0m [90m 25 |[39m       [36mreturn[39m token[33m;[39m[0m
-20:10:51.167 [0m [90m 26 |[39m     }[33m,[39m[0m
-20:10:51.210 Error: Command "npm run build" exited with 1
+20:13:55.424 Running build in Washington, D.C., USA (East) – iad1
+20:13:55.425 Build machine configuration: 2 cores, 8 GB
+20:13:55.441 Cloning github.com/CodeSrinu/Career-Advisor (Branch: master, Commit: 9aa0fc5)
+20:13:55.858 Cloning completed: 417.000ms
+20:13:56.728 Restored build cache from previous deployment (3TpQeZqKYg5bhLi15oR4rgFh3XLW)
+20:13:57.323 Running "vercel build"
+20:13:57.746 Vercel CLI 48.1.1
+20:13:58.435 Installing dependencies...
+20:14:00.111 
+20:14:00.112 up to date in 1s
+20:14:00.113 
+20:14:00.113 176 packages are looking for funding
+20:14:00.113   run `npm fund` for details
+20:14:00.145 Detected Next.js version: 14.2.3
+20:14:00.150 Running "npm run build"
+20:14:00.260 
+20:14:00.261 > career-advisor@0.1.0 build
+20:14:00.261 > next build
+20:14:00.261 
+20:14:00.944   ▲ Next.js 14.2.3
+20:14:00.946 
+20:14:01.023    Creating an optimized production build ...
+20:14:14.325  ✓ Compiled successfully
+20:14:14.327    Linting and checking validity of types ...
+20:14:22.303 Failed to compile.
+20:14:22.304 
+20:14:22.305 ./app/api/auth/[...nextauth]/route.ts:28:33
+20:14:22.305 Type error: Property 'picture' does not exist on type 'Profile'.
+20:14:22.305 
+20:14:22.306 [0m [90m 26 |[39m         token[33m.[39mname [33m=[39m profile[33m.[39mname[33m;[39m[0m
+20:14:22.306 [0m [90m 27 |[39m         token[33m.[39memail [33m=[39m profile[33m.[39memail[33m;[39m[0m
+20:14:22.306 [0m[31m[1m>[22m[39m[90m 28 |[39m         token[33m.[39mpicture [33m=[39m profile[33m.[39mpicture[33m;[39m[0m
+20:14:22.306 [0m [90m    |[39m                                 [31m[1m^[22m[39m[0m
+20:14:22.307 [0m [90m 29 |[39m       }[0m
+20:14:22.307 [0m [90m 30 |[39m       [36mreturn[39m token[33m;[39m[0m
+20:14:22.307 [0m [90m 31 |[39m     }[33m,[39m[0m
+20:14:22.349 Error: Command "npm run build" exited with 1

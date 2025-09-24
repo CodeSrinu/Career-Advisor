@@ -21,12 +21,6 @@ const handler = NextAuth({
       if (account) {
         token.accessToken = account.access_token;
       }
-      // Add profile information to token
-      if (profile) {
-        token.name = profile.name;
-        token.email = profile.email;
-        token.picture = profile.picture;
-      }
       return token;
     },
     async redirect({ url, baseUrl }) {
