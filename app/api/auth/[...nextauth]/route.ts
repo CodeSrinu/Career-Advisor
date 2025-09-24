@@ -17,9 +17,12 @@ const handler = NextAuth({
       return session;
     },
     async jwt({ token, account, profile }) {
-      // Persist the OAuth access_token to the token right after signin
       if (account) {
         token.accessToken = account.access_token;
+      }
+      if (profile) {
+        token.name = profile.name;
+        token.email = profile.email;
       }
       return token;
     },
@@ -36,7 +39,7 @@ const handler = NextAuth({
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   pages: {
-    error: "/auth/error", // Error code passed in query string as ?error=
+    error: "/auth/error",
     signIn: "/",
   }
 })

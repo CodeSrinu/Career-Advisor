@@ -1,1 +1,33 @@
-// middleware.ts - Root level for Next.js 14 App Router\nimport { NextResponse } from \"next/server\";\nimport type { NextRequest } from \"next/server\";\n\n// Custom middleware that allows public access to login page\nexport async function middleware(request: NextRequest) {\n  // Allow access to the root page (login page) and auth error page without authentication\n  if (request.nextUrl.pathname === \"/\" || request.nextUrl.pathname === \"/auth/error\") {\n    return NextResponse.next();\n  }\n\n  // For all other routes, we'll check if the user has a session in the client-side\n  // since server-side session checking requires additional setup\n  // For now, let the client-side logic handle authentication checks\n  return NextResponse.next();\n}\n\n// Configure matcher to run middleware on all routes except static assets\nexport const config = {\n  matcher: [\n    /*\n     * Match all request paths except for the ones starting with:\n     * - api (API routes)\n     * - _next/static (static files)\n     * - _next/image (image optimization files)\n     * - favicon.ico (favicon file)\n     * - static (static files)\n     */\n    \"/((?!api|_next/static|_next/image|favicon.ico|static|.*\\\\..*|_vercel).*)\",\n  ],\n};
+// middleware.ts - Root level for Next.js 14 App Router
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+
+// Custom middleware that allows public access to login page
+export async function middleware(request: NextRequest) {
+  // Allow access to the root page (login page), auth pages, and NextAuth API routes without authentication
+  if (
+    request.nextUrl.pathname === "/" || 
+    request.nextUrl.pathname.startsWith("/auth/") ||
+    request.nextUrl.pathname.startsWith("/api/auth/")
+  ) {
+    return NextResponse.next();
+  }
+
+  // For all other routes, we'll allow the request to continue
+  // Authentication checks will be handled by the client-side components
+  return NextResponse.next();
+}
+
+// Configure matcher to run middleware on all routes except static assets and API routes
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - static (static files)
+     */
+    "/((?!_next/static|_next/image|favicon.ico|static|.*\\..*|_vercel).*)",
+  ],
+};
