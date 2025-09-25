@@ -9,6 +9,10 @@ const handler = NextAuth({
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+  },
   callbacks: {
     async session({ session, token }) {
       if (token?.sub && session.user) {
@@ -34,14 +38,12 @@ const handler = NextAuth({
       return baseUrl
     }
   },
-  session: {
-    strategy: "jwt",
-    maxAge: 30 * 24 * 60 * 60, // 30 days
-  },
   pages: {
     error: "/auth/error",
     signIn: "/",
-  }
+  },
+  // Ensure all callbacks are properly handled in production
+  debug: process.env.NODE_ENV === "development",
 })
 
 export { handler as GET, handler as POST }
